@@ -1,0 +1,205 @@
+# Path to your oh-my-zsh installation.
+export ZSH=~/.oh-my-zsh
+
+# oh-my-zsh options
+HYPHEN_INSENSITIVE="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+ZSH_THEME="spaceship"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  ruby
+  docker
+  github
+  httpie
+  nvm
+  yarn  
+)
+
+if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] ; then
+  plugins+=( zsh-autosuggestions )
+fi
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+if which chezmoi>/dev/null; then
+  export DOTFILES=~/.dotfiles
+  eval $(chezmoi completion zsh)
+fi
+
+function install_ruby() {
+  ruby-build $1 ~/.rubies/ruby-$1
+  RUBIES=(~/.rubies/*)
+}
+
+alias cm=chezmoi
+
+alias k=kubectl
+alias kd='kubectl describe'
+alias kc='kubectl config use-context'
+alias kcs='kubectl config get-contexts'
+alias kg='kubectl get'
+alias s=subl
+alias gprune='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d && git remote prune origin'
+alias gwip='gaa && gc -m "wip" -n'
+alias be='bundle exec'
+alias logs='stern -s 1m --exclude "ping|metrics|HealthCheck"'
+alias mongo_start='docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/mongodb:2.6'
+
+function n () {
+  ./node_modules/.bin/$1 "${@:2}"
+}
+
+function gupdate () {
+  if [ $1 ]
+  then
+    gco $1 && gl && gprune && gco -
+  else
+    gco master && gl && gprune && gco -
+  fi
+}
+
+function kpf () {
+  if [ $2 ]
+  then
+    kubectl port-forward $1 $2
+  else
+    kubectl port-forward $1 3000
+  fi
+}
+
+function ke () {
+  kubectl exec -it $1 $2
+}
+
+function kebash () {
+  kubectl exec -it $1 bash
+}
+
+function kesh () {
+  kubectl exec -it $1 sh
+}
+
+function kgrep () {
+  kubectl get pods -oname | grep $1
+}
+
+function kwatch () {
+  watch "kubectl get pods | grep $1"
+}
+
+export ANDROID_HOME=/usr/local/share/android-sdk
+export JAVA_HOME=/Library/Java/Home
+
+# spaceship config
+RED='\033[0;31m'
+GREEN='\033[1;92m'
+NC='\033[0m' # No Color
+
+export SPACESHIP_DOCKER_SHOW=false
+export SPACESHIP_BATTERY_THRESHOLD=20
+export SPACESHIP_KUBECONTEXT_SYMBOL='ﴱ '
+export SPACESHIP_KUBECONTEXT_COLOR_GROUPS=(
+  red 'production'
+)
+export SPACESHIP_KUBECONTEXT_NAMESPACE_SHOW=false
+export SPACESHIP_GIT_STATUS_COLOR='yellow'
+export SPACESHIP_GIT_STATUS_DELETED='×'
+export SPACESHIP_RUBY_SYMBOL=' '
+export SPACESHIP_GIT_SYMBOL=' '
+export SPACESHIP_PROMPT_ORDER=(
+  time          # Time stampts section
+  user          # SSH user section
+  host          # Hostname section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  node          # Node.js section
+  ruby          # Ruby section
+  elixir        # Elixir section
+  xcode         # Xcode section
+  swift         # Swift section
+  golang        # Go section
+  php           # PHP section
+  rust          # Rust section
+  haskell       # Haskell Stack section
+  julia         # Julia section
+  docker        # Docker section
+  aws           # Amazon Web Services section
+  venv          # virtualenv section
+  conda         # conda virtualenv section
+  pyenv         # Pyenv section
+  dotnet        # .NET section
+  ember         # Ember.js section
+  kubecontext   # Kubectl context section
+  exec_time     # Execution time
+  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  line_sep      # Line break
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+
+export SPACESHIP_RPROMPT_ORDER=(
+  battery
+)
+
+export EDITOR=vim 
+
+# Set git editor
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+if which code >/dev/null; then
+  git config --global core.editor "code --wait" ;
+  export EDITOR=code 
+fi
+
+# Highlighting
+if [ -d /usr/local/share/zsh-syntax-highlighting ]; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+if which kubectl >/dev/null; then
+  source <(kubectl completion zsh)
+fi
+
+# fuck
+if which thefuck >/dev/null; then
+  eval $(thefuck --alias)
+fi
+
+#-tns-completion-
+if [ -f ~/.tnsrc ]; then
+    source ~/.tnsrc
+fi
+
+if [ -f ~/.gathering/source-gathering-zsh ]; then
+  source ~/.gathering/source-gathering-zsh
+fi
+
+# chruby
+if [ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+  chruby 2.5.3
+fi
+
+if [ -d ~/.fastlane/bin ] ; then
+  export PATH="~/.fastlane/bin:$PATH"
+fi
+
+if [ -d ~/.pyenv ] ; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+if which hub >/dev/null; then
+  eval "$(hub alias -s)"
+fi
