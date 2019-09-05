@@ -41,5 +41,4 @@ if is_installed ruby-install; then
   echo '✅ ruby-install is already installed'
 else
   install_ruby-install
-  ruby-install ruby
 fi
