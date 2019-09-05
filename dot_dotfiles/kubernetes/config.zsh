@@ -35,4 +35,8 @@ function kwatch () {
   watch "kubectl get pods | grep $1"
 }
 
+if which kubectl >/dev/null; then
+  source <(kubectl completion zsh)
+fi
+
 

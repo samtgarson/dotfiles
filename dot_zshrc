@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 export ZSH_CUSTOM=$ZSH/custom
@@ -6,11 +7,6 @@ export ZSH_CUSTOM=$ZSH/custom
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_THEME="spaceship"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
   ruby
@@ -36,25 +32,8 @@ fi
 
 alias cm=chezmoi
 
-alias s=subl
-alias gprune='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d && git remote prune origin'
-alias gwip='gaa && gc -m "wip" -n'
 alias be='bundle exec'
 alias mongo_start='docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/mongodb:2.6'
-
-function n () {
-  ./node_modules/.bin/$1 "${@:2}"
-}
-
-function gupdate () {
-  if [ $1 ]
-  then
-    gco $1 && gl && gprune && gco -
-  else
-    gco master && gl && gprune && gco -
-  fi
-}
-
 
 export ANDROID_HOME=/usr/local/share/android-sdk
 export JAVA_HOME=/Library/Java/Home
@@ -66,17 +45,9 @@ if which code >/dev/null; then
   export EDITOR=code 
 fi
 
-if which code >/dev/null; then
-  git config --global core.editor "code --wait" ;
-fi
-
 # Highlighting
 if [ -d /usr/local/share/zsh-syntax-highlighting ]; then
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-if which kubectl >/dev/null; then
-  source <(kubectl completion zsh)
 fi
 
 # fuck
@@ -103,8 +74,7 @@ if [ -d ~/.pyenv ] ; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-if which hub >/dev/null; then
-  eval "$(hub alias -s)"
-fi
+for f in ~/.dotfiles/**/config.zsh; do                  
+  source $f
+done
 
-source ~/.dotfiles/**/config.zsh
