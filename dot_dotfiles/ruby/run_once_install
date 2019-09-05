@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+source ~/.local/share/chezmoi/.helpers
+
+chruby_installed() {
+  [ -f /usr/local/share/chruby/chruby.sh ]
+}
+
+install_chruby() {
+  echo '▶️ Installing chruby'
+  wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+  tar -xzvf chruby-0.3.9.tar.gz
+  cd chruby-0.3.9/
+  sudo make install
+  echo '🔄 Cleaning up'
+  cd ..
+  rm -rf chruby-0.3.9.tar.gz chruby-0.3.9
+  echo '✅ Installed chruby'
+}
+
+install_ruby-install() {
+  echo '▶️ Installing ruby-install'
+  wget -O ruby-install-0.7.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz
+  tar -xzvf ruby-install-0.7.0.tar.gz
+  cd ruby-install-0.7.0/
+  sudo make install
+  echo '🔄 Cleaning up'
+  cd ..
+  rm -rf ruby-install-0.7.0 ruby-install-0.7.0.tar.gz 
+  echo '✅ Installed ruby-install'
+}
+
+
+if chruby_installed; then
+  echo '✅ chruby is already installed'
+else
+  install_chruby
+fi
+
+if is_installed ruby-install; then
+  echo '✅ ruby-install is already installed'
+else
+  install_ruby-install
+  ruby-install ruby
+fi

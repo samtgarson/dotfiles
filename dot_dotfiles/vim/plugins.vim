@@ -9,5 +9,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'kaicataldo/material.vim'
+Plug 'wincent/command-t', { 
+      \ 'do': 'cd ruby/command-t/ext/command-t && chruby system && ruby extconf.rb && make'
+      \ }
 
 call plug#end()

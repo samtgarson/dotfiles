@@ -1,17 +1,10 @@
-let g:netrw_banner = 0
-
-" Source plugins
 so $DOTFILES/vim/plugins.vim
+so $DOTFILES/vim/nerdtree.vim
+so $DOTFILES/vim/theme.vim
 
-" Auto toggle nerdtree if opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
-" nerdtree options
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeMinimalUI = 1
-let NERDTreeShowHidden=1
-let NERDTreeDirArrows = 1
+" set <Leader> to <space>
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 
 " map window keys
 nnoremap <silent> <C-j> <C-w>j 
@@ -24,14 +17,3 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
-" Color theme settings
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-syntax enable
-let g:material_theme_style = 'lighter'
-let g:material_terminal_italics = 1
-colorscheme material
-
-set t_ut=""

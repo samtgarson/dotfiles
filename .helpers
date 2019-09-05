@@ -1,0 +1,78 @@
+#!/bin/sh
+
+is_installed() {
+  [[ -x "$(command -v $1)" ]]
+}
+
+# usage: `if was_successful; then`
+was_successful() {
+  [[ $? == 0 ]]
+}
+
+# usage: `if was_not_successful; then`
+was_not_successful() {
+  [[ $? != 0 ]]
+}
+
+successfully() {
+  eval $*
+  if [[ $? != 0 ]]; then
+    echo ⛔️
+    exit 1
+  fi
+}
+
+warn() {
+  echo "⚠️️  $*"
+}
+
+heading() {
+  real_clear
+  log_echo
+  log_echo "- $*"
+}
+
+log_echo() {
+  if [[ $CLEAR_SCREEN_BETWEEN_LOGS == "true" ]]; then
+    log="$log
+  $*"
+    real_clear
+  else
+    echo "$*"
+  fi
+}
+
+real_clear() {
+  printf "\033c"
+  clear
+  echo "$log"
+}
+
+ensure_var() {
+  if [[ $2 == "" ]]; then
+    echo "Environment variable required $1"
+    exit 1
+  fi
+}
+
+capitalize() {
+  cap_first="$(echo ${1:0:1} | tr '[a-z]' '[A-Z]')"
+  cap_rest="${1:1}"
+  echo $cap_first$cap_rest
+}
+
+brew_install_or_update() {
+  dont_care_if_executes brew upgrade $*
+  if [[ $? != 0 ]]; then
+    successfully brew install $*
+  fi
+}
+
+check_sudo() {
+  echo "Testing sudo, you may need to enter your password:"
+  sudo echo "✅  sudo is good"
+    if [[ $? != 0 ]]; then
+    echo "💥  sudo auth failed"
+    exit 1
+  fi
+}
