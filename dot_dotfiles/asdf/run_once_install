@@ -24,6 +24,6 @@ install_plugins() {
 if is_installed asdf; then
   echo '✅ asdf already installed'
 else
-  install_asdf
+  successfully install_asdf
   install_plugins
 fi
