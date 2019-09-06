@@ -13,7 +13,6 @@ plugins=(
   docker
   github
   httpie
-  nvm
   yarn  
 )
 

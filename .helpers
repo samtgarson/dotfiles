@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 is_installed() {
   [[ -x "$(command -v $1)" ]]
@@ -22,8 +22,16 @@ successfully() {
   fi
 }
 
+started() {
+  echo "▶️ $*"
+}
+
+success() {
+  echo "✅ $*"
+}
+
 warn() {
-  echo "⚠️️  $*"
+  echo "⚠️ $*"
 }
 
 heading() {
@@ -59,13 +67,6 @@ capitalize() {
   cap_first="$(echo ${1:0:1} | tr '[a-z]' '[A-Z]')"
   cap_rest="${1:1}"
   echo $cap_first$cap_rest
-}
-
-brew_install_or_update() {
-  dont_care_if_executes brew upgrade $*
-  if [[ $? != 0 ]]; then
-    successfully brew install $*
-  fi
 }
 
 check_sudo() {

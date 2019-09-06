@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh 
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed httpie; then
+  success 'httpie is already installed'
+else
+  started Installing httpie
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo apt-get install -y httpie
+  {{- else if eq .chezmoi.os "darwin" }}
+  successfully brew install httpie
+  {{- end }}
+  success Installed httpie
+fi
+
