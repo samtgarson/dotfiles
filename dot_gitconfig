@@ -1,3 +1,5 @@
 [user]
 	name = Sam Garson
 	email = samtgarson@gmail.com
+[core]
+  excludesfile = ~/.gitignore

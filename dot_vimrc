@@ -17,3 +17,32 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+" show line numbers
+set number
+
+" reload files changed outside of vim
+set autoread
+
+" from http://items.sjbach.com/319/configuring-vim-right
+set hidden                 " better buffer handling in the background
+runtime macros/matchit.vim " jump between if/else with %
+filetype on                " filetype specific functionality
+filetype plugin on
+filetype indent on
+
+" better autocomplete
+set wildmenu
+set wildmode=list:longest
+
+" better search case insensitivity
+set ignorecase
+set smartcase
+
+" start scrolling when 8 lines from the last line
+set scrolloff=8
+
+" centralised swapfile dir
+silent !mkdir ~/.vim/tmp > /dev/null 2>&1
+set backupdir=~/.vim/tmp,~/.tmp,/tmp
+set directory=~/.vim/tmp,~/.tmp,/tmp
+

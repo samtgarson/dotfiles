@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh 
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed fuck; then
+  success 'thefuck is already installed'
+else
+  started Installing thefuck
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo pip3 install thefuck
+  {{- else if eq .chezmoi.os "darwin" }}
+  successfully brew install thefuck
+  {{- end }}
+  success Installed thefuck
+fi
+
