@@ -15,7 +15,7 @@ was_not_successful() {
 }
 
 successfully() {
-  eval $*
+  $*
   if [[ $? != 0 ]]; then
     echo ⛔️
     exit 1

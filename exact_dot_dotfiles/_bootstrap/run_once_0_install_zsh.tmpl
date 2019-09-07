@@ -11,13 +11,21 @@ install_zsh() {
   successfully brew install zsh zsh-completions
   {{- end }}
 
-  successfully sudo chsh -s $(which zsh)
   success 'Installed zsh'
+}
+
+set_shell() {
+  started 'Setting default shell to zsh'
+
+  successfully sudo chsh -s $(which zsh)
+
+  success 'Set default shell to zsh'
 }
 
 if is_installed zsh; then
   success 'zsh already installed'
 else
-  install_zsh
+  successfully install_zsh
 fi
 
+set_shell

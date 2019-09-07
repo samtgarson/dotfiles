@@ -9,7 +9,9 @@ omz_installed() {
 install_oh-my-zsh() {
   started 'Installing oh-my-zsh'
 
-  successfully sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  successfully wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+  RUNZSH=no successfully sh install.sh
+  rm install.sh
 
   success 'Installed oh-my-zsh'
 }
