@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+source ~/.local/share/chezmoi/.helpers
+
+install_zsh() {
+  started 'Installing zsh'
+
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo apt-get install zsh
+  {{- else if eq .chezmoi.os "darwin" }}
+  successfully brew install zsh zsh-completions
+  {{- end }}
+
+  successfully sudo chsh -s $(which zsh)
+  success 'Installed zsh'
+}
+
+if is_installed zsh; then
+  success 'zsh already installed'
+else
+  install_zsh
+fi
+

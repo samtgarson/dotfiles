@@ -46,3 +46,9 @@ silent !mkdir ~/.vim/tmp > /dev/null 2>&1
 set backupdir=~/.vim/tmp,~/.tmp,/tmp
 set directory=~/.vim/tmp,~/.tmp,/tmp
 
+" use tabs and windows when switching with CommandT
+set switchbuf=usetab
+
+" CommandT options
+let g:CommandTAcceptSelectionMap = '<C-t>'
+let g:CommandTAcceptSelectionTabMap = '<CR>'
