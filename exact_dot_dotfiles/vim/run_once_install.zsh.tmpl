@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
-{{- if eq .chezmoi.os "linux" }}
-sudo apt-get install -y vim-nox
+source ~/.local/share/chezmoi/.helpers
+
+{{- if ne .chezmoi.os "linux" }}
+exit 0
 {{- end }}
+
+vim-nox_installed() {
+  dpkg -s vim-nox &> /dev/null;
+}
+
+if vim-nox_installed; then
+  success 'vim-nox already installed'
+else
+  sudo apt-get install -y vim-nox
+fi
