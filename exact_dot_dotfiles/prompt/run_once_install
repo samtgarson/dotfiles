@@ -12,7 +12,7 @@ install_spaceship() {
 }
 
 
-if [[ -e "$ZSH_CUSTOM/themes/spaceship-prompt" ]]; then
+if [[ -e $ZSH_CUSTOM/themes/spaceship-prompt ]]; then
   echo '✅ spaceship prompt already installed'
 else
   install_spaceship
