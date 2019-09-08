@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh 
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed jq; then
+  success 'jq is already installed'
+else
+  started Installing jq
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo apt-get install -y jq
+  {{- else if eq .chezmoi.os "darwin" }}
+  successfully brew install jq
+  {{- end }}
+  success Installed jq
+fi
+
