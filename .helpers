@@ -23,20 +23,19 @@ successfully() {
 }
 
 started() {
-  echo "▶️ $*"
+  log_echo "▶️ $*"
 }
 
 success() {
-  echo "✅ $*"
+  log_echo "✅ $*"
 }
 
 warn() {
-  echo "⚠️ $*"
+  log_echo "⚠️ $*"
 }
 
 heading() {
   real_clear
-  log_echo
   log_echo "- $*"
 }
 
@@ -46,6 +45,7 @@ log_echo() {
   $*"
     real_clear
   else
+    echo
     echo "$*"
   fi
 }

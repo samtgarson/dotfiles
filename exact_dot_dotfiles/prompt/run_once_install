@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh 
 
+source ~/.dotfiles/environment.zsh
 source ~/.local/share/chezmoi/.helpers
 
 install_spaceship() {
