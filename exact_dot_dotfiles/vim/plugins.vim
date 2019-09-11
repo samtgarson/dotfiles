@@ -8,7 +8,11 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mhinz/vim-signify'
 Plug 'kaicataldo/material.vim'
+Plug 'mileszs/ack.vim'
+Plug 'zachahn/vim-ack-ag'
 Plug 'wincent/command-t', { 
       \ 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
       \ }

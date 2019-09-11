@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh 
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed ag; then
+  success 'ag is already installed'
+else
+  started Installing ag
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo apt-get install silversearcher-ag
+  {{- else if eq .chezmoi.os "darwin" }}
+  successfully brew install the_silver_searcher
+  {{- end }}
+  success Installed ag
+fi
+

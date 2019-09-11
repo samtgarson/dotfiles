@@ -13,6 +13,7 @@ plugins=(
   github
   httpie
   yarn  
+  zsh-syntax-highlighting
 )
 
 if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] ; then
@@ -36,11 +37,6 @@ alias mongo_start='docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 if which code >/dev/null; then
   export EDITOR=code 
-fi
-
-# Highlighting
-if [ -d /usr/local/share/zsh-syntax-highlighting ]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 # fuck

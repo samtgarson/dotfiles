@@ -1,6 +1,6 @@
-so $DOTFILES/vim/plugins.vim
-so $DOTFILES/vim/nerdtree.vim
-so $DOTFILES/vim/theme.vim
+so ~/.dotfiles/vim/plugins.vim
+so ~/.dotfiles/vim/nerdtree.vim
+so ~/.dotfiles/vim/theme.vim
 
 " set <Leader> to <space>
 nnoremap <SPACE> <Nop>
@@ -52,3 +52,13 @@ set switchbuf=usetab
 " CommandT options
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
+
+" Ag
+let g:ackprg = 'ag --vimgrep'
+map <Leader>f :Ack<space>
+
+" Signify
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_realtime = 1
+
+
