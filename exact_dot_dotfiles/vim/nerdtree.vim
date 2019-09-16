@@ -11,4 +11,5 @@ let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden=1
 let NERDTreeDirArrows = 1
 
-
+" Hide annoying directories from the sidebar
+let g:NERDTreeIgnore = ['^.git$', '^node_modules$']

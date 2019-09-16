@@ -61,4 +61,5 @@ map <Leader>f :Ack<space>
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_realtime = 1
 
-
+" Characters to show when highlighting whitespace
+set listchars=eol:$,tab:>-,trail:~,space:·,extends:>,precedes:<
