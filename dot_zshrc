@@ -39,18 +39,9 @@ if which code >/dev/null; then
   export EDITOR=code 
 fi
 
-# fuck
-if which thefuck >/dev/null; then
-  eval $(thefuck --alias)
-fi
-
 #-tns-completion-
 if [ -f ~/.tnsrc ]; then
-    source ~/.tnsrc
-fi
-
-if [ -f ~/.gathering/source-gathering-zsh ]; then
-  source ~/.gathering/source-gathering-zsh
+  source ~/.tnsrc
 fi
 
 if [ -d ~/.fastlane/bin ] ; then
@@ -67,3 +58,6 @@ for f in ~/.dotfiles/**/config.zsh; do
   source $f
 done
 
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc
+fi
