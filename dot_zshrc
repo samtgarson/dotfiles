@@ -48,16 +48,10 @@ if [ -d ~/.fastlane/bin ] ; then
   export PATH="~/.fastlane/bin:$PATH"
 fi
 
-if [ -d ~/.pyenv ] ; then
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
-
 for f in ~/.dotfiles/**/config.zsh; do                  
   source $f
 done
 
 if [ -f ~/.zshrc.local ]; then
-  source ~/.zshrc
+  source ~/.zshrc.local
 fi

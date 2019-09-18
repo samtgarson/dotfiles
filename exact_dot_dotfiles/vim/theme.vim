@@ -4,9 +4,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-let g:material_theme_style = 'lighter'
-let g:material_terminal_italics = 1
-colorscheme material
+colorscheme night-owl
 
 " Fill background with correct colour
 " https://github.com/microsoft/terminal/issues/832#issuecomment-493747616
