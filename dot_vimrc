@@ -63,3 +63,10 @@ let g:signify_realtime = 1
 
 " Characters to show when highlighting whitespace
 set listchars=eol:$,tab:>-,trail:~,space:·,extends:>,precedes:<
+
+" Set globally ignored file globs
+set wildignore+=*/node_modules/*
+
+" Hide the default statusbar because we have lightline
+set noshowmode
+set laststatus=2
