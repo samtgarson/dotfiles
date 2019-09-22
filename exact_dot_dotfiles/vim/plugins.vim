@@ -15,6 +15,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'mileszs/ack.vim'
 Plug 'zachahn/vim-ack-ag'
 Plug 'vim-scripts/gitignore'
+Plug 'posva/vim-vue'
 Plug 'wincent/command-t', { 
       \ 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
       \ }
