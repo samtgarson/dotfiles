@@ -9,11 +9,10 @@ ZSH_THEME="spaceship"
 plugins=(
   git
   ruby
-  docker
   github
   httpie
-  yarn  
   zsh-syntax-highlighting
+  npm
 )
 
 if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] ; then

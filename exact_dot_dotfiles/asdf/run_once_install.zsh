@@ -10,7 +10,7 @@ install_asdf() {
 }
 
 install_plugin() {
-  [[ $(asdf plugin-list) =~ $1 ]] || asdf plugin-add $1
+  [[ $(asdf plugin-list) =~ $1 ]] || asdf plugin-add $@
 }
 
 install_plugins() {
@@ -21,6 +21,7 @@ install_plugins() {
   successfully install_plugin kubectl 
   successfully install_plugin helm 
   successfully install_plugin postgres
+  successfully install_plugin 1password
 
   # Install the nodejs gpg keyring to verify installs
   bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring

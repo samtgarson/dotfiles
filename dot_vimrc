@@ -17,9 +17,13 @@ nnoremap <silent> <C-l> <C-w>l
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set tabstop=2
 
 " show line numbers
 set number
+
+" shortcut to show/hide spacing
+map <Leader>l :set list!<CR>
 
 " reload files changed outside of vim
 set autoread
@@ -71,3 +75,6 @@ set wildignore+=*/node_modules/*
 " Hide the default statusbar because we have lightline
 set noshowmode
 set laststatus=2
+
+" Vue options
+let g:vue_pre_processors = 'detect_on_enter'
