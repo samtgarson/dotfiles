@@ -20,14 +20,10 @@ install_plugins() {
   successfully install_plugin python
   successfully install_plugin kubectl 
   successfully install_plugin helm 
-  successfully install_plugin postgres
   successfully install_plugin 1password
 
   # Install the nodejs gpg keyring to verify installs
   bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-
-  # start the postgres daemon
-  pg_ctl status || pg_ctl start
 
   echo '✅ Installed asdf plugins'
 }

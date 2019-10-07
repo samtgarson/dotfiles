@@ -78,3 +78,9 @@ set laststatus=2
 
 " Vue options
 let g:vue_pre_processors = 'detect_on_enter'
+
+" Format JSON
+map <Leader>j :%!python -m json.tool
+
+" Close all windows
+map <Leader>W :%bd|e#
