@@ -83,4 +83,4 @@ let g:vue_pre_processors = 'detect_on_enter'
 map <Leader>j :%!python -m json.tool
 
 " Close all windows
-map <Leader>W :%bd|e#
+map <Leader>W :%bd<CR>
