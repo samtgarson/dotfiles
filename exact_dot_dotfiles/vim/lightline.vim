@@ -1,6 +1,6 @@
 " colorscheme
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'palenight',
       \ 'active': {
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ] ]

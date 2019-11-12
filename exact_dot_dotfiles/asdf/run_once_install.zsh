@@ -18,9 +18,10 @@ install_plugins() {
   successfully install_plugin ruby
   successfully install_plugin nodejs
   successfully install_plugin python
-  successfully install_plugin kubectl 
-  successfully install_plugin helm 
+  successfully install_plugin kubectl
+  successfully install_plugin helm
   successfully install_plugin 1password
+  successfully install_plugin k9s
 
   # Install the nodejs gpg keyring to verify installs
   bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring

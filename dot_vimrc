@@ -57,6 +57,7 @@ set switchbuf=usetab
 " CommandT options
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
+let g:CommandTAcceptSelectionSplitCommand = '<C-CR>'
 
 " Ag
 let g:ackprg = 'ag --vimgrep'
@@ -84,3 +85,6 @@ map <Leader>j :%!python -m json.tool
 
 " Close all windows
 map <Leader>W :%bd<CR>
+
+" Automatically clear trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
