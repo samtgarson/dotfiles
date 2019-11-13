@@ -23,8 +23,6 @@ Plug 'zachahn/vim-ack-ag'
 Plug 'vim-scripts/gitignore'
 "Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
-Plug 'wincent/command-t', { 
-      \ 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-      \ }
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()

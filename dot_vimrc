@@ -8,10 +8,10 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " map window keys
-nnoremap <silent> <C-j> <C-w>j 
-nnoremap <silent> <C-k> <C-w>k 
-nnoremap <silent> <C-h> <C-w>h 
-nnoremap <silent> <C-l> <C-w>l 
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-l> <C-w>l
 
 " set tab width
 set expandtab
@@ -53,11 +53,6 @@ set directory=~/.vim/tmp,~/.tmp,/tmp
 
 " use tabs and windows when switching with CommandT
 set switchbuf=usetab
-
-" CommandT options
-let g:CommandTAcceptSelectionMap = '<C-t>'
-let g:CommandTAcceptSelectionTabMap = '<CR>'
-let g:CommandTAcceptSelectionSplitCommand = '<C-CR>'
 
 " Ag
 let g:ackprg = 'ag --vimgrep'
