@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed hub; then
+  success 'hub is already installed'
+else
+  started Installing hub
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo snap install hub --classic
+  {{- else if eq .chezmoi.os "darwin" }}
+  successfully brew install hub
+  {{- end }}
+  success Installed hub
+fi
+
