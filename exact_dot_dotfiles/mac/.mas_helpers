@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+mas_check_status () {
+  mas account >/dev/null
+}
+
+mas_login () {
+  if mas_check_status; then
+    echo "Logged in as $(mas account)"
+    return 0
+  fi
+
+  open /Applications/App\ Store.app
+
+  until check_status; do
+    sleep 5
+    echo 'Waiting for login...'
+  done
+
+  echo "Logged in as $(mas account)"
+  read "?Press enter to continue"
+}

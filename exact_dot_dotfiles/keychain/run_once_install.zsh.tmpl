@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh 
+#!/usr/bin/env zsh
 
 source ~/.local/share/chezmoi/.helpers
 
@@ -10,9 +10,7 @@ if is_installed keychain; then
   success 'keychain is already installed'
 else
   started Installing keychain
-  {{- if eq .chezmoi.os "linux" }}
   successfully sudo apt-get install keychain
-  {{- end }}
   success Installed keychain
 fi
 

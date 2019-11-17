@@ -58,6 +58,9 @@ set switchbuf=usetab
 let g:ackprg = 'ag --vimgrep'
 map <Leader>f :Ack<space>
 
+" CtrlP
+let g:ctrlp_show_hidden = 1
+
 " Signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_realtime = 1

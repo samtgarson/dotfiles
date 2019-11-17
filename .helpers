@@ -4,6 +4,10 @@ is_installed() {
   [[ -x "$(command -v $1)" ]]
 }
 
+is_cask_installed() {
+  [[ -n "$(brew cask ls | grep $1)" ]]
+}
+
 # usage: `if was_successful; then`
 was_successful() {
   [[ $? == 0 ]]

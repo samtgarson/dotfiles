@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+source ~/.local/share/chezmoi/exact_dot_dotfiles/mac/.mas_helpers
+
+{{- if eq .chezmoi.os "linux" }}
+exit 0
+{{- end }}
+
+install_apps () {
+  successfully mas_login
+
+  successfully mas install 1176895641
+  success Installed Spark
+
+  successfully mas install 1147396723
+  success Installed Whatsap
+}
+
+if is_installed mas; then
+  success 'mas is already installed'
+else
+  started Installing mas
+  successfully brew install mas
+  success Installed mas
+fi
+
+started Installing Mac Apps
+install_apps
+success Installed Mac Apps
+
