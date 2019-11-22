@@ -56,10 +56,7 @@ set switchbuf=usetab
 
 " Ag
 let g:ackprg = 'ag --vimgrep'
-map <Leader>f :Ack<space>
-
-" CtrlP
-let g:ctrlp_show_hidden = 1
+map <Leader>f :Rg<space>
 
 " Signify
 let g:signify_vcs_list = [ 'git' ]
@@ -89,3 +86,7 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " clear nvim search highlight on esc
 nnoremap <esc> :noh<return><esc>
+
+" CtrlP options
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']

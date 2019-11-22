@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed rg; then
+  success 'rg is already installed'
+else
+  started Installing rg
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo snap install ripgrep --classic
+  {{- else if eq .chezmoi.os "darwin" }}
+  successfully brew install ripgrep
+  {{- end }}
+  success Installed rg
+fi
+

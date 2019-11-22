@@ -2,10 +2,6 @@
 
 source ~/.local/share/chezmoi/.helpers
 
-{{- if eq .chezmoi.os "darwin" }}
-exit 0
-{{- end }}
-
 if is_installed keychain; then
   success 'keychain is already installed'
 else

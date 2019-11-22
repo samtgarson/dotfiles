@@ -1,5 +1,3 @@
-{{- if eq .chezmoi.os "linux" }}
 eval `keychain -q --eval --agents ssh id_rsa`
-{{- end }}
 
 

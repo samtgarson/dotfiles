@@ -2,10 +2,6 @@
 
 source ~/.local/share/chezmoi/.helpers
 
-{{- if eq .chezmoi.os "linux" }}
-exit 0
-{{- end }}
-
 if is_cask_installed iterm2; then
   success 'iterm2 is already installed'
 else

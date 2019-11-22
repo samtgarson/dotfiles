@@ -2,26 +2,23 @@
 
 source ~/.local/share/chezmoi/.helpers
 
-{{- if eq .chezmoi.os "linux" }}
-vim-nox_installed() {
-  dpkg -s vim-nox &> /dev/null;
+install_neovim () {
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo apt install neovim
+  {{- else }}
+  successfully brew install neovim
+  {{- end }}
+
+  successfully curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  successfully curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
-
-if vim-nox_installed; then
-  success 'vim-nox already installed'
-else
-  started 'Installing vim-nox'
-  succesfully sudo apt-get install -y vim-nox
-  success 'Installed vim-nox'
-fi
-
-{{- else }}
 
 if is_installed nvim; then
   success 'neovim is already installed'
 else
   started 'Installing neovim'
-  successfully brew install neovim
+  install_neovim
   success 'Installed neovim'
 fi
-{{- end }}
