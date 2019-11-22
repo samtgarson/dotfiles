@@ -86,3 +86,6 @@ map <Leader>W :%bd<CR>
 
 " Automatically clear trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
+
+" clear nvim search highlight on esc
+nnoremap <esc> :noh<return><esc>

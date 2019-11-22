@@ -2,10 +2,7 @@
 
 source ~/.local/share/chezmoi/.helpers
 
-{{- if ne .chezmoi.os "linux" }}
-exit 0
-{{- end }}
-
+{{- if eq .chezmoi.os "linux" }}
 vim-nox_installed() {
   dpkg -s vim-nox &> /dev/null;
 }
@@ -13,5 +10,18 @@ vim-nox_installed() {
 if vim-nox_installed; then
   success 'vim-nox already installed'
 else
-  sudo apt-get install -y vim-nox
+  started 'Installing vim-nox'
+  succesfully sudo apt-get install -y vim-nox
+  success 'Installed vim-nox'
 fi
+
+{{- else }}
+
+if is_installed nvim; then
+  success 'neovim is already installed'
+else
+  started 'Installing neovim'
+  successfully brew install neovim
+  success 'Installed neovim'
+fi
+{{- end }}
