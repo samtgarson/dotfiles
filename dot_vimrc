@@ -58,9 +58,8 @@ set switchbuf=usetab
 let g:ackprg = 'ag --vimgrep'
 map <Leader>f :Rg<space>
 
-" Signify
-let g:signify_vcs_list = [ 'git' ]
-let g:signify_realtime = 1
+" GitGutter
+set updatetime=100
 
 " Characters to show when highlighting whitespace
 set listchars=eol:$,tab:>-,trail:~,space:·,extends:>,precedes:<
@@ -90,3 +89,7 @@ nnoremap <esc> :noh<return><esc>
 " CtrlP options
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+
+" Fugitive
+map <Leader>G :tabnew<CR>:G<CR><c-W>o
+
