@@ -1,7 +1,10 @@
 README.md
-{{- if ne .chezmoi.os "darwin" }}
+{{- if not .installdesktopapps }}
 .dotfiles/iterm/*
-{{- else }}
+.dotfiles/mac/*
+{{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
 .dotfiles/keychain/*
 {{- end }}
 

@@ -3,10 +3,6 @@
 source ~/.local/share/chezmoi/.helpers
 source ~/.local/share/chezmoi/exact_dot_dotfiles/mac/.mas_helpers
 
-{{- if eq .chezmoi.os "linux" }}
-exit 0
-{{- end }}
-
 install_apps () {
   successfully mas_login
 

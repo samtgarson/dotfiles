@@ -1,0 +1,3 @@
+{{ $installdesktopapps := promptString "Install desktop apps (yes|no)" -}}
+data:
+  installdesktopapps: {{if and (eq $installdesktopapps "yes") (eq .chezmoi.os "darwin")}}true{{else}}false{{end}}
