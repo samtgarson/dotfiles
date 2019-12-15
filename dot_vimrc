@@ -2,6 +2,7 @@ so ~/.dotfiles/vim/plugins.vim
 so ~/.dotfiles/vim/nerdtree.vim
 so ~/.dotfiles/vim/lightline.vim
 so ~/.dotfiles/vim/theme.vim
+so ~/.dotfiles/vim/coc.vim
 
 " set <Leader> to <space>
 nnoremap <SPACE> <Nop>
@@ -57,10 +58,6 @@ set directory=~/.vim/tmp,~/.tmp,/tmp
 " use tabs and windows when switching with CommandT
 set switchbuf=usetab
 
-" Ag
-let g:ackprg = 'ag --vimgrep'
-map <Leader>f :Rg<space>
-
 " GitGutter
 set updatetime=100
 
@@ -83,12 +80,32 @@ map <Leader>W :%bd<CR>
 autocmd BufWritePre * %s/\s\+$//e
 
 " clear nvim search highlight on esc
-nnoremap <esc> :noh<return><esc>
-
-" CtrlP options
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+nnoremap <silent> <esc> :noh<return><esc>
 
 " Fugitive
 map <Leader>G :tabnew<CR>:G<CR><c-W>o
 
+" vim-test options
+" ----------------
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+" open tests in a tmux pane
+let test#strategy = 'neovim'
+
+" set test matcher for Jest
+let g:test#javascript#jest#file_pattern = '\v((test|__tests__/).*|(spec|test)?)\.(js|jsx|coffee|ts|tsx)$'
+
+" fzf options
+" ----------
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+map <silent> <c-p> :Files<Cr>
+map <Leader>f :Rg<Cr>

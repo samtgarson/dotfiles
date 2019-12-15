@@ -4,6 +4,18 @@ alias kc='kubectl config use-context'
 alias kcs='kubectl config get-contexts'
 alias kg='kubectl get'
 
+function pod() {
+	kubectl get pods -o name | grep $1 | sed 's/pod\///' | head -n 1
+}
+
+function pods () {
+	local pod=$(kg pods | fzf)
+
+	if [ $pod ]; then
+		echo "$(echo $pod | awk -F ' ' '{ print $1 }')"
+	fi
+}
+
 alias logs='stern -s 1m --exclude "ping|metrics|HealthCheck"'
 
 function kpf () {
@@ -16,19 +28,15 @@ function kpf () {
 }
 
 function ke () {
-  kubectl exec -it $1 $2
+  kubectl exec -it `pod $1` $2
 }
 
 function kebash () {
-  kubectl exec -it $1 bash
+  kubectl exec -it `pod $1` bash
 }
 
 function kesh () {
-  kubectl exec -it $1 sh
-}
-
-function kgrep () {
-  kubectl get pods -oname | grep $1
+  kubectl exec -it `pod $1` sh
 }
 
 function kwatch () {

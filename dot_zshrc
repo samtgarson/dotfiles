@@ -53,10 +53,14 @@ if [ -d ~/.fastlane/bin ] ; then
   export PATH="~/.fastlane/bin:$PATH"
 fi
 
-for f in ~/.dotfiles/**/config.zsh; do                  
+for f in ~/.dotfiles/**/config.zsh; do
   source $f
 done
 
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
+fi
+
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
 fi

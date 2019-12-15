@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed fd; then
+  success 'fd is already installed'
+else
+  started Installing fd
+  {{- if eq .chezmoi.os "linux" }}
+  curl -sL https://api.github.com/repos/sharkdp/fd/releases/latest \
+    | jq -r '.assets[].browser_download_url' \
+    | grep -E fd_.+amd64.deb \
+    | wget -qi -
+
+  successfully sudo dpkg -i fd_*_amd64.deb
+  rm fd_*_amd64.deb
+  {{- else if eq .chezmoi.os "darwin" }}
+  successfully brew install fd
+  {{- end }}
+  success Installed fd
+fi
+
