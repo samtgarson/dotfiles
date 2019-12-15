@@ -14,6 +14,9 @@ install_apps () {
 
   successfully mas install 409183694
   success Installed Keynote
+
+  successfully mas install 904280696
+  success Installed Things
 }
 
 if is_installed mas; then
