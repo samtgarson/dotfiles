@@ -29,5 +29,8 @@ fbr() {
 
 # gfix - choose commit to fixup
 gfix() {
-  git ll -n 20 | fzf | cut -f 1 | xargs git commit --no-verify --fixup
+  glol --color=always\
+    | fzf --ansi \
+    | sed -nr  "s/^.* ([0-9a-z]{7}) - .*$/\1/p" \
+    | xargs git commit --no-verify --fixup
 }

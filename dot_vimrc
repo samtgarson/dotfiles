@@ -85,6 +85,12 @@ nnoremap <silent> <esc> :noh<return><esc>
 " Fugitive
 map <Leader>G :tabnew<CR>:G<CR><c-W>o
 
+" Mouse settings
+set mouse=a
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
 " vim-test options
 " ----------------
 nmap <silent> t<C-n> :TestNearest<CR>
@@ -107,5 +113,6 @@ xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-map <silent> <c-p> :Files<Cr>
+map <silent> <C-p> :GFiles<Cr>
 map <Leader>f :Rg<Cr>
+
