@@ -22,8 +22,11 @@ set tabstop=2
 " show line numbers
 set number
 
+" shortcut to show/hide numbers
+map <leader>n :set number!<CR>
+
 " shortcut to show/hide spacing
-map <Leader>l :set list!<CR>
+map <leader>l :set list!<CR>
 
 " reload files changed outside of vim
 set autoread
@@ -44,7 +47,7 @@ set ignorecase
 set smartcase
 
 " start scrolling when 8 lines from the last line
-set scrolloff=8
+set scrolloff=15
 
 " centralised swapfile dir
 silent !mkdir ~/.vim/tmp > /dev/null 2>&1
@@ -66,10 +69,6 @@ set listchars=eol:$,tab:>-,trail:~,space:·,extends:>,precedes:<
 
 " Set globally ignored file globs
 set wildignore+=*/node_modules/*
-
-" Hide the default statusbar because we have lightline
-set noshowmode
-set laststatus=2
 
 " Vue options
 let g:vue_pre_processors = 'detect_on_enter'

@@ -2,13 +2,7 @@
 
 source ~/.local/share/chezmoi/.helpers
 
-install_neovim () {
-  {{- if eq .chezmoi.os "linux" }}
-  successfully sudo apt install neovim
-  {{- else }}
-  successfully brew install neovim
-  {{- end }}
-
+setup_vim () {
   successfully curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   successfully curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -16,9 +10,9 @@ install_neovim () {
 }
 
 if is_installed nvim; then
-  success 'neovim is already installed'
+  success 'vim is already setup'
 else
-  started 'Installing neovim'
-  install_neovim
-  success 'Installed neovim'
+  started 'Setting up vim'
+  setup_vim
+  success 'Set up vim'
 fi

@@ -29,13 +29,19 @@ if which chezmoi>/dev/null; then
 fi
 
 alias cm=chezmoi
+alias cma=chezmoi apply
+
+function n () {
+  ./node_modules/.bin/$1 "${@:2}"
+}
+
 
 alias be='bundle exec'
 alias mongo_start='docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/mongodb:2.6'
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 if which code >/dev/null; then
-  export EDITOR=code 
+  export EDITOR=code
 fi
 
 #-tns-completion-
