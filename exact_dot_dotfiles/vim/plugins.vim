@@ -20,5 +20,6 @@ Plug 'sheerun/vim-polyglot'
 "Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'neoclide/jsonc.vim'
 
 call plug#end()

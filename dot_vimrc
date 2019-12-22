@@ -29,6 +29,9 @@ map <leader>n :set number!<CR>
 " shortcut to show/hide spacing
 map <leader>l :set list!<CR>
 
+" shortcut to replace highlighted text in document
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
+
 " reload files changed outside of vim
 set autoread
 
@@ -114,5 +117,5 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
 map <silent> <C-p> :GFiles<Cr>
-map <Leader>f :Rg<Cr>
+map <Leader>f :Rg<Space>
 
