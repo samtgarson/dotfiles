@@ -1,13 +1,27 @@
 #!/usr/bin/env zsh
 
 source ~/.local/share/chezmoi/.helpers
+install_hub_on_linux() {
+  {{- if eq .chezmoi.os "linux" }}
+  if [[ architecture == 'arm' ]]; then
+    successfully curl -sL https://api.github.com/repos/github/hub/releases/latest \
+      | jq -r '.assets[].browser_download_url' \
+      | grep -E linux-arm64 \
+      | wget -qi -
+
+    successfully tar zxf ./hub-linux*.tgz
+    rm ./hub-linux*.tgz
+    mv ./hub-linux*/bin/hub /usr/local/bin/
+  else
+    successfully sudo snap install hub --classic
+  fi
+}
 
 if is_installed hub; then
   success 'hub is already installed'
 else
   started Installing hub
-  {{- if eq .chezmoi.os "linux" }}
-  successfully sudo snap install hub --classic
+  install_hub_on_linux
   {{- else if eq .chezmoi.os "darwin" }}
   successfully brew install hub
   {{- end }}

@@ -2,12 +2,28 @@
 
 source ~/.local/share/chezmoi/.helpers
 
+install_ripgrep_on_linux () {
+  curl -s https://api.github.com/repos/BurntSushi/ripgrep/releases/latest \
+    | jq '.assets[].browser_download_url' -r \
+    | grep `architecture` \
+    | wget -qi -
+
+
+  if [ -f ./ripgrep*.deb ]; then
+    successfully sudo dpkg -i ripgrep*.deb
+  elif [ -f ./ripgrep*.tar.gz ]; then
+    successfully tar zxf ./ripgrep*.tar.gz
+    mv ./ripgrep*/rg /usr/local/bin/
+  fi
+  rm -rf ./ripgrep*
+}
+
 if is_installed rg; then
   success 'rg is already installed'
 else
   started Installing rg
   {{- if eq .chezmoi.os "linux" }}
-  successfully sudo snap install ripgrep --classic
+  install_ripgrep_on_linux
   {{- else if eq .chezmoi.os "darwin" }}
   successfully brew install ripgrep
   {{- end }}

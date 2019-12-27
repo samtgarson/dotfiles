@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh 
+#!/usr/bin/env zsh
 
 source ~/.local/share/chezmoi/.helpers
 
@@ -9,11 +9,11 @@ else
   {{- if eq .chezmoi.os "linux" }}
   curl -sL https://api.github.com/repos/sharkdp/bat/releases/latest \
     | jq -r '.assets[].browser_download_url' \
-    | grep -E bat_.+amd64.deb \
+    | grep -- "`architecture`64.deb" \
     | wget -qi -
 
-  successfully sudo dpkg -i bat_*_amd64.deb
-  rm bat_*_amd64.deb
+  successfully sudo dpkg -i bat_*.deb
+  rm bat_*.deb
   {{- else if eq .chezmoi.os "darwin" }}
   successfully brew install bat
   {{- end }}

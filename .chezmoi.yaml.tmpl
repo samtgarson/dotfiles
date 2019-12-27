@@ -1,3 +1,8 @@
-{{ $installdesktopapps := promptString "Install desktop apps (yes|no)" -}}
+{{ $minimalinstall := promptString "Minimal install? (yes|no)" -}}
+{{ $installdesktopapps := "no" }}
+{{- if and (eq $minimalinstall "no") (eq .chezmoi.os "darwin") }}
+{{ $installdesktopapps = promptString "Install desktop apps? (yes|no)" -}}
+{{- end }}
 data:
-  installdesktopapps: {{if and (eq $installdesktopapps "yes") (eq .chezmoi.os "darwin")}}true{{else}}false{{end}}
+  minimalinstall: {{ eq $minimalinstall "yes" }}
+  installdesktopapps: {{ if eq $installdesktopapps "yes" }}true{{ else }}false{{ end }}
