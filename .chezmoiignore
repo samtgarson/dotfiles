@@ -8,3 +8,9 @@ README.md
 .dotfiles/keychain/*
 {{- end }}
 
+{{- if .minimalinstall }}
+dot_default*
+dot_tool-versions
+.dotfiles/asdf/*
+.dotfiles/kubernetes/*
+{{- end }}
