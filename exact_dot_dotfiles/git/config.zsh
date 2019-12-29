@@ -14,10 +14,4 @@ function gupdate () {
   fi
 }
 
-if which hub >/dev/null; then
-	# Source hub aliases
-  eval "$(hub alias -s)"
-
-  alias pr='hub pull-request'
-fi
 

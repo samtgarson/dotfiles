@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+
+install_tpm() {
+  started 'Installing tpm'
+  successfully git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  success 'Installed tpm'
+}
+
+install_tmux () {
+  started 'Installing tmux'
+  {{- if eq .chezmoi.os "linux" }}
+  successfully sudo apt install tmux
+  {{- else }}
+  successfully brew install tmux
+  {{- end }}
+  success 'Installed tmux'
+}
+
+if [[ -e ~/.tmux/plugins/tpm ]]; then
+  success 'tpm already installed'
+else
+  successfully install_tpm
+fi
+
+if is_installed tmux; then
+  success 'tmux already installed'
+else
+  successfully install_tmux
+fi

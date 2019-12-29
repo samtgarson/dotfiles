@@ -7,7 +7,7 @@ if is_installed fd; then
 else
   started Installing fd
   {{- if eq .chezmoi.os "linux" }}
-  if [[ architecture == 'amd' ]]; then
+  if [[ "$(architecture)" == 'amd' ]]; then
     successfully curl -sL https://api.github.com/repos/sharkdp/fd/releases/latest \
       | jq -r '.assets[].browser_download_url' \
       | grep -E fd_.+amd64.deb \
@@ -16,7 +16,7 @@ else
     successfully sudo dpkg -i fd_*_amd64.deb
     rm fd_*_amd64.deb
   else
-    successfully apt-get install fd-find
+    successfully sudo apt-get install fd-find
   fi
   {{- else if eq .chezmoi.os "darwin" }}
   successfully brew install fd

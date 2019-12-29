@@ -1,19 +1,37 @@
 #!/usr/bin/env zsh
+setopt +o nomatch
 
 source ~/.local/share/chezmoi/.helpers
+
+download_bat () {
+  [[ "$(architecture)" == 'arm' ]] \
+    && filename='arm-unknown-linux-gnu' \
+    || filename='amd64.deb'
+
+  echo $filename
+  successfully curl -sL https://api.github.com/repos/sharkdp/bat/releases/latest \
+    | jq -r '.assets[].browser_download_url' \
+    | grep -- $filename \
+    | wget -qi -
+}
 
 if is_installed bat; then
   success 'bat is already installed'
 else
   started Installing bat
   {{- if eq .chezmoi.os "linux" }}
-  curl -sL https://api.github.com/repos/sharkdp/bat/releases/latest \
-    | jq -r '.assets[].browser_download_url' \
-    | grep -- "`architecture`64.deb" \
-    | wget -qi -
+  download_bat
 
-  successfully sudo dpkg -i bat_*.deb
-  rm bat_*.deb
+  if [ -f bat*.deb ]; then
+    successfully sudo dpkg -i bat*.deb
+  elif [ -f bat*.tar.gz ]; then
+    successfully tar zxf bat*.tar.gz
+    successfully sudo mv ./bat*/bat /usr/local/bin/
+  else
+    echo 'Unknown binary file'
+    exit 1
+  fi
+  rm -rf bat*
   {{- else if eq .chezmoi.os "darwin" }}
   successfully brew install bat
   {{- end }}

@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+setopt +o nomatch
 
 source ~/.local/share/chezmoi/.helpers
 
@@ -13,7 +14,10 @@ install_ripgrep_on_linux () {
     successfully sudo dpkg -i ripgrep*.deb
   elif [ -f ./ripgrep*.tar.gz ]; then
     successfully tar zxf ./ripgrep*.tar.gz
-    mv ./ripgrep*/rg /usr/local/bin/
+    sudo mv ./ripgrep*/rg /usr/local/bin/
+  else
+    echo 'Unknown binary file'
+    exit 1
   fi
   rm -rf ./ripgrep*
 }

@@ -9,8 +9,12 @@ README.md
 {{- end }}
 
 {{- if .minimalinstall }}
-dot_default*
-dot_tool-versions
+.default*
+.tool-versions
 .dotfiles/asdf/*
 .dotfiles/kubernetes/*
+.asdfrc
+{{- else }}
+.dotfiles/nvim/*
 {{- end }}
+
