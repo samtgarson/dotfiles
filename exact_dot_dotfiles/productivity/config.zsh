@@ -34,3 +34,21 @@ gfix() {
     | sed -nr  "s/^.* ([0-9a-z]{7}) - .*$/\1/p" \
     | xargs git commit --no-verify --fixup
 }
+
+kill-port () {
+  local processes
+
+  if [[ -n $1 ]]; then
+    processes=$(lsof -i $1)
+  else
+    processes=$(lsof)
+  fi
+  local pid=$(echo $processes | tail -n +2 | fzf | awk -F ' ' '{ print $2 }')
+
+  if [[ -n $pid ]]; then
+    echo "Killing $pid"
+    kill -9 $pid
+  else
+    echo 'Nothing to kill'
+  fi
+}
