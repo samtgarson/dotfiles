@@ -15,15 +15,17 @@ install_plugin() {
 
 install_plugins() {
   started 'Installing asdf plugins'
-  successfully install_plugin ruby
   successfully install_plugin nodejs
   successfully install_plugin python
+  {{- if not .minimalinstall }}
+  successfully install_plugin ruby
   successfully install_plugin kubectl
   successfully install_plugin helm
   successfully install_plugin 1password
   successfully install_plugin k9s
   successfully install_plugin neovim
   successfully install_plugin golang
+  {{- end }}
 
   # Install the nodejs gpg keyring to verify installs
   {{- if eq .chezmoi.os "darwin" }}

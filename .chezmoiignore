@@ -9,11 +9,10 @@ README.md
 {{- end }}
 
 {{- if .minimalinstall }}
-.default*
-.tool-versions
-.dotfiles/asdf/*
+.default-gems
+.gemrc
+.config/solargraph/
 .dotfiles/kubernetes/*
-.asdfrc
 {{- else }}
 .dotfiles/nvim/*
 {{- end }}
