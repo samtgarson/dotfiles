@@ -18,21 +18,32 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" --exclude "node_modules" . "$1"
 }
 
-# fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
+# gco - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 fbr() {
-  local branches branch
+  if [[ -n $1 ]]; then
+    git checkout $1
+    return
+  fi
+
+  local branches branch current_branch
+  current_branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
   branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
-  branch=$(echo "$branches" |
+  branch=$(echo "$branches" | grep -wv $current_branch |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+alias gco='fbr'
+
+# get a sha from the logs
+sha() {
+  glol --color=always\
+    | fzf --ansi \
+    | sed -nr  "s/^.* ([0-9a-z]{7}) - .*$/\1/p"
 }
 
 # gfix - choose commit to fixup
 gfix() {
-  glol --color=always\
-    | fzf --ansi \
-    | sed -nr  "s/^.* ([0-9a-z]{7}) - .*$/\1/p" \
-    | xargs git commit --no-verify --fixup
+  git commit --no-verify --fixup `sha`
 }
 
 kill-port () {
