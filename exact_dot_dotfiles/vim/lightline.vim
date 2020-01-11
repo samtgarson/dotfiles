@@ -7,14 +7,17 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-\   'colorscheme': 'nightowl',
+\   'colorscheme': 'challenger_deep',
 \   'active': {
+\     'left': [ [ 'mode', 'paste' ],
+\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
 \     'right': [ [ 'lineinfo' ],
 \                [ 'cocstatus', 'currentfunction', 'percent' ] ]
 \   },
 \   'component_function': {
 \     'cocstatus': 'coc#status',
-\     'currentfunction': 'CocCurrentFunction'
+\     'currentfunction': 'CocCurrentFunction',
+\     'gitbranch': 'fugitive#head'
 \   },
 \ }
 

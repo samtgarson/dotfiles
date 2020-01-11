@@ -14,12 +14,12 @@ Plug 'haishanh/night-owl.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-scripts/gitignore'
-"Plug 'jremmen/vim-ripgrep'
 "Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
-"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'neoclide/jsonc.vim'
+Plug 'towolf/vim-helm'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 call plug#end()

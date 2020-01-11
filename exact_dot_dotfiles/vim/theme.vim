@@ -9,9 +9,10 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 syntax enable
 set background=dark
-colorscheme night-owl
+colorscheme challenger_deep
+let g:challenger_deep_terminal_italics = 1
 
 " Fill background with correct colour
 " https://github.com/microsoft/terminal/issues/832#issuecomment-493747616
-set t_ut=""
+" set t_ut=""
 

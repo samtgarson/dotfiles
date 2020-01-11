@@ -14,4 +14,3 @@ function gupdate () {
   fi
 }
 
-

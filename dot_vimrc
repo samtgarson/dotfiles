@@ -117,5 +117,10 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
 map <silent> <C-p> :GFiles<Cr>
+map <silent> <C-P> :Files<Cr>
 map <Leader>f :Rg<Space>
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
