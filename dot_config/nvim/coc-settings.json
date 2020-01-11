@@ -1,3 +1,9 @@
 {
-  "coc.preferences.jumpCommand": "tabe"
+  "coc.preferences.jumpCommand": "tabe",
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "suggest.autoTrigger": "always",
+  "solargraph.hover": true,
+  "solargraph.completion": true,
+  "yaml.format.enable": true,
+  "coc.preferences.formatOnType": true
 }
