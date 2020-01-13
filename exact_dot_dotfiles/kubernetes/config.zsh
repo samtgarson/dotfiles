@@ -28,15 +28,23 @@ function kpf () {
 }
 
 function ke () {
-  kubectl exec -it `pod $1` $2
-}
-
-function kebash () {
-  kubectl exec -it `pod $1` bash
+  local po
+  if [[ -z $1 ]];
+    then po=$(pods)
+  else
+    po=$(pod $1)
+  fi
+  echo "$fg[white]> Executing $fg_bold[cyan]$2 $fg_no_bold[white]on pod $fg_bold[yellow]$po$fg_no_bold[default]"
+  echo
+  kubectl exec -it $po $2
 }
 
 function kesh () {
-  kubectl exec -it `pod $1` sh
+  ke "$1" sh
+}
+
+function kebash () {
+  ke "$1" bash
 }
 
 function kwatch () {
