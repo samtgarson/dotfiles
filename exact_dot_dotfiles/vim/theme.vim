@@ -12,6 +12,9 @@ set background=dark
 colorscheme challenger_deep
 let g:challenger_deep_terminal_italics = 1
 
+" Toggle line cursor on insert mode
+autocmd InsertEnter,InsertLeave * set cul!
+
 " Fill background with correct colour
 " https://github.com/microsoft/terminal/issues/832#issuecomment-493747616
 " set t_ut=""

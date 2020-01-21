@@ -6,5 +6,12 @@
   "solargraph.completion": true,
   "yaml.format.enable": true,
   "coc.preferences.formatOnType": true,
-  "typescript.format.enabled": false
+  "typescript.format.enabled": false,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.autoFixOnSave": true
 }
