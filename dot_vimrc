@@ -23,6 +23,9 @@ set tabstop=2
 " show line numbers
 set number
 
+" use system clipboard
+set clipboard=unnamed
+
 " shortcut to show/hide numbers
 map <leader>n :set number!<CR>
 

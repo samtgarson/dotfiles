@@ -21,5 +21,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'neoclide/jsonc.vim'
 Plug 'towolf/vim-helm'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'svermeulen/vim-easyclip'
+Plug 'tpope/vim-repeat'
 
 call plug#end()
