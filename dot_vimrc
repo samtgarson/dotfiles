@@ -34,6 +34,7 @@ map <leader>l :set list!<CR>
 
 " shortcut to replace highlighted text in document
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
+vnoremap <C-f> bve"hy/<C-r>h<CR>
 
 " reload files changed outside of vim
 set autoread

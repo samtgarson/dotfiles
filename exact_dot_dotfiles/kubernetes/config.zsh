@@ -9,7 +9,7 @@ function pod() {
 }
 
 function pods () {
-	local pod=$(kg pods | fzf)
+  local pod=$(kg pods | tail -n +2 | fzf -q "$1")
 
 	if [ $pod ]; then
 		echo "$(echo $pod | awk -F ' ' '{ print $1 }')"
