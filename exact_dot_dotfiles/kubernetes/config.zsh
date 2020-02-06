@@ -4,15 +4,24 @@ alias kc='kubectl config use-context'
 alias kcs='kubectl config get-contexts'
 alias kg='kubectl get'
 
+function log () {
+  echo "$1" > /dev/tty
+  echo > /dev/tty
+}
+
 function pod() {
-	kubectl get pods -o name | grep $1 | sed 's/pod\///' | head -n 1
+  local po=$(kubectl get pods -o name | grep $1 | sed 's/pod\///' | head -n 1)
+  log "$fg[white]> Found $fg_bold[yellow]$po$fg_no_bold[default]"
+  echo $po
 }
 
 function pods () {
-  local pod=$(kg pods | tail -n +2 | fzf -q "$1")
+  local po=$(kg pods | tail -n +2 | fzf -q "$1")
 
-	if [ $pod ]; then
-		echo "$(echo $pod | awk -F ' ' '{ print $1 }')"
+	if [ $po ]; then
+    local found=$(echo $po | awk -F ' ' '{ print $1 }')
+    log "$fg[white]> Found $fg_bold[yellow]$found$fg_no_bold[default]"
+		echo $found
 	fi
 }
 
@@ -34,8 +43,6 @@ function ke () {
   else
     po=$(pod $1)
   fi
-  echo "$fg[white]> Executing $fg_bold[cyan]$2 $fg_no_bold[white]on pod $fg_bold[yellow]$po$fg_no_bold[default]"
-  echo
   kubectl exec -it $po $2
 }
 

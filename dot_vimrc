@@ -98,6 +98,10 @@ if !has('nvim')
   set ttymouse=xterm2
 endif
 
+" vim-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " vim-test options
 " ----------------
 nmap <silent> t<C-n> :TestNearest<CR>
@@ -130,3 +134,4 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview(), <bang>0)
 
 command! Lint cexpr system("npm run lint --silent -- -f unix") | cw
+
