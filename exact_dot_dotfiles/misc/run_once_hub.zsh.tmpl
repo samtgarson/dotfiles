@@ -2,21 +2,17 @@
 
 source ~/.local/share/chezmoi/.helpers
 
-install_hub_on_linux() {
+if is_installed hub; then
+  success 'hub is already installed'
+else
+  started 'Installing hub'
+  {{- if eq .chezmoi.os "linux" }}
   {{- if ne .chezmoi.osRelease.id "ubuntu" }}
   warn 'hub not available on this OS, skipping.'
   exit 0
   {{- end }}
 
   successfully sudo snap install hub --classic
-}
-
-if is_installed hub; then
-  success 'hub is already installed'
-else
-  started 'Installing hub'
-  {{- if eq .chezmoi.os "linux" }}
-  install_hub_on_linux
   {{- else if eq .chezmoi.os "darwin" }}
   successfully brew install hub
   {{- end }}

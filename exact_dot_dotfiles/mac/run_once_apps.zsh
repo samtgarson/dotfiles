@@ -6,9 +6,9 @@ install_apps () {
   local apps=(
     numi
     1password
-    visual-studio-code
     google-chrome
     slack
+    notion
   )
 
   for app in $apps; do
@@ -18,4 +18,4 @@ install_apps () {
 
 started 'Installing Mac apps'
 install_apps
-success 'Installed Mac apps
+success 'Installed Mac apps'

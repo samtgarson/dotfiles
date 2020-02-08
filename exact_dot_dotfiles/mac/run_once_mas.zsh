@@ -10,7 +10,7 @@ install_apps () {
   success Installed Spark
 
   successfully mas install 1147396723
-  success Installed Whatsap
+  success Installed Whatsapp
 
   successfully mas install 409183694
   success Installed Keynote
