@@ -17,6 +17,7 @@ install_plugins() {
   started 'Installing asdf plugins'
   successfully install_plugin nodejs
   successfully install_plugin python
+
   {{- if not .minimalinstall }}
   successfully install_plugin ruby
   successfully install_plugin kubectl
@@ -25,6 +26,7 @@ install_plugins() {
   successfully install_plugin k9s
   successfully install_plugin neovim
   successfully install_plugin golang
+  successfully install_plugin github-cli https://github.com/bartlomiejdanek/asdf-github-cli.git
   {{- end }}
 
   # Install the nodejs gpg keyring to verify installs
