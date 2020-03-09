@@ -24,5 +24,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/gitignore'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 call plug#end()

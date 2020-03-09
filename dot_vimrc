@@ -20,14 +20,22 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 
-" show line numbers
-set number
+" show line numbers (using
+" https://github.com/jeffkreeftmeijer/vim-numbertoggle)
+set number relativenumber
 
 " use system clipboard
 set clipboard=unnamed
 
 " shortcut to show/hide numbers
-map <leader>n :set number!<CR>
+function! ToggleNumbers()
+  if &number && &relativenumber
+    set nonumber norelativenumber
+  else
+    set number relativenumber
+  endif
+endfunction
+map <leader>n :call ToggleNumbers()<CR>
 
 " shortcut to show/hide spacing
 map <leader>l :set list!<CR>

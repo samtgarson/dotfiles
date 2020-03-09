@@ -13,7 +13,7 @@ export SPACESHIP_KUBECONTEXT_NAMESPACE_SHOW=false
 export SPACESHIP_GIT_STATUS_COLOR='yellow'
 export SPACESHIP_GIT_STATUS_DELETED='×'
 export SPACESHIP_RUBY_SYMBOL=' '
-export SPACESHIP_GIT_SYMBOL='☰'
+export SPACESHIP_GIT_SYMBOL='☰  '
 export SPACESHIP_PROMPT_ORDER=(
   time          # Time stampts section
   user          # SSH user section
