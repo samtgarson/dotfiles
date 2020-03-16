@@ -63,3 +63,8 @@ kill-port () {
     echo 'Nothing to kill'
   fi
 }
+
+# splt - that awk thing that is annoying to type
+splt () {
+  awk -F ' ' "{ print \$$1 }"
+}
