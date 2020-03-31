@@ -34,10 +34,13 @@ fbr() {
 }
 alias gco='fbr'
 
+alias remove_colour="sed 's/\x1b\[[0-9;]*m//g'"
+
 # get a sha from the logs
 sha() {
-  glol --color=always\
+  glol --color=always \
     | fzf --ansi \
+    | remove_colour \
     | sed -nr  "s/^.* ([0-9a-z]{7}) - .*$/\1/p"
 }
 
