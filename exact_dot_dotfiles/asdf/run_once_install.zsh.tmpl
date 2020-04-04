@@ -36,6 +36,7 @@ install_plugins() {
   is_brew_installed gpg || successfully brew install gpg
   {{- end }}
   successfully bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+  successfully npx npm-merge-driver install --global
 
   success 'Installed asdf plugins'
 }

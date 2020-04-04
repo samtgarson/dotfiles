@@ -25,3 +25,7 @@
   old = red bold
   new = green bold
   whitespace = red reverse
+
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P
