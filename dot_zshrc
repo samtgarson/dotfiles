@@ -29,7 +29,7 @@ if which chezmoi>/dev/null; then
 fi
 
 alias cm=chezmoi
-alias cma=chezmoi apply
+alias cma="chezmoi apply"
 
 function n () {
   ./node_modules/.bin/$1 "${@:2}"
