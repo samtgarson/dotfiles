@@ -1,0 +1,61 @@
+prompt_order = [
+  "username",
+  "hostname",
+  "directory",
+  "git_branch",
+  "git_commit",
+  "git_state",
+  "git_status",
+  "package",
+  "golang",
+  "nodejs",
+  "python",
+  "ruby",
+  "rust",
+  "kubernetes",
+  "memory_usage",
+  "aws",
+  "env_var",
+  "cmd_duration",
+  "custom",
+
+  "line_break",
+
+  "jobs",
+  "battery",
+  "time",
+  "character",
+]
+
+[hostname]
+style = "bright-purple"
+
+[directory]
+style = "bright-white"
+
+[git_status]
+style = "yellow"
+# disabled = true
+deleted = "×"
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = ""
+untracked = "∅"
+stashed = ""
+modified ="○"
+renamed = ""
+staged = "●"
+
+[git_branch]
+symbol = " "
+style = "bright-green"
+
+[kubernetes]
+# style = "dimmed green"
+symbol = "↗ "
+disabled = false
+
+[ruby]
+symbol = " "
+

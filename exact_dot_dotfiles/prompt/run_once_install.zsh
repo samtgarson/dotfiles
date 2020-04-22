@@ -1,22 +1,21 @@
-#!/usr/bin/env zsh 
+#!/usr/bin/env zsh
 
 source ~/.dotfiles/environment.zsh
 source ~/.local/share/chezmoi/.helpers
 
-install_spaceship() {
-  echo '▶️ Installing spaceship prompt'
+install_starship() {
+  echo '▶️ Installing starship prompt'
 
-  successfully git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-  successfully ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-  
-  echo '✅ Installed spaceship prompt'
+  successfully curl -fsSL https://starship.rs/install.sh | bash
+
+  echo '✅ Installed starship prompt'
 }
 
 
-if [[ -e $ZSH_CUSTOM/themes/spaceship-prompt ]]; then
-  echo '✅ spaceship prompt already installed'
+if is_installed starship; then
+  echo '✅ starship prompt already installed'
 else
-  install_spaceship
+  install_starship
 fi
 
 

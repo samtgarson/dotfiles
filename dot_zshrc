@@ -5,7 +5,7 @@
 # oh-my-zsh options
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
 plugins=(
   git
   ruby
@@ -64,3 +64,5 @@ fi
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
 fi
+
+eval "$(starship init zsh)"
