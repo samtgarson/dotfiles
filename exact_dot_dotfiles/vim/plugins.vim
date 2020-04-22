@@ -12,6 +12,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'mbbill/undotree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
 Plug 'scrooloose/nerdtree'
@@ -67,5 +68,13 @@ command! -bang -nargs=* Rg
 command! Lint cexpr system("npm run lint --silent -- -f unix") | cw
 
 " Fugitive options
-" ---------------
+" ----------------
 map <Leader>G :tabnew<CR>:G<CR><c-W>o
+
+" Undotree options
+" ----------------
+nnoremap <Leader>u :UndotreeToggle<cr>
+let g:undotree_WindowLayout = 2
+let g:undotree_SetFocusWhenToggle = 0
+let g:undotree_TreeNodeShape = '•'
+let g:undotree_HelpLine = 0
