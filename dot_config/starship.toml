@@ -28,7 +28,7 @@ prompt_order = [
 ]
 
 [hostname]
-style = "bright-purple"
+style = "bright-cyan"
 
 [directory]
 style = "bright-white"
@@ -52,7 +52,7 @@ symbol = " "
 style = "bright-green"
 
 [kubernetes]
-# style = "dimmed green"
+style = "cyan"
 symbol = "↗ "
 disabled = false
 
