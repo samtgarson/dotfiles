@@ -1,0 +1,6 @@
+{{- if ne .chezmoi.os "linux" }}
+exit 0
+{{- end }}
+
+alias pbcopy="tmux loadb -"
+alias pbpaste="tmux saveb -"

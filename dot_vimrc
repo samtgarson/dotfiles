@@ -1,7 +1,7 @@
+so ~/.dotfiles/vim/misc.vim
 so ~/.dotfiles/vim/plugins.vim
 so ~/.dotfiles/vim/nerdtree.vim
 so ~/.dotfiles/vim/lightline.vim
 so ~/.dotfiles/vim/theme.vim
 so ~/.dotfiles/vim/coc.vim
-so ~/.dotfiles/vim/misc.vim
 
