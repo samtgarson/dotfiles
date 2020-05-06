@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+source ~/.local/share/chezmoi/.helpers
+
+install_brew() {
+  started 'Installing brew'
+
+  successfully /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+  success 'Installed brew'
+}
+
+{{- if eq .chezmoi.os "darwin" }}
+if is_installed brew; then
+  success 'brew already installed'
+else
+  successfully install_brew
+fi
+{{- else }}
+  success 'skipping brew on this OS'
+{{- end }}
