@@ -12,9 +12,6 @@ install_apps () {
   successfully mas install 1147396723
   success Installed Whatsapp
 
-  successfully mas install 409183694
-  success Installed Keynote
-
   successfully mas install 904280696
   success Installed Things
 }
