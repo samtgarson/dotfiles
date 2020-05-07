@@ -6,7 +6,11 @@ source ~/.local/share/chezmoi/.helpers
 install_starship() {
   started 'Installing starship prompt'
 
+  {{- if eq .chezmoi.os "darwin" }}
+  is_brew_installed starship || successfully brew install starship
+  {{- else }}
   successfully curl -fsSL https://starship.rs/install.sh | bash
+  {{- end }}
 
   success 'Installed starship prompt'
 }

@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+set -ef -o pipefail
+
 source ~/.local/share/chezmoi/.helpers
 
 install_brew() {
   started 'Installing brew'
 
-  successfully /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   success 'Installed brew'
 }
@@ -17,5 +19,5 @@ else
   successfully install_brew
 fi
 {{- else }}
-  success 'skipping brew on this OS'
+success 'skipping brew on this OS'
 {{- end }}
