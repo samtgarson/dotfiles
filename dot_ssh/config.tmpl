@@ -5,22 +5,9 @@ Host *
   {{- end }}
   IdentityFile ~/.ssh/id_rsa
 
-Host app01
-  HostName vded-sohouk-001.servers.wirehive.net
-
-Host app02
-  HostName vded-sohouk-002.servers.wirehive.net
-
-Host staging
-  HostName vded-sohouk-009.servers.wirehive.net
-
-Host app01 app02 staging
-  ForwardAgent yes
-  User deploy
-
 Host imac
   HostName imac.local
-  User samtgarson
+  User sam
 
 Host code
   HostName code.samgarson.com

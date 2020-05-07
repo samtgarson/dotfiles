@@ -3,6 +3,7 @@
 {{- if and (eq $minimalinstall "no") (eq .chezmoi.os "darwin") }}
 {{ $installdesktopapps = promptString "Install desktop apps? (yes|no)" -}}
 {{- end }}
+
 data:
   minimalinstall: {{ eq $minimalinstall "yes" }}
   installdesktopapps: {{ if eq $installdesktopapps "yes" }}true{{ else }}false{{ end }}

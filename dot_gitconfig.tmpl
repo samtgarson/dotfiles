@@ -5,9 +5,6 @@
 [core]
   excludesfile = ~/.gitignore
   pager = diff-so-fancy | less --tabs=4 -RFX
-{{- if .installdesktopapps }}
-  editor = code --wait
-{{- end }}
 
 [color]
   ui = true
@@ -29,3 +26,6 @@
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles
 	driver = npx npm-merge-driver merge %A %O %B %P
+
+[include]
+  path = ~/.gitconfig.local
