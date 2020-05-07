@@ -40,7 +40,7 @@ successfully() {
 }
 
 started() {
-  log_echo "▶️ $*"
+  log_echo "▶️  $*"
 }
 
 success() {
@@ -48,7 +48,7 @@ success() {
 }
 
 warn() {
-  log_echo "⚠️ $*"
+  log_echo "⚠️  $*"
 }
 
 heading() {

@@ -4,6 +4,7 @@ source ~/.local/share/chezmoi/.helpers
 
 if [[ $SHELL != `which zsh` ]]; then
   warn 'Start a new session and run chezmoi apply again'
+  exit 1
 fi
 
 omz_installed() {
