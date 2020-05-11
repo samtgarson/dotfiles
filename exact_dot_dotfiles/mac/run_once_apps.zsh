@@ -9,6 +9,7 @@ install_apps () {
     google-chrome
     slack
     notion
+    spotify
   )
 
   for app in $apps; do

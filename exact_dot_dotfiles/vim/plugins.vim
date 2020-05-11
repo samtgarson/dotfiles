@@ -76,6 +76,6 @@ map <Leader>G :tabnew<CR>:G<CR><c-W>o
 " ----------------
 nnoremap <Leader>u :UndotreeToggle<cr>
 let g:undotree_WindowLayout = 2
-let g:undotree_SetFocusWhenToggle = 0
+let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_TreeNodeShape = '•'
 let g:undotree_HelpLine = 0
