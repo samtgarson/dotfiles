@@ -8,7 +8,18 @@ helm 2.11.0
 stern 1.11.0
 1password 0.6.2
 neovim 0.4.3
-golang 1.13.5
 github-cli 0.6.1
+
+{{- if .lang.golang }}
+golang 1.13.5
+{{- end }}
+
+{{- if .lang.rust }}
 rust 1.42.0
+{{- end }}
+
+{{- if .lang.swift }}
+swift 5.2
+{{- end }}
+
 {{- end }}

@@ -24,17 +24,19 @@ install_plugins() {
   successfully install_plugin helm
   successfully install_plugin 1password
   successfully install_plugin neovim
-  successfully install_plugin golang
-  successfully install_plugin rust
   successfully install_plugin github-cli https://github.com/bartlomiejdanek/asdf-github-cli.git
+
+  {{- if .lang.golang }}
+  successfully install_plugin golang
+  {{- end }}
+  {{- if .lang.rust }}
+  successfully install_plugin rust
+  {{- end }}
+  {{- if .lang.swift }}
+  successfully install_plugin swift
+  {{- end }}
   {{- end }}
 
-  # Install the nodejs gpg keyring to verify installs
-  {{- if eq .chezmoi.os "darwin" }}
-  is_brew_installed coreutils || successfully brew install coreutils
-  is_brew_installed gpg || successfully brew install gpg
-  {{- end }}
-  successfully bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
   # successfully npx npm-merge-driver install --global
 
   success 'Installed asdf plugins'
