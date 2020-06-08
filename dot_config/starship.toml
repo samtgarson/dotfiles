@@ -16,11 +16,11 @@ prompt_order = [
   "env_var",
   "cmd_duration",
   "custom",
+  "battery",
 
   "line_break",
 
   "jobs",
-  "battery",
   "time",
   "character",
 ]

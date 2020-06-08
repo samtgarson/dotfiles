@@ -9,4 +9,6 @@ if is_installed hub; then
   alias pr='hub pull-request'
 fi
 
+{{- if eq .chezmoi.os "linux" }}
 alias fd=fdfind
+{{- end }}
