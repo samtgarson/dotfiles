@@ -29,7 +29,7 @@ prompt_order = [
 style = "bright-cyan"
 
 [directory]
-style = "bright-white"
+style = "purple"
 
 [git_status]
 style = "yellow"

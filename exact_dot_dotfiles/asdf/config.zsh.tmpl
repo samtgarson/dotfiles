@@ -1,6 +1,10 @@
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+{{- if .lang.java }}
+. ~/.asdf/plugins/java/set-java-home.zsh
+{{- end }}
+
 # npm utils
 alias npms='bat package.json | jq .scripts -r'
 

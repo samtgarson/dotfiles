@@ -1,7 +1,11 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+{{- if .lang.java }}
+Plug 'aklt/plantuml-syntax'
+{{- end }}
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'chrisbra/unicode.vim'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -16,17 +20,17 @@ Plug 'mbbill/undotree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/vim-slumlord'
 Plug 'sheerun/vim-polyglot'
 Plug 'suy/vim-context-commentstring'
 Plug 'svermeulen/vim-easyclip'
 Plug 'towolf/vim-helm'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'vim-scripts/gitignore'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 

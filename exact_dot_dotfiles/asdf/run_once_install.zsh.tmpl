@@ -35,6 +35,9 @@ install_plugins() {
   {{- if .lang.swift }}
   successfully install_plugin swift
   {{- end }}
+  {{- if .lang.java }}
+  successfully install_plugin java
+  {{- end }}
   {{- end }}
 
   # successfully npx npm-merge-driver install --global
