@@ -2,10 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -642,9 +646,9 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Downloads</string>
+	<string>~/.dotfiles/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{799, 448}</string>
+	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -687,13 +691,13 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>0 163 224 275 0 0 1680 1027 </string>
-	<key>NSWindow Frame NSNavPanelAutosaveName</key>
-	<string>440 444 799 448 0 0 1680 1027 </string>
+	<string>0 167 224 275 0 0 1920 1177 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>1410 789 620 392 0 0 3440 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>190 423 650 527 0 0 1680 1050 </string>
+	<string>1146 53 1144 1364 0 0 3440 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>212 101 650 527 0 0 1680 1027 </string>
+	<string>474 181 570 492 0 0 1920 1177 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1075,13 +1079,6 @@
 					<key>Text</key>
 					<string>[B</string>
 				</dict>
-				<key>0xf702-0x220000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[D</string>
-				</dict>
 				<key>0xf702-0x240000</key>
 				<dict>
 					<key>Action</key>
@@ -1102,13 +1099,6 @@
 					<integer>10</integer>
 					<key>Text</key>
 					<string>b</string>
-				</dict>
-				<key>0xf703-0x220000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[C</string>
 				</dict>
 				<key>0xf703-0x240000</key>
 				<dict>
@@ -1210,7 +1200,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>DankMono-Regular 14</string>
+			<string>DankMonoNerdFont-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1250,7 +1240,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Smart Cursor Color</key>
 			<false/>
 			<key>Sync Title</key>
@@ -1278,7 +1268,7 @@
 			<key>Vertical Spacing</key>
 			<real>1.1499999999999999</real>
 			<key>Visual Bell</key>
-			<true/>
+			<false/>
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
@@ -1289,42 +1279,45 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.3.7</string>
+		<string>3.3.12</string>
+		<string>3.3.11</string>
+		<string>3.3.10</string>
 	</array>
 	<key>NoSyncBFPFavorites</key>
 	<array>
-		<string>Dank Mono</string>
+		<string>DankMono Nerd Font</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
-		<string>Dank Mono</string>
+		<string>DankMono Nerd Font</string>
+		<string>Menlo</string>
 	</array>
 	<key>NoSyncFrame_SessionsPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1680, 1050}}</string>
+		<string>{{0, 0}, {3440, 1440}}</string>
 		<key>topLeft</key>
-		<string>{537, 919}</string>
+		<string>{269, 600}</string>
 	</dict>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1680, 1050}}</string>
+		<string>{{0, 0}, {3440, 1440}}</string>
 		<key>topLeft</key>
-		<string>{659, 858}</string>
+		<string>{319, 744}</string>
 	</dict>
 	<key>NoSyncHaveUsedCopyMode</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>C53ADB0B-360E-4C1D-BE11-F5C4B9BD7F78</string>
+	<string>8EE880B1-9259-476D-B0A2-C4D9FBC4117A</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>9</integer>
+	<integer>31</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>596724430.18941998</real>
+	<real>612263437.20134604</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
 	<key>NoSyncPermissionToShowTip</key>
@@ -1751,7 +1744,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.path</string>
+				<string>currentTab.currentSession.commandLine</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1759,7 +1752,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.commandLine</string>
+				<string>currentTab.currentSession.path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1994,7 +1987,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.path</string>
+				<string>currentSession.pid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2002,7 +1995,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.pid</string>
+				<string>currentSession.path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2059,12 +2052,8 @@
 			</dict>
 		</array>
 	</dict>
-	<key>NoSyncSearchHistory2</key>
-	<array>
-		<string>netaddr</string>
-	</array>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
-	<real>596129937.91767597</real>
+	<real>611850893.95500302</real>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -2100,17 +2089,21 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>~/.dotfiles/iterm</string>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final_new.xml?shard=87</string>
+	<string>https://iterm2.com/appcasts/final_new.xml?shard=18</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-01-25T15:06:33Z</date>
+	<date>2020-08-03T17:26:36Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
@@ -2118,11 +2111,13 @@
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.32430463209219862</real>
+	<key>TabStyleWithAutomaticOption</key>
+	<integer>5</integer>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.7</string>
+	<string>3.3.12</string>
 </dict>
 </plist>
