@@ -10,6 +10,7 @@ install_apps () {
     slack
     notion
     spotify
+    rectangle
   )
 
   for app in $apps; do
