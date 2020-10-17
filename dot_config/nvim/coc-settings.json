@@ -13,5 +13,11 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.insertSpaceAfterConstructor": true,
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
 }
