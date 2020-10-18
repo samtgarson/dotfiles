@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+source ~/.local/share/chezmoi/.helpers
+
 mas_check_status () {
   mas account >/dev/null
 }
@@ -10,9 +12,16 @@ mas_login () {
     return 0
   fi
 
-  open /Applications/App\ Store.app
+  if [[ -x /Applications/App\ Store.app ]]; then
+    open /Applications/App\ Store.app
+  elif [[ -x /System/Applications/App\ Store.app ]]; then
+    open /System/Applications/App\ Store.app
+  else
+    warn 'Could not find App Store executable, log in manually and try again.'
+    exit 1
+  fi
 
-  until check_status; do
+  until mas_check_status; do
     sleep 5
     echo 'Waiting for login...'
   done

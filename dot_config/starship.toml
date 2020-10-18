@@ -1,29 +1,29 @@
-prompt_order = [
-  "username",
-  "hostname",
-  "directory",
-  "git_branch",
-  "git_commit",
-  "git_state",
-  "git_status",
-  "golang",
-  "nodejs",
-  "python",
-  "ruby",
-  "rust",
-  "kubernetes",
-  "memory_usage",
-  "env_var",
-  "cmd_duration",
-  "custom",
-  "battery",
+format = """\
+  $username\
+  $hostname\
+  $directory\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_status\
+  $golang\
+  $nodejs\
+  $python\
+  $ruby\
+  $rust\
+  $kubernetes\
+  $memory_usage\
+  $env_var\
+  $cmd_duration\
+  $custom\
+  $battery\
 
-  "line_break",
+  $line_break\
 
-  "jobs",
-  "time",
-  "character",
-]
+  $jobs\
+  $time\
+  $character\
+"""
 
 [hostname]
 style = "bright-cyan"

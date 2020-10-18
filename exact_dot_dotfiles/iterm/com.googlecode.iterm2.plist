@@ -645,10 +645,6 @@
 	<true/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
-	<key>NSNavLastRootDirectory</key>
-	<string>~/.dotfiles/iterm</string>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -690,14 +686,33 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame NSColorPanel</key>
-	<string>0 167 224 275 0 0 1920 1177 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>1410 789 620 392 0 0 3440 1417 </string>
+	<key>NSTouchBarConfig: full screen</key>
+	<dict>
+		<key>CurrentItems</key>
+		<array>
+			<string>iTermTouchBarIdentifierFunctionKeys</string>
+			<string>NSTouchBarItemIdentifierFlexibleSpace</string>
+			<string>tab bar</string>
+			<string>NSTouchBarItemIdentifierOtherItemsProxy</string>
+			<string>iTermTouchBarIdentifierAddMark</string>
+			<string>iTermTouchBarIdentifierPreviousMark</string>
+			<string>iTermTouchBarIdentifierNextMark</string>
+		</array>
+		<key>DefaultItems</key>
+		<array>
+			<string>iTermTouchBarIdentifierManPage</string>
+			<string>iTermTouchBarIdentifierColorPreset</string>
+			<string>iTermTouchBarIdentifierFunctionKeys</string>
+			<string>NSTouchBarItemIdentifierFlexibleSpace</string>
+			<string>tab bar</string>
+			<string>NSTouchBarItemIdentifierOtherItemsProxy</string>
+			<string>iTermTouchBarIdentifierAddMark</string>
+			<string>iTermTouchBarIdentifierPreviousMark</string>
+			<string>iTermTouchBarIdentifierNextMark</string>
+		</array>
+	</dict>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1146 53 1144 1364 0 0 3440 1417 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>474 181 570 492 0 0 1920 1177 </string>
+	<string>155 93 570 417 0 0 1680 1050 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1280,48 +1295,22 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.12</string>
-		<string>3.3.11</string>
-		<string>3.3.10</string>
 	</array>
-	<key>NoSyncBFPFavorites</key>
-	<array>
-		<string>DankMono Nerd Font</string>
-	</array>
-	<key>NoSyncBFPRecents</key>
-	<array>
-		<string>DankMono Nerd Font</string>
-		<string>Menlo</string>
-	</array>
-	<key>NoSyncFrame_SessionsPreferences</key>
-	<dict>
-		<key>screenFrame</key>
-		<string>{{0, 0}, {3440, 1440}}</string>
-		<key>topLeft</key>
-		<string>{269, 600}</string>
-	</dict>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {3440, 1440}}</string>
+		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{319, 744}</string>
+		<string>{398, 727}</string>
 	</dict>
-	<key>NoSyncHaveUsedCopyMode</key>
-	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>8EE880B1-9259-476D-B0A2-C4D9FBC4117A</string>
+	<string>C4607B93-F50D-424C-9005-E293293C0651</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>31</integer>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
-	<true/>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>612263437.20134604</real>
+	<real>624881178.30142498</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
 	<key>NoSyncRecordedVariables</key>
 	<dict>
 		<key>0</key>
@@ -1704,14 +1693,6 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.window</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
 				<string>id</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -1744,7 +1725,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.commandLine</string>
+				<string>currentTab.currentSession.path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1752,7 +1733,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.path</string>
+				<string>currentTab.currentSession.commandLine</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1811,7 +1792,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.terminalWindowName</string>
+				<string>currentSession</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1819,7 +1800,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.commandLine</string>
+				<string>currentSession.terminalIconName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1851,7 +1832,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.terminalIconName</string>
+				<string>currentSession.commandLine</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1868,14 +1849,6 @@
 				<true/>
 				<key>name</key>
 				<string>iterm2.localhostName</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession.jobPid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1916,14 +1889,6 @@
 				<true/>
 				<key>name</key>
 				<string>currentSession.name</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>window</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1987,7 +1952,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.pid</string>
+				<string>currentSession.terminalWindowName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1995,7 +1960,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.path</string>
+				<string>currentSession.pid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2009,19 +1974,19 @@
 			</dict>
 			<dict>
 				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
 				<false/>
 				<key>name</key>
 				<string>currentSession</string>
 				<key>nonterminalContext</key>
 				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentSession.path</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
 			</dict>
 		</array>
 		<key>4</key>
@@ -2053,7 +2018,7 @@
 		</array>
 	</dict>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
-	<real>611850893.95500302</real>
+	<real>624708378.30124199</real>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -2089,22 +2054,12 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>~/.dotfiles/iterm</string>
-	<key>SUAutomaticallyUpdate</key>
-	<true/>
-	<key>SUEnableAutomaticChecks</key>
-	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final_new.xml?shard=18</string>
+	<string>https://iterm2.com/appcasts/final_new.xml?shard=13</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
-	<key>SULastCheckTime</key>
-	<date>2020-08-03T17:26:36Z</date>
-	<key>SUSendProfileInfo</key>
-	<false/>
-	<key>SUUpdateRelaunchingMarker</key>
-	<false/>
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
 	<key>SoundForEsc</key>

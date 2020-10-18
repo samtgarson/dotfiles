@@ -14,6 +14,10 @@ install_apps () {
 
   successfully mas install 904280696
   success Installed Things
+
+  successfully mas install 975937182
+  success Installed Fantastical
+
 }
 
 if is_installed mas; then
