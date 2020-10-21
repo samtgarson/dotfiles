@@ -25,15 +25,20 @@ format = """\
   $character\
 """
 
+[character]
+success_symbol = "[❯](bold yellow)"
+error_symbol = "[❯](bold bright-red)"
+
 [hostname]
 style = "bright-cyan"
 
 [directory]
-style = "purple"
+style = "blue"
 
 [git_status]
-style = "yellow"
+style = "bright-yellow"
 # disabled = true
+format = '([$all_status$ahead_behind]($style) )'
 deleted = "×"
 conflicted = "="
 ahead = "⇡"

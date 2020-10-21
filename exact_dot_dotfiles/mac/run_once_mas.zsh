@@ -18,6 +18,9 @@ install_apps () {
   successfully mas install 975937182
   success Installed Fantastical
 
+  successfully mas install 1464122853
+  success Installed Next DNS
+
 }
 
 if is_installed mas; then
