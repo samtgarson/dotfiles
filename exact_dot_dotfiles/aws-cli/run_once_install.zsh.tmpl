@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+
+install_mac() {
+  local filename="AWSCLIV2.pkg"
+  curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o $filename
+  warn 'sudo required to install aws cli'
+  sudo installer -pkg AWSCLIV2.pkg -target /
+  rm $filename
+}
+
+if is_installed aws; then
+  echo '✅ aws already installed'
+else
+  started 'Installing aws'
+
+  {{- if eq .chezmoi.os "darwin" }}
+  successfully install_mac
+  {{- else }}
+  warn 'AWS CLI v2 install needs implementing'
+  exit 1
+  {{- end }}
+
+  success 'Installed aws'
+fi
