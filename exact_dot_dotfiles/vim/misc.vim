@@ -99,3 +99,9 @@ function! Quickfix(...)
   cexpr system(join(a:000, ' ')) | cw
 endfunction
 command! -nargs=1 Qf call Quickfix(<f-args>)
+
+" Set filetype for templates
+au BufNewFile,BufRead,BufReadPost *.zsh.tmpl set filetype=zsh
+au BufNewFile,BufRead,BufReadPost *.vim.tmpl set filetype=vim
+au BufNewFile,BufRead,BufReadPost *.yaml.tmpl set filetype=yaml
+

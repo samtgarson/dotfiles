@@ -13,6 +13,7 @@ README.md
 .gemrc
 .config/solargraph/
 .dotfiles/kubernetes/*
+.dotfiles/aws-cli/*
 {{- else }}
 .dotfiles/nvim/*
 {{- end }}
