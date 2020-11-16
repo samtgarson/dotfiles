@@ -5,9 +5,10 @@ Host *
   {{- end }}
   IdentityFile ~/.ssh/id_rsa
 
-Host imac
-  HostName imac.local
+Host pi
+  HostName pi.local
   User sam
+  Port 21222
 
 Host code
   HostName code.samgarson.com
