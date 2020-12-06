@@ -38,6 +38,9 @@ install_plugins() {
   {{- if .lang.java }}
   successfully install_plugin java
   {{- end }}
+  {{- if .lang.dotnet }}
+  successfully install_plugin dotnet-core
+  {{- end }}
   {{- end }}
 
   # successfully npx npm-merge-driver install --global

@@ -1,3 +1,5 @@
+source ~/.local/share/chezmoi/.helpers
+
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
@@ -8,6 +10,11 @@
 # npm utils
 alias npms='bat package.json | jq .scripts -r'
 
+# dotnet utils
+{{- if .lang.java }}
+  . ~/.asdf/plugins/dotnet-core/set-dotnet-home.zsh
+  export PATH="~/.dotnet/tools:$PATH"
+{{- end }}
 # 1password utils
 1p () {
   local cmd="${1:-pass}"
