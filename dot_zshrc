@@ -42,7 +42,6 @@ alias mongo_start='docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no tutum/
 
 if which code >/dev/null; then
   export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-  export EDITOR=code
 fi
 
 #-tns-completion-

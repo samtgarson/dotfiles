@@ -4,6 +4,7 @@ source ~/.zplug/init.zsh
 
 zplug "wfxr/forgit"
 zplug "andrewferrier/fzf-z"
+zplug "lukechilds/zsh-better-npm-completion", defer:2
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

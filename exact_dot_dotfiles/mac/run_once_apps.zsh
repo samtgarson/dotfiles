@@ -16,6 +16,8 @@ install_apps () {
   for app in $apps; do
     successfully brew cask install $app
   done
+
+  brew install coreutils
 }
 
 started 'Installing Mac apps'

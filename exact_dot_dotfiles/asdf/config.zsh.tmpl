@@ -11,14 +11,24 @@ source ~/.local/share/chezmoi/.helpers
 alias npms='bat package.json | jq .scripts -r'
 
 # dotnet utils
-{{- if .lang.java }}
+{{- if .lang.dotnet }}
   . ~/.asdf/plugins/dotnet-core/set-dotnet-home.zsh
   export PATH="~/.dotnet/tools:$PATH"
 {{- end }}
+
 # 1password utils
 1p () {
   local cmd="${1:-pass}"
   case $cmd in
+    help)
+      echo "A 1password helper."
+      echo "Usage: 1p <command> [options]"
+      echo
+      echo "  login   Login to your 1password vault"
+      echo "  pass    Search and get a password"
+      echo "  totp    Search and get a one time token"
+      echo "  doc     Search and get an attached document"
+      ;;
     login)
       eval $(op signin $2)
       ;;
