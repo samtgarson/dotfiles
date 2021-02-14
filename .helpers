@@ -94,3 +94,5 @@ check_sudo() {
     exit 1
   fi
 }
+
+alias remove_colour="sed 's/\x1b\[[0-9;]*m//g'"

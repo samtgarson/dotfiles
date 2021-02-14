@@ -3,20 +3,40 @@ source ~/.local/share/chezmoi/.helpers
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+# doctl config
+# ============
+if is_installed doctl; then
+  source <(doctl completion zsh)
+fi
+
+# java config
+# ===========
+
 {{- if .lang.java }}
 . ~/.asdf/plugins/java/set-java-home.zsh
 {{- end }}
 
-# npm utils
+# npm config
+# ==========
 alias npms='bat package.json | jq .scripts -r'
 
-# dotnet utils
+function n () {
+  ./node_modules/.bin/$1 "${@:2}"
+}
+
+# ruby config
+# ===========
+alias be='bundle exec'
+
+# dotnet config
+# =============
 {{- if .lang.dotnet }}
   . ~/.asdf/plugins/dotnet-core/set-dotnet-home.zsh
   export PATH="~/.dotnet/tools:$PATH"
 {{- end }}
 
-# 1password utils
+# 1password config
+# ================
 1p () {
   local cmd="${1:-pass}"
   case $cmd in
