@@ -58,7 +58,6 @@ set smartcase
 
 " start scrolling when 8 lines from the last line
 set scrolloff=15
-
 " centralised swapfile dir
 silent !mkdir ~/.vim/tmp > /dev/null 2>&1
 set backupdir=~/.vim/tmp,~/.tmp,/tmp
@@ -75,9 +74,10 @@ set listchars=eol:$,tab:>-,trail:~,space:·,extends:>,precedes:<
 
 " Set globally ignored file globs
 set wildignore+=*/node_modules/*
+set wildignore+=*/.git/*
 
 " Format JSON
-map <Leader>j :%!python -m json.tool
+map <Leader>j :%!python -m json.tool<cr>
 
 " Close all windows
 map <Leader>W :%bd<CR>
@@ -104,4 +104,7 @@ command! -nargs=1 Qf call Quickfix(<f-args>)
 au BufNewFile,BufRead,BufReadPost *.zsh.tmpl set filetype=zsh
 au BufNewFile,BufRead,BufReadPost *.vim.tmpl set filetype=vim
 au BufNewFile,BufRead,BufReadPost *.yaml.tmpl set filetype=yaml
-
+set ttyfast               " For better redrawing when scrolling
+set sidescroll=1          " Sensible Horizontal Scroll in Vim
+setg fixendofline         " EOL
+set cmdheight=1           " Better display for messages

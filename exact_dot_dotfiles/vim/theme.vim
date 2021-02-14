@@ -1,3 +1,7 @@
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
 " Color theme settings
 if (has("termguicolors"))
   set termguicolors
@@ -18,4 +22,3 @@ autocmd InsertEnter,InsertLeave * set cul!
 " Fill background with correct colour
 " https://github.com/microsoft/terminal/issues/832#issuecomment-493747616
 " set t_ut=""
-
