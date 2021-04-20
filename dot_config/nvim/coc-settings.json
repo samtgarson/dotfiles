@@ -4,15 +4,11 @@
   "suggest.autoTrigger": "always",
   "solargraph.hover": true,
   "solargraph.completion": true,
+  "solargraph.useBundler": false,
+  "solargraph.diagnostics": true,
   "yaml.format.enable": true,
   "coc.preferences.formatOnType": true,
   "typescript.format.enabled": false,
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
   "eslint.autoFixOnSave": true,
   "javascript.format.insertSpaceAfterConstructor": true,
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,

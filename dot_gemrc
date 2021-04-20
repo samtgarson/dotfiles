@@ -1,4 +1,4 @@
 ---
 :backtrace: false
 :benchmark: false
-gem: --no-rdoc --no-ri --no-document
+gem: --no-ri --no-document
