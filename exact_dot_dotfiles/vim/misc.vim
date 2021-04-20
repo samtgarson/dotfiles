@@ -36,7 +36,7 @@ map <leader>l :set list!<CR>
 
 " shortcut to find and replace highlighted text in document
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
-nnoremap <C-f> bve"hy/<C-r>h<CR>
+nnoremap <C-f> viw"hy/<C-r>h<CR>
 
 " reload files changed outside of vim
 set autoread
@@ -73,8 +73,9 @@ set updatetime=100
 set listchars=eol:$,tab:>-,trail:~,space:·,extends:>,precedes:<
 
 " Set globally ignored file globs
-set wildignore+=*/node_modules/*
-set wildignore+=*/.git/*
+set wildignore+=node_modules/*
+set wildignore+=.git/*
+set wildignore+=.DS_Store
 
 " Format JSON
 map <Leader>j :%!python -m json.tool<cr>

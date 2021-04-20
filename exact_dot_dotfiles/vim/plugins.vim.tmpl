@@ -4,28 +4,36 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'chrisbra/unicode.vim'
+Plug 'drzel/vim-line-no-indicator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kshenoy/vim-signature'
 Plug 'mbbill/undotree'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
 Plug 'posva/vim-vue'
-" Plug 'scrooloose/nerdtree'
+Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'}
 Plug 'sheerun/vim-polyglot'
+Plug 'sodapopcan/vim-twiggy'
 Plug 'suy/vim-context-commentstring'
 Plug 'svermeulen/vim-easyclip'
 Plug 'towolf/vim-helm'
+Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-test/vim-test'
+Plug 'Yilin-Yang/vim-markbar'
 
 {{- if .lang.java }}
 Plug 'aklt/plantuml-syntax'
@@ -49,7 +57,7 @@ nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
+nmap <silent> t<C-g> :TestVisit<CR
 
 " open tests in a tmux pane
 let test#strategy = 'neovim'
@@ -87,3 +95,41 @@ let g:undotree_WindowLayout = 2
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_TreeNodeShape = '•'
 let g:undotree_HelpLine = 0
+
+" Easy Clip options
+" =================
+nnoremap gm m
+
+" Vim MarkBar options
+" ===================
+nmap <Leader>m <Plug>ToggleMarkbar
+
+" LineNoIndicator options
+" =======================
+let g:line_no_indicator_chars = [
+\  '○○○○○',
+\  '●○○○○',
+\  '●●○○○',
+\  '●●●○○',
+\  '●●●●○',
+\  '●●●●●'
+\]
+
+" Vim Signature options
+" =====================
+let g:SignatureMap = {
+\ 'Leader'             :  "M",
+\ 'PlaceNextMark'      :  "M,",
+\ 'ToggleMarkAtLine'   :  "M.",
+\ 'PurgeMarksAtLine'   :  "M-",
+\ 'DeleteMark'         :  "dM",
+\ 'PurgeMarks'         :  "M<Space>",
+\ 'PurgeMarkers'       :  "M<BS>",
+\ }
+
+" Twigger Options
+" ===============
+noremap <Leader>B :Twiggy<CR>
+
+" Vim Visual Multi Options
+" ========================

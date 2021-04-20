@@ -49,3 +49,16 @@ sha() {
 gfix() {
   git commit --no-verify --fixup `sha`
 }
+
+# forgit options
+alias ga='forgit::add'
+alias grh='forgit::reset::head'
+alias glo='forgit::log'
+alias gd='forgit::diff'
+alias gi='forgit::ignore'
+alias gcf='forgit::checkout::file'
+# alias gcb='forgit::checkout::branch'
+alias gclean='forgit::clean'
+alias gss='forgit::stash::show'
+alias gcp='forgit::cherry::pick'
+alias grbp='forgit::rebase'

@@ -12,12 +12,13 @@ let g:lightline = {
 \     'left': [ [ 'mode', 'paste' ],
 \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
 \     'right': [ [ 'lineinfo' ],
-\                [ 'cocstatus', 'currentfunction', 'percent' ] ]
+\                [ 'cocstatus', 'currentfunction', 'indicator' ] ]
 \   },
 \   'component_function': {
 \     'cocstatus': 'coc#status',
 \     'currentfunction': 'CocCurrentFunction',
-\     'gitbranch': 'fugitive#head'
+\     'gitbranch': 'fugitive#head',
+\     'indicator': 'LineNoIndicator'
 \   },
 \ }
 
