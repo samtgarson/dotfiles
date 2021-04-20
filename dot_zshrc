@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export PATH="$PATH:/opt/homebrew/bin"
+
 . ~/.dotfiles/environment.zsh
 
 # oh-my-zsh options
@@ -14,6 +16,8 @@ plugins=(
   zsh-syntax-highlighting
   npm
   yarn
+  docker
+  docker-compose
 )
 
 if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] ; then

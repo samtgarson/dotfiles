@@ -14,7 +14,7 @@ install_apps () {
   )
 
   for app in $apps; do
-    successfully brew cask install $app
+    successfully brew install --cask $app
   done
 
   brew install coreutils

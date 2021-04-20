@@ -14,7 +14,7 @@ is_installed() {
 }
 
 is_cask_installed() {
-  [[ -n "$(brew cask ls | grep $1)" ]]
+  [[ -n "$(brew ls --cask | grep $1)" ]]
 }
 
 is_brew_installed() {
