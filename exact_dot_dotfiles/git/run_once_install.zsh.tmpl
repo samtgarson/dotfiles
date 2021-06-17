@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed lazygit; then
+  success 'lazygit is already installed'
+else
+  started Installing lazygit
+  successfully brew install jesseduffield/lazygit/lazygit
+  success Installed lazygit
+fi
+
+

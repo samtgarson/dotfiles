@@ -66,7 +66,3 @@ source ~/.dotfiles/completions.zsh
 [ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
 
 eval "$(starship init zsh)"
-
-# Use vim bindings on command line
-# (Here be dragons)
-set -o vi

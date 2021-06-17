@@ -5,6 +5,7 @@ alias gprune='git branch --merged | egrep -v "(^\*|main|master|dev)" | xargs git
 alias gwip='gaa && gc -m "wip" -n'
 alias gdc='gd --cached'
 alias gai='git add -i'
+alias lg='lazygit'
 
 function default-branch () {
   git symbolic-ref refs/remotes/origin/HEAD | splt 4 '/'
@@ -72,7 +73,7 @@ jirabr () {
   title=$(echo $joined | sed 's/ /-/g')
 
   branch="$type/prod-$issue-$title"
-  existing=$(git branch | grep $title)
+  existing=$(git branch --format "%(refname:short)" | grep $title | sed 's/ *$//' | sed 's/^ *//')
 
   git checkout $base
   if [[ -n $existing ]]; then

@@ -12,12 +12,8 @@ install_brew() {
   success 'Installed brew'
 }
 
-{{- if eq .chezmoi.os "darwin" }}
 if is_installed brew; then
   success 'brew already installed'
 else
   successfully install_brew
 fi
-{{- else }}
-success 'skipping brew on this OS'
-{{- end }}
