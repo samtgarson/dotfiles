@@ -17,7 +17,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
 Plug 'posva/vim-vue'
-Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'npm install'}
+Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 Plug 'sheerun/vim-polyglot'
 Plug 'sodapopcan/vim-twiggy'
 Plug 'suy/vim-context-commentstring'
@@ -30,6 +30,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-test/vim-test'
@@ -56,8 +57,7 @@ nmap ga <Plug>(EasyAlign)
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR
+nmap <silent> t<C-l> :TestLast<CR>nmap <silent> t<C-g> :TestVisit<CR
 
 " open tests in a tmux pane
 let test#strategy = 'neovim'
