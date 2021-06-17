@@ -1,3 +1,7 @@
+{{- if eq .chezmoi.os "darwin" }}
+Include ~/.fig/ssh
+{{- end }}
+
 Host *
   {{- if eq .chezmoi.os "darwin" }}
   AddKeysToAgent yes
