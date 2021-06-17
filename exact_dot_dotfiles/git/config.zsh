@@ -22,27 +22,22 @@ function gupdate () {
 }
 
 # gco - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
-fbr() {
+gcheckout() {
   if [[ -n $1 ]]; then
     git checkout $1
     return
   fi
 
-  local branches branch current_branch
-  current_branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
-  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
-  branch=$(echo "$branches" | grep -wv $current_branch |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  forgit::checkout::branch
 }
-alias gco='fbr'
+alias gco='gcheckout'
 
 # get a sha from the logs
 sha() {
   glol --color=always \
     | fzf --ansi \
     | remove_colour \
-    | sed -nr  "s/^.* ([0-9a-z]{7}) - .*$/\1/p"
+    | sed -nr  "s/^.* ([0-9a-z]{7,8}) - .*$/\1/p"
 }
 
 # gfix - choose commit to fixup
@@ -57,8 +52,32 @@ alias glo='forgit::log'
 alias gd='forgit::diff'
 alias gi='forgit::ignore'
 alias gcf='forgit::checkout::file'
-# alias gcb='forgit::checkout::branch'
+# alias gco='forgit::checkout::branch'
 alias gclean='forgit::clean'
 alias gss='forgit::stash::show'
 alias gcp='forgit::cherry::pick'
 alias grbp='forgit::rebase'
+
+# jirabr - open a branch for a JIRA ticket
+jirabr () {
+  zmodload zsh/zutil
+  zparseopts -D -E -F - b:=base -base:=base t:=type -type:=type || return 1
+  base="${base[-1]:-develop}"
+  type="${type[-1]:-feature}"
+
+  issue=$1
+  str=$(jira view $issue -t debug | jq '.fields.summary[0:50]' -r | awk '{print(tolower($0))}' | sed 's/ *$//')
+  parts=(${(@s: :)str})
+  joined="$parts[0,5]"
+  title=$(echo $joined | sed 's/ /-/g')
+
+  branch="$type/prod-$issue-$title"
+  existing=$(git branch | grep $title)
+
+  git checkout $base
+  if [[ -n $existing ]]; then
+    git checkout $existing
+  else
+    git checkout -b $branch
+  fi
+}
