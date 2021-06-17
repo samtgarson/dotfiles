@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Tell fzf to use ripgrep
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND="rg --files -g '**' -g '!node_modules/**' -g '!.git/**' -g '!tmp/**'"
 
 # configure z
 source ~/.dotfiles/productivity/z.sh
