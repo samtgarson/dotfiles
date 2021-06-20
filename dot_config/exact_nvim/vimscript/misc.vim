@@ -105,6 +105,7 @@ command! -nargs=1 Qf call Quickfix(<f-args>)
 au BufNewFile,BufRead,BufReadPost *.zsh.tmpl set filetype=zsh
 au BufNewFile,BufRead,BufReadPost *.vim.tmpl set filetype=vim
 au BufNewFile,BufRead,BufReadPost *.yaml.tmpl set filetype=yaml
+
 set ttyfast               " For better redrawing when scrolling
 set sidescroll=1          " Sensible Horizontal Scroll in Vim
 setg fixendofline         " EOL

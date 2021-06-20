@@ -1,24 +1,29 @@
 call plug#begin('~/.vim/plugged')
 
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'Yilin-Yang/vim-markbar'
 Plug 'chrisbra/unicode.vim'
+Plug 'crispgm/nvim-tabline'
 Plug 'drzel/vim-line-no-indicator'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'itchyny/lightline.vim'
+Plug 'folke/trouble.nvim'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'hrsh7th/nvim-compe'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'kdheepak/lazygit.nvim'
 Plug 'kshenoy/vim-signature'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'mbbill/undotree'
 Plug 'mg979/vim-visual-multi'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
-Plug 'posva/vim-vue'
-Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
-Plug 'sheerun/vim-polyglot'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'shaunsingh/moonlight.nvim'
 Plug 'sodapopcan/vim-twiggy'
 Plug 'suy/vim-context-commentstring'
 Plug 'svermeulen/vim-easyclip'
@@ -27,14 +32,12 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-test/vim-test'
-Plug 'Yilin-Yang/vim-markbar'
 
 {{- if .lang.java }}
 Plug 'aklt/plantuml-syntax'
@@ -65,28 +68,11 @@ let test#strategy = 'neovim'
 " set test matcher for Jest
 let g:test#javascript#jest#file_pattern = '\v((test|__tests__/).*|(spec|test)?)\.(js|jsx|coffee|ts|tsx)$'
 
-" fzf options
-" ----------
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-map <silent> <C-p> :GFiles<Cr>
-map <silent> <C-P> :Files<Cr>
-map <Leader>f :Rg<Space>
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-command! Lint cexpr system("npm run lint --silent -- -f unix") | cw
-
-" Fugitive options
+" LazyGit options
 " ----------------
-map <Leader>G :tabnew<CR>:G<CR><c-W>o
+map <Leader>G :LazyGit<CR>
+let g:lazygit_floating_window_scaling_factor = 1
+let g:lazygit_floating_window_use_plenary = 0
 
 " Undotree options
 " ----------------
@@ -131,5 +117,8 @@ let g:SignatureMap = {
 " ===============
 noremap <Leader>B :Twiggy<CR>
 
-" Vim Visual Multi Options
+" Vim Visual Multi options
 " ========================
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-d>'
+let g:VM_maps['Find Subword Under'] = '<C-d>'
