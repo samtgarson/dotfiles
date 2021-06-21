@@ -5,7 +5,7 @@ let g:nvim_tree_follow = 1
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_root_folder_modifier = ':~'
-let g:nvim_tree_tab_open = 1
+let g:nvim_tree_tab_open = 0
 let g:nvim_tree_width_allow_resize = 1
 let g:nvim_tree_group_empty = 1
 let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
@@ -23,22 +23,23 @@ let g:nvim_tree_special_files = [ 'README.md', '.env' ]
 let g:nvim_tree_show_icons = {
     \ 'git': 0,
     \ 'folders': 1,
-    \ 'files': 1,
+    \ 'files': 0,
     \ 'folder_arrows': 0,
     \ }
 
 nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap - :NvimTreeToggle<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
 let g:nvim_tree_icons = {
     \ 'git': {
-    \   'unstaged': "",
-    \   'staged': "",
-    \   'unmerged': "",
-    \   'renamed': "",
-    \   'untracked': "",
-    \   'deleted': "",
-    \   'ignored': ""
+    \   'unstaged': "○",
+    \   'staged': "●",
+    \   'unmerged': "⊜",
+    \   'renamed': "⊙",
+    \   'untracked': "⊕",
+    \   'deleted': "⊗",
+    \   'ignored': "⊘"
     \   },
     \ 'folder': {
     \   'arrow_open': "▾",

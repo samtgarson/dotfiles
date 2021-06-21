@@ -7,10 +7,11 @@ CACHE_PATH = vim.fn.stdpath('cache')
 
 require('_telescope')
 require('_compe')
-require('_trouble')
 require('_lsp')
 require('_lualine')
 require('_treesitter')
 require('_tabline')
 require('_gitsigns')
+require('_luadev')
+require('_lspsaga')
 EOF

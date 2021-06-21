@@ -77,9 +77,6 @@ set wildignore+=node_modules/*
 set wildignore+=.git/*
 set wildignore+=.DS_Store
 
-" Format JSON
-map <Leader>j :%!python -m json.tool<cr>
-
 " Close all windows
 map <Leader>W :%bd<CR>
 

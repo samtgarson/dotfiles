@@ -1,43 +1,54 @@
 local actions = require('telescope.actions')
-local trouble = require("trouble.providers.telescope")
+local builtin = require("telescope.builtin")
+local action_state = require('telescope.actions.state')
 
-vim.api.nvim_set_keymap('n', '<Leader>f', '<cmd>Telescope live_grep<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>f', '<cmd>NvimTreeClose<CR><cmd>Telescope custom_live_grep<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>NvimTreeClose<CR><cmd>Telescope find_files<CR>', { noremap = true })
+
+local attach_mappings = function()
+  actions.select_default:replace_if(
+    function (prompt_bufnr)
+      local picker = action_state.get_current_picker(prompt_bufnr)
+      local selected = picker:get_multi_selection()
+      local count = 0
+      for _ in pairs(selected) do
+        count = count + 1
+      end
+      return count > 1
+    end,
+    function (prompt_bufnr)
+      actions.smart_send_to_qflist(prompt_bufnr)
+      actions.open_qflist(prompt_bufnr)
+    end
+  )
+
+  return true
+end
 
 require('telescope').setup {
-    defaults = {
-        find_command = {'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
-        prompt_position = "bottom",
-        prompt_prefix = "❯ ",
-        selection_caret = "❯ ",
-        entry_prefix = "  ",
-        initial_mode = "insert",
-        -- initial_mode = "insert",
-        selection_strategy = "reset",
-        sorting_strategy = "descending",
-        layout_strategy = "horizontal",
-        layout_defaults = {horizontal = {mirror = false}, vertical = {mirror = false}},
-        file_sorter = require'telescope.sorters'.get_fzy_sorter,
-        file_ignore_patterns = {},
-        generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
-        shorten_path = true,
-        winblend = 0,
-        width = 0.75,
-        preview_cutoff = 120,
-        results_height = 1,
-        results_width = 0.8,
-        border = {},
-        borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
-        color_devicons = false,
-        use_less = true,
-        set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
-        file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-        grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-        qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-
-        -- Developer configurations: Not meant for general override
-        buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
+  defaults = {
+    find_command = {
+      'rg',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
     },
-    extensions = {fzy_native = {override_generic_sorter = false, override_file_sorter = true}}
+    prompt_prefix = "❯ ",
+    selection_caret = "❯ ",
+    file_sorter = require'telescope.sorters'.get_fzy_sorter,
+    color_devicons = false,
+    set_env = {['COLORTERM'] = 'truecolor'},
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close
+      },
+    },
+  }
 }
 
+builtin.custom_live_grep = function(opts)
+  opts = opts or {}
+  return builtin.live_grep(vim.tbl_extend("error", { attach_mappings = attach_mappings }, opts))
+end

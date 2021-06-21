@@ -1,11 +1,13 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'Yilin-Yang/vim-markbar'
+Plug 'bfredl/nvim-luadev'
 Plug 'chrisbra/unicode.vim'
 Plug 'crispgm/nvim-tabline'
 Plug 'drzel/vim-line-no-indicator'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'folke/trouble.nvim'
+Plug 'folke/lua-dev.nvim'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -19,10 +21,13 @@ Plug 'mbbill/undotree'
 Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/jsonc.vim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'romainl/vim-qf'
 Plug 'shaunsingh/moonlight.nvim'
 Plug 'sodapopcan/vim-twiggy'
 Plug 'suy/vim-context-commentstring'
@@ -122,3 +127,18 @@ noremap <Leader>B :Twiggy<CR>
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<C-d>'
 let g:VM_maps['Find Subword Under'] = '<C-d>'
+
+" vim-qf Options
+" ==============
+function! ToggleQf ()
+  if empty(filter(getwininfo(), 'v:val.quickfix')) && empty(filter(getwininfo(), 'v:val.loclist'))
+    lua vim.lsp.diagnostic.set_loclist { workspace = true }
+  else
+    cclose
+    lclose
+  endif
+endfunction
+nmap ]q <Plug>(qf_qf_next)
+nmap [q <Plug>(qf_qf_previous)
+nmap <Leader>j <Plug>(qf_qf_switch)
+nmap <silent> <Leader><CR> <cmd>call ToggleQf()<CR>
