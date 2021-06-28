@@ -27,13 +27,18 @@ end
 
 require('telescope').setup {
   defaults = {
-    find_command = {
+    vimgrep_arguments = {
       'rg',
       '--no-heading',
       '--with-filename',
       '--line-number',
       '--column',
-      '--smart-case'
+      '--smart-case',
+      '--hidden'
+    },
+    file_ignore_patterns = {
+      ".git/*",
+      "tmp/*"
     },
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",
@@ -45,6 +50,11 @@ require('telescope').setup {
         ["<esc>"] = actions.close
       },
     },
+  },
+  pickers = {
+    find_files = {
+      hidden = true
+    }
   }
 }
 

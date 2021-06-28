@@ -1,24 +1,16 @@
-local status = require('lsp-status')
-status.config {
-  current_function = false,
-  diagnostics = false
-}
-status.register_progress()
+local lsp_status = require'lsp_status'
 
--- Autoformat on save
-vim.api.nvim_command('augroup AutoFormatOnSave')
-vim.api.nvim_command('autocmd!')
-vim.api.nvim_command('autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)')
-vim.api.nvim_command('autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 1000)')
-vim.api.nvim_command('autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)')
-vim.api.nvim_command('autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)')
-vim.api.nvim_command('augroup END')
+lsp_status.setup {
+  spinner = {'⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'}
+}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+lsp_status.init_capabilities(capabilities)
 
 -- Mappings
 local opts = { noremap=true, silent=true }
 
 local on_attach = function(client, bufnr)
-  status.register_client(client.id, client.name)
+  lsp_status.on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -53,14 +45,16 @@ local function setup_servers()
     end
 
     local moduleName = 'lsp._' .. server
+    local baseConfig = {
+      on_attach = on_attach,
+      capabilities = capabilities
+    }
+
     if require'_utils'.moduleExists(moduleName) then
-      require(moduleName).setup(on_attach)
+      require(moduleName).setup(baseConfig)
     else
       local config = require'lspconfig'[server]
-      config.setup {
-        on_attach = on_attach,
-        capabilities = status.capabilities
-      }
+      config.setup(baseConfig)
     end
   end
 end

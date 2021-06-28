@@ -1,6 +1,7 @@
-local lsp = require'lsp-status'
 local diagnostics = require'lsp-status.diagnostics'
 local colors = require'moonlight.colors'
+
+-- lsp_status.setup {}
 
 local function getDiagnostics(severity)
   return function ()
@@ -21,7 +22,7 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
     lualine_c = {'filename'},
-    lualine_x = {lsp.status_progress},
+    lualine_x = {{require'lsp_status'.status, color = { fg = colors.accent }}},
     lualine_y = {
       {getDiagnostics('errors'), color = { bg = colors.red, fg = colors.bg }},
       {getDiagnostics('warnings'), color = { bg = colors.yellow, fg = colors.bg }},

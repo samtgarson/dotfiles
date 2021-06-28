@@ -67,9 +67,13 @@ jirabr () {
   type="${type[-1]:-feature}"
 
   issue=$1
-  str=$(jira view $issue -t debug | jq '.fields.summary[0:50]' -r | awk '{print(tolower($0))}' | sed 's/ *$//')
+  str=$(jira view $issue -t debug \
+   | jq '.fields.summary[0:50]' -r \
+   | awk '{print(tolower($0))}' \
+   | sed 's/ *$//' \
+   | sed 's/[^a-z0-9_ ]//g')
   parts=(${(@s: :)str})
-  joined="$parts[0,5]"
+  joined="$parts[0,10]"
   title=$(echo $joined | sed 's/ /-/g')
 
   branch="$type/prod-$issue-$title"

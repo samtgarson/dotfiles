@@ -1,5 +1,5 @@
 
-local exports = {}
+local M = {}
 
 -- prettier
 local prettier
@@ -26,42 +26,64 @@ local rubocop = {
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {"%f:%l:%c: %m"},
-  formatCommand = "bundle exec rubocop --auto-correct-all ${INPUT}"
+  formatCommand = "bundle exec rubocop -A -f quiet --stderr --force-exclusion -s ${INPUT}",
+  formatStdin = true
 }
 
-function exports.setup(on_attach)
-  require'lspconfig'.efm.setup {
-    on_attach = on_attach,
-    init_options = {documentFormatting = true, codeAction = true},
-    filetypes = {
-      "css",
-      "html",
-      "javascript",
-      "javascriptreact",
-      "json",
-      "markdown",
-      "ruby",
-      "scss",
-      "typescript",
-      "typescriptreact",
-      "yaml"
-    },
-    settings = {
-      rootMarkers = {".git/"},
-      languages = {
-        html = {prettier},
-        css = {prettier},
-        json = {prettier},
-        yaml = {prettier},
-        javascriptreact = {prettier, eslint},
-        javascript = {prettier, eslint},
-        markdown = {prettier},
-        typescriptreact = {prettier, eslint},
-        typescript = {prettier, eslint},
-        ruby = {rubocop}
+function M.setup(base)
+  require'lspconfig'.efm.setup(vim.tbl_extend(
+    'keep',
+    {
+      init_options = {documentFormatting = true, codeAction = true},
+      filetypes = {
+        "css",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "markdown",
+        "ruby",
+        "scss",
+        "typescript",
+        "typescriptreact",
+        "yaml"
+      },
+      settings = {
+        rootMarkers = {".git/"},
+        languages = {
+          html = {prettier},
+          css = {prettier},
+          scss = {prettier},
+          json = {prettier},
+          yaml = {prettier},
+          javascriptreact = {prettier, eslint},
+          javascript = {prettier, eslint},
+          markdown = {prettier},
+          typescriptreact = {prettier, eslint},
+          typescript = {prettier, eslint},
+          ruby = {rubocop}
+        }
       }
-    }
-  }
+    },
+    base
+  ))
 end
 
-return exports
+-- Autoformat on save
+vim.api.nvim_command('augroup AutoFormatOnSave')
+vim.api.nvim_command('autocmd!')
+local extensions = { 'css', 'scss', 'rb', 'md', 'json' }
+local jsExtensions = { 'js', 'ts', 'jsx', 'tsx' }
+
+for _, ext in pairs(jsExtensions) do
+  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' OrganizeImports')
+  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' lua vim.lsp.buf.formatting_sync(nil, 1000)')
+end
+
+for _, ext in pairs(extensions) do
+  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' lua vim.lsp.buf.formatting_sync(nil, 1000)')
+end
+vim.api.nvim_command('augroup END')
+
+
+return M
