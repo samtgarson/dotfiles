@@ -16,13 +16,13 @@ local eslint = {
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {"%f:%l:%c: %m"},
-  formatCommand = "./node_modules/.bin/eslint --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+  formatCommand = "./node_modules/.bin/eslint --fix --stdin --stdin-filename=${INPUT}",
   formatStdin = true
 }
 
 -- rubocop
 local rubocop = {
-  lintCommand = "bundle exec rubocop --format emacs --force-exclusion --stdin ${INPUT}",
+  lintCommand = "bundle exec rubocop --format emacs --force-exclusion -s ${INPUT}",
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {"%f:%l:%c: %m"},
@@ -40,7 +40,6 @@ function M.setup(base)
         "html",
         "javascript",
         "javascriptreact",
-        "json",
         "markdown",
         "ruby",
         "scss",
@@ -54,7 +53,6 @@ function M.setup(base)
           html = {prettier},
           css = {prettier},
           scss = {prettier},
-          json = {prettier},
           yaml = {prettier},
           javascriptreact = {prettier, eslint},
           javascript = {prettier, eslint},
@@ -72,12 +70,11 @@ end
 -- Autoformat on save
 vim.api.nvim_command('augroup AutoFormatOnSave')
 vim.api.nvim_command('autocmd!')
-local extensions = { 'css', 'scss', 'rb', 'md', 'json' }
 local jsExtensions = { 'js', 'ts', 'jsx', 'tsx' }
+local extensions = vim.list_extend({ 'css', 'scss', 'rb', 'md', 'json' }, jsExtensions)
 
 for _, ext in pairs(jsExtensions) do
   vim.api.nvim_command('autocmd BufWritePre *.'..ext..' OrganizeImports')
-  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' lua vim.lsp.buf.formatting_sync(nil, 1000)')
 end
 
 for _, ext in pairs(extensions) do

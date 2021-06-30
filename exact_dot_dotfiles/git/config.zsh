@@ -62,13 +62,19 @@ alias grbp='forgit::rebase'
 # jirabr - open a branch for a JIRA ticket
 jirabr () {
   zmodload zsh/zutil
-  zparseopts -D -E -F - b:=base -base:=base t:=type -type:=type || return 1
+  zparseopts -D -E -F - b:=base -base:=base t:=type -type:=type -no-checkout=nocheckout || return 1
   base="${base[-1]:-develop}"
   type="${type[-1]:-feature}"
+  nocheckout="${nocheckout[-1]}"
 
   issue=$1
-  str=$(jira view $issue -t debug \
-   | jq '.fields.summary[0:50]' -r \
+  if [ -z "${@:2}" ]; then
+    sentence=$(jira view $issue -t debug | jq '.fields.summary[0:50]' -r)
+  else
+    sentence="${@:2}"
+  fi
+
+  str=$( echo "$sentence" \
    | awk '{print(tolower($0))}' \
    | sed 's/ *$//' \
    | sed 's/[^a-z0-9_ ]//g')
@@ -79,7 +85,7 @@ jirabr () {
   branch="$type/prod-$issue-$title"
   existing=$(git branch --format "%(refname:short)" | grep $title | sed 's/ *$//' | sed 's/^ *//')
 
-  git checkout $base
+  if [ $nocheckout -eq 0 ]; then git checkout $base; fi
   if [[ -n $existing ]]; then
     git checkout $existing
   else

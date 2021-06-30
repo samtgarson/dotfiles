@@ -107,3 +107,7 @@ set ttyfast               " For better redrawing when scrolling
 set sidescroll=1          " Sensible Horizontal Scroll in Vim
 setg fixendofline         " EOL
 set cmdheight=1           " Better display for messages
+
+" Open splits more naturally
+set splitbelow
+set splitright

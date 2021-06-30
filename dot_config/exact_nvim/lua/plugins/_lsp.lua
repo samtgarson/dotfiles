@@ -28,7 +28,7 @@ local required_servers = {
   'html',
   'json',
   'lua',
-  'ruby',
+  'solargraph',
   'tailwindcss',
   'typescript',
   'yaml'
@@ -36,10 +36,10 @@ local required_servers = {
 
 local function setup_servers()
   require'lspinstall'.setup()
-  local installed_servers = require'lspinstall'.installed_servers()
+  local available_servers = require'lspinstall'.not_installed_servers()
 
   for _, server in pairs(required_servers) do
-    if not vim.tbl_contains(installed_servers, server) then
+    if vim.tbl_contains(available_servers, server) then
       require'lspinstall'.install_server(server)
       print('Installed ' .. server .. ' language server')
     end
