@@ -78,7 +78,7 @@ set wildignore+=.git/*
 set wildignore+=.DS_Store
 
 " Close all windows
-map <Leader>W :%bd<CR>
+map <silent> <Leader>W :%bd!<CR>
 
 " Automatically clear trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e

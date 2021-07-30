@@ -37,7 +37,7 @@ require('telescope').setup {
       '--hidden'
     },
     file_ignore_patterns = {
-      ".git/*",
+      "\\.git/*",
       "tmp/*"
     },
     prompt_prefix = "❯ ",
@@ -47,7 +47,8 @@ require('telescope').setup {
     set_env = {['COLORTERM'] = 'truecolor'},
     mappings = {
       i = {
-        ["<esc>"] = actions.close
+        ["<esc>"] = actions.close,
+        ["C-q"] = actions.send_to_qflist
       },
     },
   },

@@ -11,6 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   ruby
+  rails
   github
   httpie
   zsh-syntax-highlighting

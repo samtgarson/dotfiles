@@ -85,7 +85,7 @@ jirabr () {
   branch="$type/prod-$issue-$title"
   existing=$(git branch --format "%(refname:short)" | grep $title | sed 's/ *$//' | sed 's/^ *//')
 
-  if [ $nocheckout -eq 0 ]; then git checkout $base; fi
+  if [[ $nocheckout -eq 0 ]]; then git checkout $base; fi
   if [[ -n $existing ]]; then
     git checkout $existing
   else
