@@ -1,0 +1,10 @@
+gui:
+  showCommandLog: false
+  theme:
+    selectedLineBgColor:
+      - reverse
+    selectedRangeBgColor:
+      - reverse
+quitOnTopLevelReturn: true
+disableStartupPopups: true
+
