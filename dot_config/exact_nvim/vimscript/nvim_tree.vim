@@ -23,7 +23,7 @@ let g:nvim_tree_special_files = [ 'README.md', '.env' ]
 let g:nvim_tree_show_icons = {
     \ 'git': 0,
     \ 'folders': 1,
-    \ 'files': 0,
+    \ 'files': 1,
     \ 'folder_arrows': 0,
     \ }
 
@@ -32,6 +32,7 @@ nnoremap - :NvimTreeToggle<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
 let g:nvim_tree_icons = {
+    \ 'default': "• ",
     \ 'git': {
     \   'unstaged': "○",
     \   'staged': "●",

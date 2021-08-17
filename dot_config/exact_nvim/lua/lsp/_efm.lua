@@ -38,13 +38,13 @@ function M.setup(base)
       filetypes = {
         "css",
         "html",
-        "javascript",
-        "javascriptreact",
+        -- "javascript",
+        -- "javascriptreact",
         "markdown",
         "ruby",
         "scss",
-        "typescript",
-        "typescriptreact",
+        -- "typescript",
+        -- "typescriptreact",
         "yaml"
       },
       settings = {
@@ -54,11 +54,11 @@ function M.setup(base)
           css = {prettier},
           scss = {prettier},
           yaml = {prettier},
-          javascriptreact = {prettier, eslint},
-          javascript = {prettier, eslint},
+          -- javascriptreact = {prettier, eslint},
+          -- javascript = {prettier, eslint},
           markdown = {prettier},
-          typescriptreact = {prettier, eslint},
-          typescript = {prettier, eslint},
+          -- typescriptreact = {prettier, eslint},
+          -- typescript = {prettier, eslint},
           ruby = {rubocop}
         }
       }
@@ -74,7 +74,7 @@ local jsExtensions = { 'js', 'ts', 'jsx', 'tsx' }
 local extensions = vim.list_extend({ 'css', 'scss', 'rb', 'md', 'json' }, jsExtensions)
 
 for _, ext in pairs(jsExtensions) do
-  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' OrganizeImports')
+  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' TSLspOrganizeSync')
 end
 
 for _, ext in pairs(extensions) do
