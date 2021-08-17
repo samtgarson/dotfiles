@@ -18,5 +18,5 @@ function Overmind (cmd)
 end
 
 vim.cmd [[
-command! -nargs=* OM call Overmind("<args>")
+command! -nargs=* OM lua Overmind(<f-args>)
 ]]

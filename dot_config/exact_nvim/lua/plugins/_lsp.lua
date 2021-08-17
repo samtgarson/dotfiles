@@ -1,16 +1,16 @@
-local lsp_status = require'lsp_status'
+local lsp_spinner = require'lsp_spinner'
 
-lsp_status.setup {
+lsp_spinner.setup {
   spinner = {'⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'}
 }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-lsp_status.init_capabilities(capabilities)
+lsp_spinner.init_capabilities(capabilities)
 
 -- Mappings
 local opts = { noremap=true, silent=true }
 
 local on_attach = function(client, bufnr)
-  lsp_status.on_attach(client, bufnr)
+  lsp_spinner.on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
