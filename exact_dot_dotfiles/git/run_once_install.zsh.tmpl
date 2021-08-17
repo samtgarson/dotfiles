@@ -10,4 +10,12 @@ else
   success Installed lazygit
 fi
 
+if is_installed github-cli; then
+  success 'github-cli is already installed'
+else
+  started Installing github-cli
+  successfully brew install gh
+  success Installed github-cli
+fi
+
 

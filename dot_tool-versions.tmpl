@@ -1,18 +1,11 @@
 nodejs 16.1.0
-python 3.9.0
 dust 0.5.4
 
 {{- if not .minimalinstall }}
 ruby 2.7.2
-helm 2.11.0
-stern 1.11.0
-1password 0.6.2
-neovim 0.4.4
-github-cli 1.11.0
-doctl 1.55.0
 
 {{- if .lang.golang }}
-golang 1.13.5
+golang 1.16.5
 {{- end }}
 
 {{- if .lang.rust }}

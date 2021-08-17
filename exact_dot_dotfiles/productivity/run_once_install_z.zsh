@@ -12,3 +12,11 @@ else
   success Installed z
 fi
 
+if is_installed fzf; then
+  success 'fzf is already installed'
+else
+  started Installing fzf
+  successfully brew install fzf
+  success Installed fzf
+fi
+
