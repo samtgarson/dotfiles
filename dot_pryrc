@@ -1,0 +1,1 @@
+Pry.config.history_file = "~/.pry_history"
