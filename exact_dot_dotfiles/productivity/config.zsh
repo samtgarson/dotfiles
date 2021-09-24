@@ -8,6 +8,10 @@ source ~/.dotfiles/productivity/z.sh
 export FZFZ_EXTRA_DIRS="~/code"
 export FZFZ_EXCLUDE_PATTERN='\.git|node_modules'
 
+# fzf integration
+[[ $- == *i* ]] && source "`brew --prefix`/opt/fzf/shell/completion.zsh" 2> /dev/null # Auto complete
+source "`brew --prefix`/opt/fzf/shell/key-bindings.zsh" # Keybindings
+
 # use fd with fzf instead of find
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" --exclude "node_modules" . "$1"
