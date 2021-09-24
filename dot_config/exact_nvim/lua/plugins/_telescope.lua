@@ -38,7 +38,8 @@ require('telescope').setup {
     },
     file_ignore_patterns = {
       "\\.git/*",
-      "tmp/*"
+      "tmp/*",
+      "node_modules/*"
     },
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",
