@@ -7,4 +7,3 @@ gui:
       - reverse
 quitOnTopLevelReturn: true
 disableStartupPopups: true
-
