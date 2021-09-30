@@ -43,7 +43,6 @@ require('telescope').setup {
     },
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",
-    file_sorter = require'telescope.sorters'.get_fzy_sorter,
     color_devicons = false,
     set_env = {['COLORTERM'] = 'truecolor'},
     mappings = {
@@ -58,8 +57,17 @@ require('telescope').setup {
       hidden = true,
       no_ignore = true
     }
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+    }
   }
 }
+
+require('telescope').load_extension('fzf')
 
 builtin.custom_live_grep = function(opts)
   opts = opts or {}
