@@ -14,5 +14,6 @@ require('plugins/_tabline')
 require('plugins/_gitsigns')
 require('plugins/_lspsaga')
 require('plugins/_whichkey')
+require('plugins/_nvim_tree')
 require('overmind')
 EOF
