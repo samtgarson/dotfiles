@@ -26,8 +26,7 @@ local rubocop = {
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {"%f:%l:%c: %m"},
-  formatCommand = "bundle exec rubocop -A -f quiet --stderr --force-exclusion -s ${INPUT}",
-  formatStdin = true
+  formatCommand = ""
 }
 
 function M.setup(base)
@@ -78,7 +77,7 @@ for _, ext in pairs(jsExtensions) do
 end
 
 for _, ext in pairs(extensions) do
-  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' lua vim.lsp.buf.formatting_sync(nil, 1000)')
+  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' lua vim.lsp.buf.formatting_seq_sync(nil, 1000)')
 end
 vim.api.nvim_command('augroup END')
 
