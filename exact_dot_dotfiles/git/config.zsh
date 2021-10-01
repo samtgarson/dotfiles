@@ -63,7 +63,7 @@ alias grbp='forgit::rebase'
 jirabr () {
   zmodload zsh/zutil
   zparseopts -D -E -F - b:=base -base:=base t:=type -type:=type -no-checkout=nocheckout || return 1
-  base="${base[-1]:-develop}"
+  base="${base[-1]:-`default-branch`}"
   type="${type[-1]:-feature}"
   nocheckout="${nocheckout[-1]}"
 
