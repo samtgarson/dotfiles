@@ -54,8 +54,14 @@ require('telescope').setup {
   },
   pickers = {
     find_files = {
-      hidden = true,
-      no_ignore = true
+      find_command = {
+        'fd',
+        '-uu',
+        '--exclude', 'node_modules',
+        '--exclude', '.git',
+        '--exclude', 'tmp',
+        '-t', 'f'
+      }
     }
   },
   extensions = {
