@@ -77,7 +77,7 @@ for _, ext in pairs(jsExtensions) do
 end
 
 for _, ext in pairs(extensions) do
-  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' lua vim.lsp.buf.formatting_seq_sync(nil, 1000)')
+  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' lua vim.lsp.buf.formatting_seq_sync(nil, 2000)')
 end
 vim.api.nvim_command('augroup END')
 
