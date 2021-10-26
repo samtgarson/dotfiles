@@ -34,12 +34,10 @@ require('telescope').setup {
       '--line-number',
       '--column',
       '--smart-case',
-      '--hidden'
-    },
-    file_ignore_patterns = {
-      "\\.git/*",
-      "tmp/*",
-      "node_modules/*"
+      '--hidden',
+      '-g', '!.git/*',
+      '-g', '!node_modules/*',
+      '-g', '!tmp/*'
     },
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",

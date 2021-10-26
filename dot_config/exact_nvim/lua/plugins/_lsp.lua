@@ -28,10 +28,11 @@ local required_servers = {
   'html',
   'json',
   'lua',
+  'prismals',
   'solargraph',
   'tailwindcss',
   'typescript',
-  'yaml'
+  'yaml',
 }
 
 local function setup_servers()

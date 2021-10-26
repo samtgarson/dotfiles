@@ -43,19 +43,21 @@ vim.g["nvim_tree_icons"] = {
     empty_open = "▾",
     symlink = "▸",
     symlink_open = "▾",
-  },
-  lsp = {
-    warning = "⊗",
-    error = "⊗",
   }
 }
 
 require'nvim-tree'.setup {
-  open_on_setup = true,
+  open_on_setup = false,
   auto_close = true,
   opens_on_tab = false,
   update_focused_file = {
     enable = true
   },
-  lsp_diagnostics = true
+  diagnostics = {
+    enable = true,
+    icons = {
+      warning = "×",
+      error = "×",
+    }
+  }
 }
