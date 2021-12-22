@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 export PATH="$PATH:/opt/homebrew/bin"
 
 . ~/.dotfiles/environment.zsh
@@ -64,6 +65,7 @@ fi
 
 source ~/.dotfiles/completions.zsh
 
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-
 eval "$(starship init zsh)"
+
+# fig
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
