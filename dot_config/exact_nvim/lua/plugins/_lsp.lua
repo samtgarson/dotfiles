@@ -1,3 +1,4 @@
+require'lsp.toggle'
 local lsp_spinner = require'lsp_spinner'
 
 lsp_spinner.setup {
