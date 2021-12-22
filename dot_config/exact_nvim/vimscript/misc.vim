@@ -111,3 +111,8 @@ set cmdheight=1           " Better display for messages
 " Open splits more naturally
 set splitbelow
 set splitright
+
+" TAB in general mode will move to text buffer
+nnoremap <TAB> gt
+" SHIFT-TAB will go back
+nnoremap <S-TAB> gT
