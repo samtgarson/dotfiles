@@ -37,7 +37,9 @@ require('telescope').setup {
       '--hidden',
       '-g', '!.git/*',
       '-g', '!node_modules/*',
-      '-g', '!tmp/*'
+      '-g', '!.yalc/*',
+      '-g', '!tmp/*',
+      '-g', '!dist/*'
     },
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",
@@ -57,7 +59,9 @@ require('telescope').setup {
         '-uu',
         '--exclude', 'node_modules',
         '--exclude', '.git',
-        '--exclude', 'tmp',
+        '--exclude', 'tmp/',
+        '--exclude', '.yalc',
+        '--exclude', 'dist',
         '-t', 'f'
       }
     }

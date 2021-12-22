@@ -1,4 +1,3 @@
-vim.g["nvim_tree_ignore"] = { '.git', 'node_modules', '.cache'  }
 vim.g["nvim_tree_git_hl"] = 1
 vim.g["nvim_tree_highlight_opened_files"] = 1
 vim.g["nvim_tree_root_folder_modifier"] = "':~'"
@@ -59,5 +58,8 @@ require'nvim-tree'.setup {
       warning = "×",
       error = "×",
     }
+  },
+  filters = {
+    custom = { '.git', 'node_modules', '.cache', 'tmp', '.DS_Store'  }
   }
 }
