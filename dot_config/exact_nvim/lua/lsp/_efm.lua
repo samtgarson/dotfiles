@@ -30,40 +30,36 @@ local rubocop = {
 }
 
 function M.setup(base)
-  require'lspconfig'.efm.setup(vim.tbl_extend(
-    'keep',
-    {
-      init_options = {documentFormatting = true, codeAction = true},
-      filetypes = {
-        "css",
-        "html",
-        "javascript",
-        "javascriptreact",
-        "markdown",
-        "ruby",
-        "scss",
-        "typescript",
-        "typescriptreact",
-        "yaml"
-      },
-      settings = {
-        rootMarkers = {".git/"},
-        languages = {
-          html = {prettier},
-          css = {prettier},
-          scss = {prettier},
-          yaml = {prettier},
-          javascriptreact = {prettier, eslint},
-          javascript = {prettier, eslint},
-          markdown = {prettier},
-          typescriptreact = {prettier, eslint},
-          typescript = {prettier, eslint},
-          ruby = {rubocop}
-        }
-      }
+  return {
+    init_options = {documentFormatting = true, codeAction = true},
+    filetypes = {
+      "css",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "markdown",
+      "ruby",
+      "scss",
+      "typescript",
+      "typescriptreact",
+      "yaml"
     },
-    base
-  ))
+    settings = {
+      rootMarkers = {".git/"},
+      languages = {
+        html = {prettier},
+        css = {prettier},
+        scss = {prettier},
+        yaml = {prettier},
+        javascriptreact = {prettier, eslint},
+        javascript = {prettier, eslint},
+        markdown = {prettier},
+        typescriptreact = {prettier, eslint},
+        typescript = {prettier, eslint},
+        ruby = {rubocop}
+      }
+    }
+  }
 end
 
 -- Autoformat on save

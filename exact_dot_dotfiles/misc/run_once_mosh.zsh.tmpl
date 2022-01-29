@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+setopt +o nomatch
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed mosh; then
+  success 'mosh is already installed'
+else
+  started Installing mosh
+  successfully sudo apt install mosh
+  success Installed mosh
+fi
+

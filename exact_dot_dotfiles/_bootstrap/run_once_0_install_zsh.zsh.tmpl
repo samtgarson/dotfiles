@@ -17,7 +17,7 @@ install_zsh() {
 set_shell() {
   started 'Setting default shell to zsh'
 
-  successfully sudo chsh -s $(which zsh)
+  successfully chsh -s $(which zsh)
 
   success 'Set default shell to zsh'
 }

@@ -50,6 +50,8 @@ source-file ~/.dotfiles/tmux/theme.conf
 # Install plugins (keep this line at the very bottom of tmux.conf)
 source-file ~/.dotfiles/tmux/plugins.conf
 
+{{- if eq .chezmoi.os "darwin" }}
 # Fig Tmux Integration: Enabled
 source-file ~/.fig/tmux
 # End of Fig Tmux Integration
+{{- end }}

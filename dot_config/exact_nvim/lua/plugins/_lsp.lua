@@ -24,48 +24,44 @@ end
 
 -- Ensure all servers are installed and configured
 local required_servers = {
-  'css',
+  'cssmodules_ls',
   'efm',
   'html',
-  'json',
-  'lua',
+  'jsonls',
+  'sumneko_lua',
   'prismals',
   'solargraph',
   'tailwindcss',
-  'typescript',
+  'tsserver',
   'yaml',
 }
 
 local function setup_servers()
-  require'lspinstall'.setup()
-  local available_servers = require'lspinstall'.not_installed_servers()
+  local lsp_installer_servers = require('nvim-lsp-installer.servers')
 
-  for _, server in pairs(required_servers) do
-    if vim.tbl_contains(available_servers, server) then
-      require'lspinstall'.install_server(server)
-      print('Installed ' .. server .. ' language server')
-    end
+  for _, server_name in pairs(required_servers) do
+    local server_available, server = lsp_installer_servers.get_server(server_name)
+    if server_available then
+      local moduleName = 'lsp._' .. server_name
+      local config = {
+        on_attach = on_attach,
+        capabilities = capabilities
+      }
 
-    local moduleName = 'lsp._' .. server
-    local baseConfig = {
-      on_attach = on_attach,
-      capabilities = capabilities
-    }
+      if require'_utils'.moduleExists(moduleName) then
+        config = require(moduleName).setup(config)
+      end
 
-    if require'_utils'.moduleExists(moduleName) then
-      require(moduleName).setup(baseConfig)
-    else
-      local config = require'lspconfig'[server]
-      config.setup(baseConfig)
+      server:on_ready(function ()
+        server:setup(config)
+      end)
+
+      if not server:is_installed() then
+        server:install()
+      end
     end
   end
 end
 
 setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
 

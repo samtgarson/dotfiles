@@ -17,10 +17,11 @@ install_plugins() {
   started 'Installing asdf plugins'
   successfully install_plugin nodejs
   successfully install_plugin python
+  successfully install_plugin dust
 
-  {{- if not .minimalinstall }}
+  {{- if .lang.ruby }}
   successfully install_plugin ruby
-
+  {{- end }}
   {{- if .lang.golang }}
   successfully install_plugin golang
   {{- end }}
@@ -35,7 +36,6 @@ install_plugins() {
   {{- end }}
   {{- if .lang.dotnet }}
   successfully install_plugin dotnet-core
-  {{- end }}
   {{- end }}
 
   # successfully npx npm-merge-driver install --global

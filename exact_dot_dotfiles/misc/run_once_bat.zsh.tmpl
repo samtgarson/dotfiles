@@ -12,6 +12,7 @@ download_bat () {
   successfully curl -sL https://api.github.com/repos/sharkdp/bat/releases/latest \
     | jq -r '.assets[].browser_download_url' \
     | grep -- $filename \
+    | grep -- 'bat_' \
     | wget -qi -
 }
 
@@ -23,7 +24,7 @@ else
   download_bat
 
   if [ -f bat*.deb ]; then
-    successfully sudo dpkg -i bat*.deb
+    successfully sudo dpkg -i bat_*.deb
   elif [ -f bat*.tar.gz ]; then
     successfully tar zxf bat*.tar.gz
     successfully sudo mv ./bat*/bat /usr/local/bin/

@@ -1,4 +1,5 @@
 README.md
+
 {{- if not .installdesktopapps }}
 .dotfiles/iterm/*
 .dotfiles/mac/*
@@ -6,13 +7,20 @@ README.md
 
 {{- if ne .chezmoi.os "linux" }}
 .dotfiles/keychain/*
+.dotfiles/_bootstrap/config.zsh
 {{- end }}
 
-{{- if .minimalinstall }}
+{{- if .lang.ruby }}
 .default-gems
 .gemrc
 .config/solargraph/
+{{- end }}
+
+{{- if .minimalinstall }}
 .dotfiles/kubernetes/*
 .dotfiles/aws-cli/*
 {{- end }}
 
+{{- if not .remoteserver }}
+.dotfiles/misc/run_once_mosh.zsh
+{{- end }}
