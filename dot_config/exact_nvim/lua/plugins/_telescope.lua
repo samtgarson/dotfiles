@@ -39,7 +39,8 @@ require('telescope').setup {
       '-g', '!node_modules/*',
       '-g', '!.yalc/*',
       '-g', '!tmp/*',
-      '-g', '!dist/*'
+      '-g', '!dist/*',
+      '-g', '!coverage/*'
     },
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",
@@ -62,6 +63,7 @@ require('telescope').setup {
         '--exclude', 'tmp/',
         '--exclude', '.yalc',
         '--exclude', 'dist',
+        '--exclude', 'coverage',
         '-t', 'f'
       }
     }
