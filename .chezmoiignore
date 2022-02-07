@@ -20,7 +20,3 @@ README.md
 .dotfiles/kubernetes/*
 .dotfiles/aws-cli/*
 {{- end }}
-
-{{- if not .remoteserver }}
-.dotfiles/misc/run_once_mosh.zsh
-{{- end }}

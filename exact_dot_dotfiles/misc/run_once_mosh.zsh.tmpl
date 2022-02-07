@@ -3,6 +3,10 @@ setopt +o nomatch
 
 source ~/.local/share/chezmoi/.helpers
 
+{{- if not .remoteserver }}
+exit 0
+{{- end }}
+
 if is_installed mosh; then
   success 'mosh is already installed'
 else
