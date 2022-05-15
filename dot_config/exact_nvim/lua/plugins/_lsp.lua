@@ -18,8 +18,16 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']g', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+
+  -- CodeActionMenu
+  vim.api.nvim_set_keymap("n", "<Leader>c", '<cmd>CodeActionMenu<CR>', { silent = true, })
+  vim.api.nvim_set_keymap("v", "<Leader>c", '<cmd>CodeActionMenu<CR>', { silent = true, })
+
+  -- renamer
+  vim.api.nvim_set_keymap("v", "<Leader>R", '<cmd>lua require("renamer").rename()<CR>', { silent = true, })
+  vim.api.nvim_set_keymap("n", "<Leader>R", '<cmd>lua require("renamer").rename()<CR>', { silent = true, })
 end
 
 -- Ensure all servers are installed and configured

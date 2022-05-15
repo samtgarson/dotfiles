@@ -3,12 +3,7 @@ vim.g["nvim_tree_highlight_opened_files"] = 1
 vim.g["nvim_tree_root_folder_modifier"] = "':~'"
 vim.g["nvim_tree_width_allow_resize"] = 1
 vim.g["nvim_tree_group_empty"] = 1
-vim.g["nvim_tree_quit_on_open"] = 1
 vim.g["nvim_tree_icon_padding"] = " "
-vim.g["nvim_tree_window_picker_exclude"] = {
-  filetype = {'fugitive'},
-  buftype = {'terminal'}
-}
 
 vim.g["nvim_tree_special_files"] = { 'README.md', '.env' }
 vim.g["nvim_tree_show_icons"] = {
@@ -47,7 +42,6 @@ vim.g["nvim_tree_icons"] = {
 
 require'nvim-tree'.setup {
   open_on_setup = false,
-  auto_close = true,
   opens_on_tab = false,
   update_focused_file = {
     enable = true
@@ -61,5 +55,15 @@ require'nvim-tree'.setup {
   },
   filters = {
     custom = { '.git', 'node_modules', '.cache', 'tmp', '.DS_Store'  }
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true
+    },
+    window_picker = {
+      enable = true,
+      filetype = {'fugitive'},
+      buftype = {'terminal'}
+    }
   }
 }
