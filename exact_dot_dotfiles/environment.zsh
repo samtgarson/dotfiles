@@ -1,7 +1,9 @@
 export ZSH=~/.oh-my-zsh
 export ZSH_CUSTOM=$ZSH/custom
 
-export ANDROID_HOME=/usr/local/share/android-sdk
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export ANDROID_HOME="$ANDROID_SDK"
+export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 
 export EDITOR=vim
 
