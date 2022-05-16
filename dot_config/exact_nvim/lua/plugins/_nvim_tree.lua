@@ -42,7 +42,6 @@ vim.g["nvim_tree_icons"] = {
 
 require'nvim-tree'.setup {
   open_on_setup = false,
-  opens_on_tab = false,
   update_focused_file = {
     enable = true
   },
@@ -58,12 +57,14 @@ require'nvim-tree'.setup {
   },
   actions = {
     open_file = {
-      quit_on_open = true
+      quit_on_open = true,
+      window_picker = {
+        enable = true,
+        exclude = {
+          filetype = {'fugitive'},
+          buftype = {'terminal'}
+        }
+      }
     },
-    window_picker = {
-      enable = true,
-      filetype = {'fugitive'},
-      buftype = {'terminal'}
-    }
   }
 }

@@ -14,7 +14,8 @@ require('lualine').setup {
     section_separators = '',
     component_separators = '',
     icons_enabled = false,
-    theme = 'moonlight'
+    theme = 'moonlight',
+    globalstatus = true
   },
   sections = {
     lualine_a = {'mode'},
