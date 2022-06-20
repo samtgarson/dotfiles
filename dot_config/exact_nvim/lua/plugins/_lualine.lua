@@ -5,7 +5,11 @@ local function getDiagnostics(severity)
   return function ()
     local bufh = vim.api.nvim_get_current_buf()
     local count = diagnostics(bufh)[severity]
-    if count > 0 then return count..'' end
+    if count > 0 then
+      return count..''
+    else
+      return '0'
+    end
   end
 end
 

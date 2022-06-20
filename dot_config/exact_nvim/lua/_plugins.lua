@@ -1,5 +1,5 @@
 
-require('plugins/_compe')
+require('plugins/_cmp')
 require('plugins/_copilot')
 require('plugins/_gitsigns')
 require('plugins/_lsp')
@@ -13,3 +13,4 @@ require('plugins/_whichkey')
 -- Plugins with no config
 require("stabilize").setup()
 require('renamer').setup { title = '' }
+require'colorizer'.setup()
