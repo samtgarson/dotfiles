@@ -1,7 +1,19 @@
 source ~/.local/share/chezmoi/.helpers
 
 # aliases
-alias gprune='git branch --merged | egrep -v "(^\*|main|master|dev)" | xargs git branch -d && git remote prune origin'
+function gprune() {
+  git branch --merged | egrep -v "(^\*|main|master|dev)" | xargs git branch -d && git remote prune origin
+
+  git checkout -q $(default-branch)
+  git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do
+    local mergeBase=$(git merge-base $(default-branch) $branch)
+    local temp_commit=$(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)
+    if [[ $(git cherry $(default-branch) $temp_commit) == "-"* ]]; then
+      git branch -D $branch;
+    fi
+  done
+
+}
 alias gwip='gaa && gc -m "wip" -n'
 alias gdc='gd --cached'
 alias gai='git add -i'

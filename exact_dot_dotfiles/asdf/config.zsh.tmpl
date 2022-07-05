@@ -18,10 +18,14 @@ fi
 
 # npm config
 # ==========
-alias npms='bat package.json | jq .scripts -r'
 
 function n () {
   ./node_modules/.bin/$1 "${@:2}"
+}
+
+unalias npmi
+function npmi () {
+  npmSe $1 --json | jq '.[].name' -r | fzf --preview 'npm info {}' --height 40% -m | xargs -I '{}' npm install {} "${@:2}"
 }
 
 # ruby config

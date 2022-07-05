@@ -1,44 +1,8 @@
-vim.g["nvim_tree_git_hl"] = 1
-vim.g["nvim_tree_highlight_opened_files"] = 1
-vim.g["nvim_tree_root_folder_modifier"] = "':~'"
 vim.g["nvim_tree_width_allow_resize"] = 1
-vim.g["nvim_tree_group_empty"] = 1
-vim.g["nvim_tree_icon_padding"] = " "
-
-vim.g["nvim_tree_special_files"] = { 'README.md', '.env' }
-vim.g["nvim_tree_show_icons"] = {
-  git = 0,
-  folders = 1,
-  files = 0,
-  folder_arrows = 0,
-}
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '-', ':NvimTreeToggle<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<CR>', {noremap = true})
-
-vim.g["nvim_tree_icons"] = {
-  default = '',
-  git = {
-    unstaged = "○",
-    staged = "●",
-    unmerged = "⊜",
-    renamed = "⊙",
-    untracked = "⊕",
-    deleted = "⊗",
-    ignored = "⊘"
-  },
-  folder = {
-    arrow_open = "▾",
-    arrow_closed = "▸",
-    default = "▸",
-    open =  "▾",
-    empty = "▸",
-    empty_open = "▾",
-    symlink = "▸",
-    symlink_open = "▾",
-  }
-}
 
 require'nvim-tree'.setup {
   open_on_setup = false,
@@ -66,5 +30,42 @@ require'nvim-tree'.setup {
         }
       }
     },
+  },
+  renderer = {
+    group_empty = true,
+    highlight_git = true,
+    special_files = { 'README.md', '.env' },
+    highlight_opened_files = 'icon',
+    root_folder_modifier = ':~',
+    icons = {
+      padding = ' ',
+      show = {
+        folder = true,
+        file = false,
+        folder_arrow = false,
+      },
+      glyphs = {
+        default = '',
+        git = {
+          unstaged = "○",
+          staged = "●",
+          unmerged = "⊜",
+          renamed = "⊙",
+          untracked = "⊕",
+          deleted = "⊗",
+          ignored = "⊘"
+        },
+        folder = {
+          arrow_open = "▾",
+          arrow_closed = "▸",
+          default = "▸",
+          open =  "▾",
+          empty = "▸",
+          empty_open = "▾",
+          symlink = "▸",
+          symlink_open = "▾",
+        }
+      }
+    }
   }
 }
