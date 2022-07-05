@@ -13,21 +13,26 @@ local opts = { noremap=true, silent=true }
 local on_attach = function(client, bufnr)
   lsp_spinner.on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']g', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
   -- CodeActionMenu
-  vim.api.nvim_set_keymap("n", "<Leader>c", '<cmd>CodeActionMenu<CR>', { silent = true, })
-  vim.api.nvim_set_keymap("v", "<Leader>c", '<cmd>CodeActionMenu<CR>', { silent = true, })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>c", '<cmd>Lspsaga code_action<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "v", "<Leader>c", '<cmd><C-U>Lspsaga range_code_action<CR>', opts)
 
   -- renamer
-  vim.api.nvim_set_keymap("v", "<Leader>R", '<cmd>lua require("renamer").rename()<CR>', { silent = true, })
-  vim.api.nvim_set_keymap("n", "<Leader>R", '<cmd>lua require("renamer").rename()<CR>', { silent = true, })
+  vim.api.nvim_buf_set_keymap(bufnr, "v", "<Leader>R", '<cmd>Lspsaga rename<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>R", '<cmd>Lspsaga rename<CR>', opts)
+
+  -- hover
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>Lspsaga signature_help<CR>", opts)
+
+  -- diagnostics
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "]g", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "[g", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+
+  -- finder
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
 end
 
 -- Ensure all servers are installed and configured

@@ -12,5 +12,4 @@ require('plugins/_whichkey')
 
 -- Plugins with no config
 require("stabilize").setup()
-require('renamer').setup { title = '' }
 require'colorizer'.setup()

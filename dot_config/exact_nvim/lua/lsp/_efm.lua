@@ -26,7 +26,8 @@ local rubocop = {
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = {"%f:%l:%c: %m"},
-  formatCommand = ""
+  formatCommand = "bundle exec rubocop -A -f quiet --stderr --force-exclusion -s ${INPUT}",
+  formatStdin = true
 }
 
 function M.setup(base)
@@ -45,7 +46,7 @@ function M.setup(base)
       "yaml"
     },
     settings = {
-      rootMarkers = {".git/"},
+      rootMarkers = {".git/", "package.json"},
       languages = {
         html = {prettier},
         css = {prettier},
