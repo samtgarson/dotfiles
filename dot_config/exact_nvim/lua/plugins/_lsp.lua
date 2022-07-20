@@ -46,35 +46,26 @@ local required_servers = {
   'solargraph',
   'tailwindcss',
   'tsserver',
-  'yaml',
+  'yamlls',
 }
 
-local function setup_servers()
-  local lsp_installer_servers = require('nvim-lsp-installer.servers')
+require("nvim-lsp-installer").setup({
+  automatic_installation = true
+})
 
-  for _, server_name in pairs(required_servers) do
-    local server_available, server = lsp_installer_servers.get_server(server_name)
-    if server_available then
-      local moduleName = 'lsp._' .. server_name
-      local config = {
-        on_attach = on_attach,
-        capabilities = capabilities
-      }
+local lspConfig = require('lspconfig')
 
-      if require'_utils'.moduleExists(moduleName) then
-        config = require(moduleName).setup(config)
-      end
+for _, server_name in pairs(required_servers) do
+  local moduleName = 'lsp._' .. server_name
+  local config = {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
 
-      server:on_ready(function ()
-        server:setup(config)
-      end)
-
-      if not server:is_installed() then
-        server:install()
-      end
-    end
+  if require'_utils'.moduleExists(moduleName) then
+    config = require(moduleName).setup(config)
   end
-end
 
-setup_servers()
+  lspConfig[server_name].setup(config)
+end
 

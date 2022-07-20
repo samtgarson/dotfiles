@@ -30,7 +30,7 @@ local rubocop = {
   formatStdin = true
 }
 
-function M.setup(base)
+function M.setup()
   return {
     init_options = {documentFormatting = true, codeAction = true},
     filetypes = {
