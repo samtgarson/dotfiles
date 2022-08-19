@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "[g", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 
   -- finder
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
 end
 
 -- Ensure all servers are installed and configured

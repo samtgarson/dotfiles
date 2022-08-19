@@ -28,6 +28,10 @@ function npmi () {
   npmSe $1 --json | jq '.[].name' -r | fzf --preview 'npm info {}' --height 40% -m | xargs -I '{}' npm install {} "${@:2}"
 }
 
+function ts-errors() {
+  sed  -E "s|(.*)\(([0-9]+),([0-9]+)\): (.+)|\1:\2:\3: \4|" <<< $(n tsc --noEmit | grep -E 'TS[0-9]+:')
+}
+
 # ruby config
 # ===========
 alias be='bundle exec'

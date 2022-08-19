@@ -26,4 +26,15 @@ function utils.widthGreaterThan(cols)
     return vim.fn.winwidth(0) / 2 > cols
 end
 
+function utils.organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+  print('organize imports')
+  vim.lsp.buf.execute_command(params)
+end
+
+
 return utils

@@ -1,15 +1,6 @@
 
 local M = {}
 
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = {vim.api.nvim_buf_get_name(0)},
-    title = ""
-  }
-  vim.lsp.buf.execute_command(params)
-end
-
 function M.setup(base)
   return {
     on_attach = function(client, bufnr)
@@ -19,7 +10,7 @@ function M.setup(base)
     -- cmd = {'/Users/sam/.local/share/nvim/lspinstall/typescript/node_modules/.bin/typescript-language-server', '--stdio'},
     commands = {
       OrganizeImports = {
-        organize_imports,
+        require('_utils').organize_imports,
         description = "Organize Imports"
       }
     }

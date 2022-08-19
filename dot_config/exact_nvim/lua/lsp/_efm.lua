@@ -66,12 +66,30 @@ end
 -- Autoformat on save
 vim.api.nvim_command('augroup AutoFormatOnSave')
 vim.api.nvim_command('autocmd!')
-local extensions = { 'css', 'scss', 'rb', 'md', 'json',  'js', 'ts', 'jsx', 'tsx' }
+local jsExtensions = { '*.js', '*.ts', '*.jsx', '*.tsx' }
+local extensions = vim.list_extend({ '*.css', '*.scss', '*.rb', '*.md', '*.json' }, jsExtensions)
+local ts = require'_utils'
 
-for _, ext in pairs(extensions) do
-  vim.api.nvim_command('autocmd BufWritePre *.'..ext..' lua if vim.b.lsp_enabled ~= false then vim.lsp.buf.formatting_seq_sync(nil, 2000) end')
-end
-vim.api.nvim_command('augroup END')
+local group = vim.api.nvim_create_augroup("formatting", { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = group,
+  pattern = extensions,
+  callback = function()
+    if vim.b.lsp_enabled ~= false then
+      vim.lsp.buf.formatting_seq_sync(nil, 2000)
+    end
+  end
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = group,
+  pattern = jsExtensions,
+  callback = function()
+    if vim.b.lsp_enabled ~= false then
+      ts.organize_imports()
+    end
+  end
+})
 
 
 return M
