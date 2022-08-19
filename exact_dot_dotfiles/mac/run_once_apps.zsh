@@ -11,6 +11,7 @@ install_apps () {
     notion
     spotify
     rectangle
+    finicky
   )
 
   for app in $apps; do

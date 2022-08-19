@@ -3,6 +3,7 @@ README.md
 {{- if not .installdesktopapps }}
 .dotfiles/iterm/*
 .dotfiles/mac/*
+.finicky.js
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
