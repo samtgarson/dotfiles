@@ -1,5 +1,5 @@
 if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 " Color theme settings
@@ -14,10 +14,6 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax enable
 set background=dark
 
-let g:moonlight_italic_comments=1
-let g:moonlight_italic_keywords=1
-colorscheme moonlight
-
 " Toggle line cursor on insert mode
 autocmd InsertEnter,InsertLeave * set cul!
 
@@ -25,3 +21,6 @@ autocmd InsertEnter,InsertLeave * set cul!
 " https://github.com/microsoft/terminal/issues/832#issuecomment-493747616
 " set t_ut=""
 
+let g:challenger_deep_termcolors = 256
+let g:challenger_deep_terminal_italics = 1
+colorscheme challenger_deep
