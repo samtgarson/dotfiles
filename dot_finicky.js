@@ -8,7 +8,7 @@ module.exports = {
   },
   rewrite: [
     {
-      match: ({ url }) => url.protocol === "http",
+      match: ({ url }) => url.protocol === "http" && url.host !== "localhost",
       url: { protocol: "https" }
     }
   ],
@@ -16,6 +16,8 @@ module.exports = {
     {
       match: [
         "meet.google.com*",
+        "cosmos.video*",
+        "localhost:*"
       ],
       browser: "Google Chrome"
     },
@@ -37,6 +39,10 @@ module.exports = {
         "notion.so/*",
       ],
       browser: "Notion"
+    },
+    {
+      match: /^https?:\/\/.*\.slack\.com\/archives\/.*$/,
+      browser: "Slack"
     }
   ]
 }
