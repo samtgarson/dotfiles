@@ -17,7 +17,7 @@ require'nvim-tree'.setup {
     }
   },
   filters = {
-    custom = { '.git', 'node_modules', '.cache', 'tmp', '.DS_Store'  }
+    custom = { '.git', 'node_modules', '.cache', 'tmp', '.DS_Store', '.next'  }
   },
   actions = {
     open_file = {

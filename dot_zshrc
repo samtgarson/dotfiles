@@ -62,6 +62,8 @@ if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
 fi
 
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
 source ~/.dotfiles/completions.zsh
 
 eval "$(starship init zsh)"
