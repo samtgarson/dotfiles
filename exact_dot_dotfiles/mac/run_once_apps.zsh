@@ -18,7 +18,8 @@ install_apps () {
     successfully brew install --cask $app
   done
 
-  brew install coreutils
+  successfully brew install coreutils
+  successfully brew install trash
 }
 
 started 'Installing Mac apps'
