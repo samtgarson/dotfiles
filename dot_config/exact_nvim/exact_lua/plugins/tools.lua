@@ -6,11 +6,11 @@ return {
   { "tpope/vim-rails", ft = "ruby", cmd = "Rails" },
   { "luukvbaal/stabilize.nvim", lazy = false },
   {
-    "svermeulen/vim-easyclip",
-    event = "VeryLazy",
-    init = function()
-      vim.api.nvim_set_keymap('n', 'm', 'gm', { noremap = true })
-    end
+    "gbprod/cutlass.nvim",
+    lazy = false,
+    config = {
+      cut_key = "m"
+    }
   },
   {
     "mg979/vim-visual-multi",
@@ -22,31 +22,31 @@ return {
       }
     end
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   event = "VeryLazy",
-  --   config = {
-  --     suggestion = {
-  --       auto_trigger = true,
-  --       keymap = {
-  --         accept = "<Tab>",
-  --         next = "<C-n>",
-  --         prev = "<C-p>",
-  --       }
-  --     },
-  --     filetypes = {
-  --       yaml = false,
-  --       markdown = false,
-  --       help = false,
-  --       gitcommit = false,
-  --       gitrebase = false,
-  --       hgcommit = false,
-  --       svn = false,
-  --       cvs = false,
-  --       ["."] = false,
-  --     },
-  --   }
-  -- },
+  {
+    "zbirenbaum/copilot.lua",
+    event = "VeryLazy",
+    config = {
+      suggestion = {
+        auto_trigger = true,
+        keymap = {
+          accept = "<Tab>",
+          next = "<C-n>",
+          prev = "<C-p>",
+        }
+      },
+      filetypes = {
+        yaml = false,
+        markdown = false,
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ["."] = false,
+      },
+    }
+  },
   {
     "pwntester/octo.nvim",
     cmd = "Octo",
@@ -85,6 +85,22 @@ return {
     init = function()
       vim.g['test#strategy'] = 'neovim'
       vim.g['test#javascript#jest#file_pattern'] = "\v((test|__tests__/).*|(spec|test)?).(js|jsx|ts|tsx)$"
+    end
+  },
+  { 'tpope/vim-surround', event = 'VeryLazy' },
+  { 'tpope/vim-commentary', event = 'VeryLazy' },
+  {
+    'ggandor/leap.nvim',
+    keys = {
+      { "z", "<Plug>(leap-forward-to)", mode = "n", desc = "Leap to a character" },
+      { "Z", "<Plug>(leap-backward-to)", mode = "n", desc = "Leap to a character" },
+      { "gz", "<Plug>(leap-cross-window)", mode = "n", desc = "Leap to a character in another window" },
+    },
+    dependencies = { 'tpope/vim-repeat' },
+    config = function()
+      local leap = require('leap')
+      leap.add_default_mappings()
+      leap.opts.highlight_unlabeled_phase_one_targets = false
     end
   }
 }

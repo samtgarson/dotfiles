@@ -1,5 +1,6 @@
 -- Show line numbers relative from current line
 vim.o.relativenumber = true
+vim.o.number = true
 
 -- Use 2 spaces for tabs everywhere
 vim.o.expandtab = true

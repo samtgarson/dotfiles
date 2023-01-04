@@ -2,6 +2,14 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     event = "VeryLazy",
+    dependencies = {
+      "b0o/SchemaStore.nvim",
+      "doums/lsp_spinner.nvim",
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+      "folke/neodev.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+    },
     config = function()
       require('mason').setup()
       require('mason-lspconfig').setup {
@@ -43,12 +51,28 @@ return {
         end
       end
 
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        debounce = 150,
+        sources = {
+          null_ls.builtins.code_actions.eslint_d,
+          null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.formatting.eslint_d,
+          null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.diagnostics.rubocop,
+          null_ls.builtins.formatting.rubocop
+        },
+        on_attach = on_attach
+      })
+
       require("mason-lspconfig").setup_handlers {
         function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup { on_attach = on_attach }
+          require("lspconfig")[server_name].setup { on_attach = on_attach, capabilities = capabilities }
         end,
         ["jsonls"] = function()
           require("lspconfig").jsonls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
             settings = {
               json = {
                 schemas = require('schemastore').json.schemas(),
@@ -59,6 +83,7 @@ return {
         end,
         ["tsserver"] = function()
           require("lspconfig").tsserver.setup {
+            capabilities = capabilities,
             on_attach = function(client, bufnr)
               client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
               on_attach(client, bufnr)
@@ -74,6 +99,7 @@ return {
         ["sumneko_lua"] = function()
           require("lspconfig").sumneko_lua.setup {
             single_file_support = true,
+            capabilities = capabilities,
             on_attach = on_attach,
             settings = {
               Lua = {
@@ -114,47 +140,17 @@ return {
           }
         end
       }
-    end,
-    dependencies = {
-      "b0o/SchemaStore.nvim",
-      "doums/lsp_spinner.nvim",
-      "williamboman/mason.nvim",
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          local null_ls = require("null-ls")
-
-          null_ls.setup({
-            debounce = 150,
-            sources = {
-              null_ls.builtins.code_actions.eslint_d,
-              null_ls.builtins.diagnostics.eslint_d,
-              null_ls.builtins.formatting.eslint_d,
-              null_ls.builtins.formatting.prettierd,
-              null_ls.builtins.diagnostics.rubocop,
-              null_ls.builtins.formatting.rubocop
-            },
-            on_attach = on_attach
-          })
-        end,
-      },
-    }
+    end
   },
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "folke/neodev.nvim",
-        config = {
-          override = function(_root_dir, library)
-            library.enabled = true
-            library.plugins = true
-          end,
-        }
-      }
+    "folke/neodev.nvim",
+    config = {
+      override = function(_root_dir, library)
+        library.enabled = true
+        library.plugins = true
+      end,
     }
   },
-
   {
     "glepnir/lspsaga.nvim",
     branch = "main",
@@ -180,6 +176,9 @@ return {
       { "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", mode = "n" },
       { "]g", "<cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n" },
       { "[g", "<cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n" },
+
+      -- definition
+      { "gd", "<cmd>Lspsaga peek_definition<CR>", mode = "n" },
     }
   },
 }
