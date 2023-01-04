@@ -10,11 +10,10 @@ return {
         style = "moon",
         sidebars = {
           "qf",
-          "vista_kind",
           "terminal",
-          "spectre_panel",
           "startuptime",
-          "Outline",
+          "undotree",
+          "NvimTree"
         },
         on_highlights = function(hl, c)
           hl.CursorLineNr = { fg = c.orange, bold = true }
@@ -39,7 +38,7 @@ return {
       local colors = require("tokyonight.colors").setup()
       scrollbar.setup({
         handle = { color = colors.bg_highlight },
-        excluded_filetypes = { "prompt", "TelescopePrompt", "noice", "notify" },
+        excluded_filetypes = { "prompt", "TelescopePrompt", "notify", "NvimTree" },
         marks = {
           Search = { color = colors.orange },
           Error = { color = colors.error },

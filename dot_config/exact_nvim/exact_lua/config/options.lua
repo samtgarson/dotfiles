@@ -1,0 +1,78 @@
+-- Show line numbers relative from current line
+vim.o.relativenumber = true
+
+-- Use 2 spaces for tabs everywhere
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.tabstop = 2
+
+-- Better clipboard integration
+vim.o.clipboard = 'unnamedplus'
+
+-- Show completion in vim commandbar
+vim.o.wildmenu = true
+vim.o.wildignore = 'node_modules/*,.git/*,.DS_Store,*/tmp/*'
+
+-- Wrap text
+vim.o.wrap = true
+
+-- start scrolling when 8 lines from the end of the file
+vim.o.scrolloff = 15
+
+-- Better handling for text case in vim commands
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Use tabs and windows when switching with quickfix
+vim.o.switchbuf = 'usetab'
+
+-- Ensure plugins which regularly update do so frequently
+vim.o.updatetime = 100
+
+-- Characters to show when highlighting whitespace
+vim.o.listchars = 'eol:$,tab:▸ ,trail:~,space:·,nbsp:␣,extends:❯,precedes:❮'
+
+-- Enable mouse in all modes
+vim.o.mouse = 'a'
+
+-- Ensure EOL is always present when saving
+vim.o.fixendofline = true
+
+-- Experimental: only show command line when active
+vim.o.cmdheight = 1
+
+-- Open splits more naturally
+vim.o.splitbelow = true
+vim.o.splitright = true
+
+-- Automatically clear trailing whitespace on save
+vim.api.nvim_create_autocmd("BufWritePre", { pattern = "*", command = "%s/\\s\\+$//e" })
+
+-- Set filetype correctly with .tmpl files
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = "*.*.tmpl",
+  callback = function(ctx)
+    i, j = string.find(ctx.file, "%.+[^%.]+")
+    local file = string.sub(ctx.file, i + 1, j)
+    vim.cmd("set filetype=" .. file)
+  end
+})
+
+-- Handle true color correctly
+vim.o.termguicolors = true
+
+-- Show line cursor on insert mode and block cursor on other modes
+vim.api.nvim_create_autocmd("InsertEnter,InsertLeave", { pattern = "*", command = "set cul!" })
+
+-- Shortcut for piping commands into quickfix window
+-- (doesn't seem like this is possible in lua yet)
+vim.cmd [[
+function! Quickfix(...)
+  cexpr system(join(a:000, ' ')) | cw
+endfunction
+command! -nargs=1 Qf call Quickfix(<f-args>)
+
+command! TsErrors call Quickfix('sed  -E "s|(.*)\(([0-9]+),([0-9]+)\): (.+)|\1:\2:\3: \4|" <<< $(node_modules/.bin/tsc --noEmit | grep -E "TS[0-9]+:")')
+command! EslintErrors call Quickfix('node_modules/.bin/eslint --format=unix . --ignore-path .gitignore')
+]]

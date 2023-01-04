@@ -22,31 +22,31 @@ return {
       }
     end
   },
-  {
-    "zbirenbaum/copilot.lua",
-    event = "VeryLazy",
-    config = {
-      suggestion = {
-        auto_trigger = true,
-        keymap = {
-          accept = "<Tab>",
-          next = "<C-n>",
-          prev = "<C-p>",
-        }
-      },
-      filetypes = {
-        yaml = false,
-        markdown = false,
-        help = false,
-        gitcommit = false,
-        gitrebase = false,
-        hgcommit = false,
-        svn = false,
-        cvs = false,
-        ["."] = false,
-      },
-    }
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   event = "VeryLazy",
+  --   config = {
+  --     suggestion = {
+  --       auto_trigger = true,
+  --       keymap = {
+  --         accept = "<Tab>",
+  --         next = "<C-n>",
+  --         prev = "<C-p>",
+  --       }
+  --     },
+  --     filetypes = {
+  --       yaml = false,
+  --       markdown = false,
+  --       help = false,
+  --       gitcommit = false,
+  --       gitrebase = false,
+  --       hgcommit = false,
+  --       svn = false,
+  --       cvs = false,
+  --       ["."] = false,
+  --     },
+  --   }
+  -- },
   {
     "pwntester/octo.nvim",
     cmd = "Octo",

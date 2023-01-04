@@ -44,5 +44,6 @@
   "vim-qf": { "branch": "master", "commit": "65f115c350934517382ae45198a74232a9069c2a" },
   "vim-rails": { "branch": "master", "commit": "a6d2bac95b446a5c23eff4638eca164b0d77454a" },
   "vim-test": { "branch": "master", "commit": "c6e5d249241342fd4592a67113cb539427d57e23" },
-  "vim-visual-multi": { "branch": "master", "commit": "724bd53adfbaf32e129b001658b45d4c5c29ca1a" }
+  "vim-visual-multi": { "branch": "master", "commit": "724bd53adfbaf32e129b001658b45d4c5c29ca1a" },
+  "wilder.nvim": { "branch": "master", "commit": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf" }
 }
