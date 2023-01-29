@@ -31,6 +31,22 @@ return {
           },
         },
       },
+      pickers = {
+        find_files = {
+          find_command = {
+            'fd',
+            '-uu',
+            '--exclude', 'node_modules',
+            '--exclude', '.git',
+            '--exclude', '.next',
+            '--exclude', 'tmp/',
+            '--exclude', '.yalc',
+            '--exclude', 'dist',
+            '--exclude', 'coverage',
+            '-t', 'f'
+          }
+        }
+      },
       extensions = {
         fzf = {
           fuzzy = true, -- false will only do exact matching

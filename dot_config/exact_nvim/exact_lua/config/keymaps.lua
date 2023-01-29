@@ -12,10 +12,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true, remap = true })
 vim.keymap.set("n", "<leade:q<CR>r>l", ":set list!<CR>", { silent = true, remap = true })
 
 -- Handy find and replace shortcut
-vim.keymap.set("v", "<C-r>", '"hy:%s/<C-r>h//g<left><left>', { silent = true, remap = true })
+vim.keymap.set("v", "<C-r>", '"hy:%s/<C-r>h//g<left><left>', { remap = false })
 
 -- Quickly close all buffers
-vim.keymap.set("n", "<leader>w", ":%bd!<CR>", { silent = true })
+vim.keymap.set("n", "<leader>W", ":%bd!<CR>", { silent = true })
 
 -- clear nvim search highlight on esc
 vim.keymap.set("n", "<esc>", ":noh<CR><esc>", { silent = true, remap = false })

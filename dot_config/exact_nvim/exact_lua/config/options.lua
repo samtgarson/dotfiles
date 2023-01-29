@@ -8,6 +8,9 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.tabstop = 2
 
+-- Always show the cursor line
+vim.o.cursorline = true
+
 -- Better clipboard integration
 vim.o.clipboard = 'unnamedplus'
 
@@ -54,7 +57,7 @@ vim.api.nvim_create_autocmd("BufWritePre", { pattern = "*", command = "%s/\\s\\+
 vim.api.nvim_create_autocmd("BufRead", {
   pattern = "*.*.tmpl",
   callback = function(ctx)
-    i, j = string.find(ctx.file, "%.+[^%.]+")
+    local i, j = string.find(ctx.file, "%.+[^%.]+")
     local file = string.sub(ctx.file, i + 1, j)
     vim.cmd("set filetype=" .. file)
   end
@@ -62,9 +65,6 @@ vim.api.nvim_create_autocmd("BufRead", {
 
 -- Handle true color correctly
 vim.o.termguicolors = true
-
--- Show line cursor on insert mode and block cursor on other modes
-vim.api.nvim_create_autocmd("InsertEnter,InsertLeave", { pattern = "*", command = "set cul!" })
 
 -- Shortcut for piping commands into quickfix window
 -- (doesn't seem like this is possible in lua yet)

@@ -13,7 +13,8 @@ return {
           "terminal",
           "startuptime",
           "undotree",
-          "NvimTree"
+          "NvimTree",
+          "toggleterm"
         },
         on_highlights = function(hl, c)
           hl.CursorLineNr = { fg = c.orange, bold = true }

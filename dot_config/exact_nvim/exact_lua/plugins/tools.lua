@@ -25,11 +25,29 @@ return {
   {
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",
+    keys = {
+      {
+        "<Tab>",
+        function()
+          local copilot = require("copilot.suggestion")
+          if copilot.is_visible() then
+            copilot.accept()
+          else
+            -- Enter a tab character like normal
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", true)
+          end
+        end,
+        desc = "Accept Copilot suggestion",
+        remap = true,
+        silent = true,
+        mode = "i"
+      },
+    },
     config = {
       suggestion = {
         auto_trigger = true,
         keymap = {
-          accept = "<Tab>",
+          accept = false,
           next = "<C-n>",
           prev = "<C-p>",
         }
@@ -50,7 +68,9 @@ return {
   {
     "pwntester/octo.nvim",
     cmd = "Octo",
-    config = true,
+    config = {
+      file_panel = { use_icons = false },
+    },
   },
   {
     "kdheepak/lazygit.nvim",
@@ -102,5 +122,14 @@ return {
       leap.add_default_mappings()
       leap.opts.highlight_unlabeled_phase_one_targets = false
     end
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    keys = {
+      { "<C-t>h", ":ToggleTerm size=15 direction=horizontal<CR>", mode = "n", desc = "Open a horizontal terminal" },
+      { "<C-t>v", ":ToggleTerm size=80 direction=vertical<CR>", mode = "n", desc = "Open a vertical terminal" },
+      { "<C-t>f", ":ToggleTerm direction=float<CR>", mode = "n", desc = "Open a floating terminal" },
+    },
+    config = true
   }
 }

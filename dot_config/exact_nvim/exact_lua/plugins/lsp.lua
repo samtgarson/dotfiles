@@ -156,7 +156,8 @@ return {
     branch = "main",
     config = function()
       require('lspsaga').init_lsp_saga {
-        diagnostic_header = { "", "", "", "" }
+        diagnostic_header = { "", "", "", "" },
+        code_action_icon = "☀",
       }
     end,
     keys = {
@@ -178,7 +179,8 @@ return {
       { "[g", "<cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n" },
 
       -- definition
-      { "gd", "<cmd>Lspsaga peek_definition<CR>", mode = "n" },
+      { "gd", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, mode = "n" } },
+      { "ge", "<cmd>Lspsaga peek_definition<CR>", mode = "n" },
     }
   },
 }
