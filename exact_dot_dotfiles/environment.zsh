@@ -8,3 +8,5 @@ export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 export EDITOR=vim
 
 export NODEJS_CHECK_SIGNATURES=no
+
+export DISABLE_SPRING=1

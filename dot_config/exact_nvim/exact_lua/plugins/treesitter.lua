@@ -37,4 +37,14 @@ return {
   end,
   { "pantharshit00/vim-prisma", ft = 'prisma' },
   { "amadeus/vim-mjml", event = 'VeryLazy' },
+  {
+    "Glench/Vim-Jinja2-Syntax",
+    ft = { 'jinja', 'jinja2' },
+    init = function()
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = "*.njk",
+        command = "set filetype=jinja",
+      })
+    end
+  },
 }
