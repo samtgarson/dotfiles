@@ -144,7 +144,7 @@ return {
   },
   {
     "folke/neodev.nvim",
-    config = {
+    opts = {
       override = function(_root_dir, library)
         library.enabled = true
         library.plugins = true
@@ -162,25 +162,25 @@ return {
     end,
     keys = {
       -- code action
-      { "<Leader>c", '<cmd>Lspsaga code_action<CR>', mode = "n" },
-      { "<Leader>c", '<cmd><C-U>Lspsaga range_code_action<CR>', mode = "v" },
+      { "<Leader>c",  '<cmd>Lspsaga code_action<CR>',            mode = "n" },
+      { "<Leader>c",  '<cmd><C-U>Lspsaga range_code_action<CR>', mode = "v" },
 
       -- renamer
-      { "<Leader>R", '<cmd>Lspsaga rename<CR>', mode = "v" },
-      { "<Leader>R", '<cmd>Lspsaga rename<CR>', mode = "n" },
+      { "<Leader>R",  '<cmd>Lspsaga rename<CR>',                 mode = "v" },
+      { "<Leader>R",  '<cmd>Lspsaga rename<CR>',                 mode = "n" },
 
       -- hover
-      { 'K', '<cmd>Lspsaga hover_doc<CR>', mode = 'n' },
-      { "gs", "<cmd>Lspsaga signature_help<CR>", mode = "n" },
+      { 'K',          '<cmd>Lspsaga hover_doc<CR>',              mode = 'n' },
+      { "gs",         "<cmd>Lspsaga signature_help<CR>",         mode = "n" },
 
       -- diagnostics
-      { "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", mode = "n" },
-      { "]g", "<cmd>Lspsaga diagnostic_jump_next<CR>", mode = "n" },
-      { "[g", "<cmd>Lspsaga diagnostic_jump_prev<CR>", mode = "n" },
+      { "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>",  mode = "n" },
+      { "]g",         "<cmd>Lspsaga diagnostic_jump_next<CR>",   mode = "n" },
+      { "[g",         "<cmd>Lspsaga diagnostic_jump_prev<CR>",   mode = "n" },
 
       -- definition
-      { "gd", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, mode = "n" } },
-      { "ge", "<cmd>Lspsaga peek_definition<CR>", mode = "n" },
+      { "gd",         "<cmd>Lspsaga lsp_finder<CR>",             { silent = true, mode = "n" } },
+      { "ge",         "<cmd>Lspsaga peek_definition<CR>",        mode = "n" },
     }
   },
 }

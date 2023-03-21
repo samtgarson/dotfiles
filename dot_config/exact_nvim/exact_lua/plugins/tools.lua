@@ -8,7 +8,7 @@ return {
   {
     "gbprod/cutlass.nvim",
     lazy = false,
-    config = {
+    opts = {
       cut_key = "m"
     }
   },
@@ -43,7 +43,7 @@ return {
         mode = "i"
       },
     },
-    config = {
+    opts = {
       suggestion = {
         auto_trigger = true,
         keymap = {
@@ -68,7 +68,7 @@ return {
   {
     "pwntester/octo.nvim",
     cmd = "Octo",
-    config = {
+    opts = {
       file_panel = { use_icons = false },
     },
   },
