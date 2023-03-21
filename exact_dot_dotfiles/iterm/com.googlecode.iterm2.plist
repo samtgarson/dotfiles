@@ -6,6 +6,12 @@
 	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>Coprocess MRU</key>
+	<array>
+		<string>echo vim /Users/sam/.asdf/installs/ruby/3.2.0/lib/ruby/gems/3.2.0/gems/activestorage-7.0.4/lib/active_storage/service/configurator.rb +17</string>
+		<string>echo vim /Users/sam/.asdf/installs/ruby/3.2.0/lib/ruby/gems/3.2.0/gems/activestorage-7.0.4/lib/active_storage/service/s3_service.rb +17</string>
+		<string>echo vim /Users/sam/.asdf/installs/ruby/3.2.0/lib/ruby/gems/3.2.0/gems/aws-sdk-s3-1.113.0/lib/aws-sdk-s3/resource.rb +109</string>
+	</array>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Night Owl</key>
@@ -1569,6 +1575,15 @@
 				<key>Red Component</key>
 				<real>0.21176470588235291</real>
 			</dict>
+			<key>Semantic History</key>
+			<dict>
+				<key>action</key>
+				<string>coprocess</string>
+				<key>editor</key>
+				<string>com.github.atom</string>
+				<key>text</key>
+				<string>echo vim \1 +\2</string>
+			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
 			<key>Shortcut</key>
@@ -1656,6 +1671,8 @@
 	<true/>
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>

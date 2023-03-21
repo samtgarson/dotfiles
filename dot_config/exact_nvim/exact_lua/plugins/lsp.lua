@@ -19,7 +19,7 @@ return {
           'jsonls',
           'prismals',
           'sorbet',
-          'sumneko_lua',
+          'lua_ls',
           'tailwindcss',
           'tsserver',
           'yamlls',
@@ -96,8 +96,8 @@ return {
             }
           }
         end,
-        ["sumneko_lua"] = function()
-          require("lspconfig").sumneko_lua.setup {
+        ["lua_ls"] = function()
+          require("lspconfig").lua_ls.setup {
             single_file_support = true,
             capabilities = capabilities,
             on_attach = on_attach,
