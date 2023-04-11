@@ -4,7 +4,7 @@
 
 [core]
   excludesfile = ~/.gitignore
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
   editor = nvim
 
 [pull]
@@ -17,20 +17,6 @@
   ui = true
 	colorMoved = zebra
 
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
-
-[color "diff"]
-  meta = 11
-  frag = cyan bold
-  commit = yellow bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
-
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles
 	driver = npx npm-merge-driver merge %A %O %B %P
@@ -41,3 +27,14 @@
 [init]
   defaultBranch = main
 
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    line-numbers = true
+    side-by-side = true
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = yellow box
