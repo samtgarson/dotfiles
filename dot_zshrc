@@ -19,6 +19,7 @@ plugins=(
   yarn
   docker
   docker-compose
+  z
 )
 
 if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] ; then
