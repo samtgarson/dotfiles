@@ -38,3 +38,11 @@
     file-style = bold yellow ul
     file-decoration-style = none
     hunk-header-decoration-style = yellow box
+
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
