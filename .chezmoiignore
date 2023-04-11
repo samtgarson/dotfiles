@@ -4,6 +4,7 @@ README.md
 .dotfiles/iterm/*
 .dotfiles/mac/*
 .finicky.js
+.mackup.cfg
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}

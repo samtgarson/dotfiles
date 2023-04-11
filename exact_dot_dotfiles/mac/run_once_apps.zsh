@@ -21,6 +21,8 @@ install_apps () {
 
   successfully brew install coreutils
   successfully brew install trash
+  successfully brew install mackup
+  successfully mackup restore
 }
 
 started 'Installing Mac apps'

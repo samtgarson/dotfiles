@@ -4,7 +4,6 @@
 export FZF_DEFAULT_COMMAND="rg --files -g '**' -g '!node_modules/**' -g '!.git/**' -g '!tmp/**'"
 
 # configure z
-source ~/.dotfiles/productivity/z.sh
 export FZFZ_EXTRA_DIRS="~/code"
 export FZFZ_EXCLUDE_PATTERN='\.git|node_modules'
 
