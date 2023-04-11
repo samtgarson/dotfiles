@@ -10,8 +10,9 @@ install_apps () {
     slack
     notion
     spotify
-    rectangle
     finicky
+    cron
+    raycast
   )
 
   for app in $apps; do
