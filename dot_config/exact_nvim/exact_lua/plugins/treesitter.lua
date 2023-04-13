@@ -15,6 +15,7 @@ return {
         'json',
         'lua',
         'markdown',
+        'markdown_inline',
         'ruby',
         'scss',
         'tsx',
@@ -23,6 +24,7 @@ return {
         'sql',
         'yaml'
       },
+      auto_install = true,
       highlight = {
         enable = true
       },
@@ -36,5 +38,5 @@ return {
     })
   end,
   { "pantharshit00/vim-prisma", ft = 'prisma' },
-  { "amadeus/vim-mjml", event = 'VeryLazy' },
+  { "amadeus/vim-mjml",         event = 'VeryLazy' },
 }

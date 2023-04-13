@@ -154,12 +154,21 @@ return {
   {
     "glepnir/lspsaga.nvim",
     branch = "main",
-    config = function()
-      require('lspsaga').init_lsp_saga {
-        diagnostic_header = { "", "", "", "" },
-        code_action_icon = "☀",
+    event = "LspAttach",
+    opts = {
+      ui = {
+        title = false,
+        code_action = "☀",
+        theme = 'none',
+        border = 'rounded'
+      },
+      symbol_in_winbar = {
+        enable = false
+      },
+      lightbulb = {
+        sign = false
       }
-    end,
+    },
     keys = {
       -- code action
       { "<Leader>c",  '<cmd>Lspsaga code_action<CR>',            mode = "n" },

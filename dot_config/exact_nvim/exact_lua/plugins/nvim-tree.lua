@@ -2,12 +2,11 @@ return {
   "nvim-tree/nvim-tree.lua",
   lazy = false,
   keys = {
-    { "<C-n>", ':NvimTreeToggle<CR>', desc = "Toggle file browser" },
-    { "-", ':NvimTreeToggle<CR>', desc = "Toggle file browser" },
+    { "<C-n>",     ':NvimTreeToggle<CR>',   desc = "Toggle file browser" },
+    { "-",         ':NvimTreeToggle<CR>',   desc = "Toggle file browser" },
     { "<leader>n", ':NvimTreeFindFile<CR>', desc = "Find current file in file browser" },
   },
   config = {
-    open_on_setup = false,
     trash = { cmd = vim.fn.has('macunix') and 'trash' or 'gio trash' },
     update_focused_file = {
       enable = true
