@@ -4,24 +4,25 @@ source ~/.local/share/chezmoi/.helpers
 
 install_apps () {
   local apps=(
-    numi
     1password
-    google-chrome
-    slack
-    notion
-    spotify
-    finicky
+    coreutils
     cron
+    finicky
+    google-chrome
+    mackup
+    notion
+    numi
+    postico
     raycast
+    slack
+    spotify
+    trash
   )
 
   for app in $apps; do
-    successfully brew install --cask $app
+    successfully brew install $app
   done
 
-  successfully brew install coreutils
-  successfully brew install trash
-  successfully brew install mackup
   successfully mackup restore
 }
 

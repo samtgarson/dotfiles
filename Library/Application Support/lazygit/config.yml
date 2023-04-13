@@ -1,3 +1,4 @@
+disableStartupPopups: true
 gui:
   showCommandLog: false
   theme:
@@ -6,4 +7,3 @@ gui:
     selectedRangeBgColor:
       - reverse
 quitOnTopLevelReturn: true
-disableStartupPopups: true
