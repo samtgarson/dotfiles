@@ -7,6 +7,7 @@ return {
   config = function()
     local diagnostics = require 'lsp-status.diagnostics'
     local colors = require("tokyonight.colors").setup()
+    local git_blame = require('gitblame')
 
     local function getCount(severity)
       local bufh = vim.api.nvim_get_current_buf()
@@ -37,9 +38,16 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch' },
-        lualine_c = { 'filename' },
+        lualine_c = {
+          'filename',
+          {
+            function() return string.sub(git_blame.get_current_blame_text(), 1, 100) end,
+            cond = git_blame.is_blame_text_available,
+            color = { fg = colors.comment }
+          },
+        },
         lualine_x = {
-          { require 'lsp_spinner'.status, color = { fg = colors.comment } }
+          { require 'lsp_spinner'.status }
         },
         lualine_y = {
           getDiagnostics('errors', colors.error),
