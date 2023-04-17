@@ -152,44 +152,27 @@ return {
     }
   },
   {
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    event = "LspAttach",
+    'kosayoda/nvim-lightbulb',
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
-      ui = {
-        title = false,
-        code_action = "☀",
-        theme = 'none',
-        border = 'rounded'
-      },
-      symbol_in_winbar = {
-        enable = false
-      },
-      lightbulb = {
-        sign = false
-      }
-    },
-    keys = {
-      -- code action
-      { "<Leader>c",  '<cmd>Lspsaga code_action<CR>',            mode = "n" },
-      { "<Leader>c",  '<cmd><C-U>Lspsaga range_code_action<CR>', mode = "v" },
-
-      -- renamer
-      { "<Leader>R",  '<cmd>Lspsaga rename<CR>',                 mode = "v" },
-      { "<Leader>R",  '<cmd>Lspsaga rename<CR>',                 mode = "n" },
-
-      -- hover
-      { 'K',          '<cmd>Lspsaga hover_doc<CR>',              mode = 'n' },
-      { "gs",         "<cmd>Lspsaga signature_help<CR>",         mode = "n" },
-
-      -- diagnostics
-      { "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>",  mode = "n" },
-      { "]g",         "<cmd>Lspsaga diagnostic_jump_next<CR>",   mode = "n" },
-      { "[g",         "<cmd>Lspsaga diagnostic_jump_prev<CR>",   mode = "n" },
-
-      -- definition
-      { "gd",         "<cmd>Lspsaga lsp_finder<CR>",             { silent = true, mode = "n" } },
-      { "ge",         "<cmd>Lspsaga peek_definition<CR>",        mode = "n" },
+      autocmd = { enabled = true },
+      sign = { enabled = false },
+      virtual_text = { enabled = true, hl_mode = "blend", text = "" },
     }
   },
+  {
+    "smjonas/inc-rename.nvim",
+    lazy = false, -- causes delay in command line
+    config = true,
+    keys = {
+      {
+        "<leader>R",
+        function()
+          local inc_rename = require("inc_rename")
+          return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+        end,
+        expr = true,
+      }
+    },
+  }
 }

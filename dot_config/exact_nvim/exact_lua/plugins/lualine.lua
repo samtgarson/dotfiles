@@ -38,7 +38,9 @@ return {
         lualine_a = { 'mode' },
         lualine_b = { 'branch' },
         lualine_c = { 'filename' },
-        lualine_x = { { require 'lsp_spinner'.status, color = { fg = colors.comment } } },
+        lualine_x = {
+          { require 'lsp_spinner'.status, color = { fg = colors.comment } }
+        },
         lualine_y = {
           getDiagnostics('errors', colors.error),
           getDiagnostics('warnings', colors.warning),

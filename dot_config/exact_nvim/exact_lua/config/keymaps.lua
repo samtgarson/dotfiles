@@ -23,3 +23,33 @@ vim.keymap.set("n", "<esc>", ":noh<CR><esc>", { silent = true, remap = false })
 -- in normal mode, tab and shift-tab will move between tabs
 vim.keymap.set("n", "<Tab>", ":tabnext<CR>", { silent = true, remap = true })
 vim.keymap.set("n", "<S-Tab>", ":tabprevious<CR>", { silent = true, remap = true })
+
+-- LSP mapping
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gd', function()
+      require('telescope.builtin').lsp_definitions({ jump_type = "tab" })
+    end, opts)
+    vim.keymap.set('n', 'gr', function()
+      require('telescope.builtin').lsp_references({ jump_type = "tab" })
+    end, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set({ 'n', 'v' }, '<leader>c', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>F', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})

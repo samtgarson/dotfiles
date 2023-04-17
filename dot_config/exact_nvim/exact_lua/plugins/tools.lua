@@ -1,10 +1,10 @@
 return {
   "nvim-lua/plenary.nvim",
-  { "neoclide/jsonc.vim", ft = "json" },
+  { "neoclide/jsonc.vim",            ft = "json" },
   { "suy/vim-context-commentstring", event = "VeryLazy" },
-  { "tpope/vim-eunuch", cmd = { 'Move', 'Rename', 'Delete', 'Remove', 'Duplicate' } },
-  { "tpope/vim-rails", ft = "ruby", cmd = "Rails" },
-  { "luukvbaal/stabilize.nvim", lazy = false },
+  { "tpope/vim-eunuch",              cmd = { 'Move', 'Rename', 'Delete', 'Remove', 'Duplicate' } },
+  { "tpope/vim-rails",               ft = "ruby",                                                cmd = "Rails" },
+  { "luukvbaal/stabilize.nvim",      lazy = false },
   {
     "gbprod/cutlass.nvim",
     lazy = false,
@@ -98,22 +98,22 @@ return {
     "vim-test/vim-test",
     keys = {
       { "t<C-n>", ":TestNearest<CR>", mode = "n", desc = "Run the nearest test to the cursor", silent = true },
-      { "t<C-f>", ":TestFile<CR>", mode = "n", desc = "Run all the tests in this file", silent = true },
-      { "t<C-s>", ":TestSuite<CR>", mode = "n", desc = "Run the entire test suite", silent = true },
-      { "t<C-l>", ":TestLast<CR>", mode = "n", desc = "Re-run the last test that was run", silent = true }
+      { "t<C-f>", ":TestFile<CR>",    mode = "n", desc = "Run all the tests in this file",     silent = true },
+      { "t<C-s>", ":TestSuite<CR>",   mode = "n", desc = "Run the entire test suite",          silent = true },
+      { "t<C-l>", ":TestLast<CR>",    mode = "n", desc = "Re-run the last test that was run",  silent = true }
     },
     init = function()
       vim.g['test#strategy'] = 'neovim'
       vim.g['test#javascript#jest#file_pattern'] = "\v((test|__tests__/).*|(spec|test)?).(js|jsx|ts|tsx)$"
     end
   },
-  { 'tpope/vim-surround', event = 'VeryLazy' },
+  { 'tpope/vim-surround',   event = 'VeryLazy' },
   { 'tpope/vim-commentary', event = 'VeryLazy' },
   {
     'ggandor/leap.nvim',
     keys = {
-      { "z", "<Plug>(leap-forward-to)", mode = "n", desc = "Leap to a character" },
-      { "Z", "<Plug>(leap-backward-to)", mode = "n", desc = "Leap to a character" },
+      { "z",  "<Plug>(leap-forward-to)",   mode = "n", desc = "Leap to a character" },
+      { "Z",  "<Plug>(leap-backward-to)",  mode = "n", desc = "Leap to a character" },
       { "gz", "<Plug>(leap-cross-window)", mode = "n", desc = "Leap to a character in another window" },
     },
     dependencies = { 'tpope/vim-repeat' },
@@ -127,9 +127,20 @@ return {
     "akinsho/toggleterm.nvim",
     keys = {
       { "<C-t>h", ":ToggleTerm size=15 direction=horizontal<CR>", mode = "n", desc = "Open a horizontal terminal" },
-      { "<C-t>v", ":ToggleTerm size=80 direction=vertical<CR>", mode = "n", desc = "Open a vertical terminal" },
-      { "<C-t>f", ":ToggleTerm direction=float<CR>", mode = "n", desc = "Open a floating terminal" },
+      { "<C-t>v", ":ToggleTerm size=80 direction=vertical<CR>",   mode = "n", desc = "Open a vertical terminal" },
+      { "<C-t>f", ":ToggleTerm direction=float<CR>",              mode = "n", desc = "Open a floating terminal" },
     },
     config = true
+  },
+  {
+    'nvim-pack/nvim-spectre',
+    keys = {
+      {
+        "<Leader>S",
+        function() require("spectre").open() end,
+        mode = "n",
+        desc = "Open Spectre"
+      },
+    }
   }
 }
