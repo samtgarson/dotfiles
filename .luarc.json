@@ -40,5 +40,8 @@
         "/Users/samgarson/.local/share/nvim/lazy/lsp-status.nvim/lua",
         "/Users/samgarson/.local/share/nvim/lazy/mason-lspconfig.nvim/lua",
         "${3rd}/luv/library"
+    ],
+    "diagnostics.globals": [
+        "_lazygit_toggle"
     ]
 }

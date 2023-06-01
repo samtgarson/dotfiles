@@ -36,6 +36,9 @@ return {
 
           -- Code Action Lightbulb
           hl.LightBulbVirtualText = { fg = c.fg_dark }
+
+          -- LSP Diagnostic
+          hl.LspFloatWinNormal = { bg = prompt }
         end,
       })
       tokyonight.load()
@@ -125,7 +128,7 @@ return {
       presets = {
         command_palette = true,
         long_message_to_split = true,
-        lsp_doc_border = true,
+        lsp_doc_border = false,
       },
       cmdline = {
         format = {
@@ -140,7 +143,9 @@ return {
         }
       },
       popupmenu = {
-        kind_icons = false
+        enabled = true,
+        kind_icons = false,
+        backend = "nui"
       },
       lsp = {
         progress = {
@@ -156,6 +161,12 @@ return {
         },
       },
       views = {
+        popup = {
+          border = {
+            style = "solid",
+            padding = { 1, 2 },
+          }
+        },
         cmdline_popup = {
           position = {
             row = "100%",
@@ -183,6 +194,13 @@ return {
             padding = { 2, 2 },
           },
           filter_options = {},
+        },
+        hover = {
+          border = {
+            style = "none",
+            padding = { 1, 2 },
+          },
+          position = { row = 2, col = 1 }
         }
       },
       routes = {
@@ -190,7 +208,16 @@ return {
           filter = {
             event = "msg_show",
             kind = "",
-            find = "written",
+            any = {
+              { find = "written" },
+              { find = "bytes" },
+              { find = "fewer lines" },
+              { find = "more lines" },
+              { find = "changed" },
+              { find = "unchanged" },
+              { find = "saved" },
+              { find = "buffers deleted" }
+            }
           },
           opts = { skip = true },
         },
@@ -219,6 +246,9 @@ return {
         return math.floor(vim.o.columns * 0.75)
       end,
     },
+    config = function(opts)
+      notify = require("notify")
+    end,
     init = function()
       vim.notify = require("notify")
     end,

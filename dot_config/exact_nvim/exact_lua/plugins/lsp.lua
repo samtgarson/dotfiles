@@ -2,13 +2,39 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     event = { "BufReadPre", "BufNewFile" },
+    init = function()
+      vim.diagnostic.config {
+        virtual_text = {
+          spacing = 4,
+          source = "if_many",
+          prefix = "●",
+        }, -- disable virtual text
+        -- virtual_lines = false,
+        update_in_insert = true,
+        underline = true,
+        severity_sort = true,
+        float = {
+          padding = 2,
+          focusable = false,
+          style = "minimal",
+          border = "solid",
+          -- border = Util.generate_borderchars("thick", "tl-t-tr-r-bl-b-br-l"),
+          source = "always",
+          header = "",
+          prefix = "",
+          -- pad_top = 1,
+          -- pad_bottom = 1,
+        }
+      }
+    end,
     dependencies = {
       "b0o/SchemaStore.nvim",
       "doums/lsp_spinner.nvim",
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig",
       "folke/neodev.nvim",
       "jose-elias-alvarez/null-ls.nvim",
+      "neovim/nvim-lspconfig",
+      "williamboman/mason.nvim",
+      "yioneko/nvim-vtsls",
     },
     config = function()
       require('mason').setup()
@@ -21,8 +47,9 @@ return {
           'sorbet',
           'lua_ls',
           'tailwindcss',
-          'tsserver',
+          -- 'tsserver',
           'yamlls',
+          'vtsls',
           -- 'solargraph',
         }
       }
@@ -33,12 +60,18 @@ return {
         interval = 30,
         redraw_rate = 100
       }
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.lsp.protocol.make_client_capabilities(),
+        require("cmp_nvim_lsp").default_capabilities()
+      )
       lsp_spinner.init_capabilities(capabilities)
 
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       local on_attach = function(client, bufnr)
         lsp_spinner.on_attach(client, bufnr)
+
         if client.supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
@@ -82,19 +115,11 @@ return {
           }
         end,
         ["tsserver"] = function()
-          require("lspconfig").tsserver.setup {
-            capabilities = capabilities,
-            on_attach = function(client, bufnr)
-              client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-              on_attach(client, bufnr)
-            end,
-            commands = {
-              OrganizeImports = {
-                require('config.utils').organize_imports,
-                description = "Organize Imports"
-              }
-            }
-          }
+          -- noop
+        end,
+        ["vtsls"] = function()
+          require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+          require("lspconfig").vtsls.setup { on_attach = on_attach, capabilities = capabilities }
         end,
         ["lua_ls"] = function()
           require("lspconfig").lua_ls.setup {
@@ -174,5 +199,5 @@ return {
         expr = true,
       }
     },
-  }
+  },
 }

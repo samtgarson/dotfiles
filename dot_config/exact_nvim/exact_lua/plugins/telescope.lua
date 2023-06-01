@@ -2,11 +2,13 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    { "nvim-telescope/telescope-ui-select.nvim" },
   },
   keys = {
-    { "<Leader>f", "<cmd>NvimTreeClose<CR><cmd>Telescope live_grep<CR>", desc = "Open project search" },
-    { "<C-p>", "<cmd>NvimTreeClose<CR><cmd>Telescope find_files<CR>", desc = "Open file finder" }
+    { "<Leader>f", "<cmd>NvimTreeClose<CR><cmd>Telescope live_grep<CR>",  desc = "Open project search" },
+    { "<C-p>",     "<cmd>NvimTreeClose<CR><cmd>Telescope find_files<CR>", desc = "Open file finder" },
   },
+  event = "VeryLazy",
   config = function()
     require("plenary")
     local telescope = require("telescope")
@@ -49,13 +51,17 @@ return {
       },
       extensions = {
         fzf = {
-          fuzzy = true, -- false will only do exact matching
+          fuzzy = true,                   -- false will only do exact matching
           override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
+          override_file_sorter = true,    -- override the file sorter
+        },
+        ["ui-select"] = {
+          layout_config = { width = { 0.4, min = 100 }, height = 0.2 },
         }
       }
     })
 
     telescope.load_extension('fzf')
+    telescope.load_extension('ui-select')
   end
 }
