@@ -58,19 +58,6 @@ gfix() {
   git commit --no-verify --fixup `sha`
 }
 
-# forgit options
-alias ga='forgit::add'
-alias grh='forgit::reset::head'
-alias glo='forgit::log'
-alias gd='forgit::diff'
-alias gi='forgit::ignore'
-alias gcf='forgit::checkout::file'
-# alias gco='forgit::checkout::branch'
-alias gclean='forgit::clean'
-alias gss='forgit::stash::show'
-alias gcp='forgit::cherry::pick'
-alias grbp='forgit::rebase'
-
 # jirabr - open a branch for a JIRA ticket
 jirabr () {
   zmodload zsh/zutil
