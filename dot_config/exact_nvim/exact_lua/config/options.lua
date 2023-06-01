@@ -79,7 +79,7 @@ command! EslintErrors call Quickfix('node_modules/.bin/eslint --format=unix . --
 ]]
 
 -- Hide some unnecessary messages
-vim.opt.shortmess:append({ W = true, I = true, c = true, C = true, s = true, F = true, S = true })
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true, s = true, F = true, S = true, l = false })
 
 vim.opt.splitkeep = "screen"
 

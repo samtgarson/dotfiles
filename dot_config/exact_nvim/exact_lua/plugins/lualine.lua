@@ -43,7 +43,8 @@ return {
           {
             function() return string.sub(git_blame.get_current_blame_text(), 1, 100) end,
             cond = git_blame.is_blame_text_available,
-            color = { fg = colors.comment }
+            color = { fg = colors.comment },
+            on_click = function() git_blame.open_file_url() end
           },
         },
         lualine_x = {

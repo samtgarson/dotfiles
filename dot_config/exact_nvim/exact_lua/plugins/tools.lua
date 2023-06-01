@@ -1,10 +1,9 @@
 return {
   "nvim-lua/plenary.nvim",
-  { "neoclide/jsonc.vim",            ft = "json" },
-  { "suy/vim-context-commentstring", event = "VeryLazy" },
-  { "tpope/vim-eunuch",              cmd = { 'Move', 'Rename', 'Delete', 'Remove', 'Duplicate' } },
-  { "tpope/vim-rails",               ft = "ruby",                                                cmd = "Rails" },
-  { "luukvbaal/stabilize.nvim",      lazy = false },
+  { "neoclide/jsonc.vim",       ft = "json" },
+  { "tpope/vim-eunuch",         cmd = { 'Move', 'Rename', 'Delete', 'Remove', 'Duplicate' } },
+  { "tpope/vim-rails",          ft = "ruby",                                                cmd = "Rails" },
+  { "luukvbaal/stabilize.nvim", lazy = false },
   {
     "gbprod/cutlass.nvim",
     lazy = false,
@@ -65,23 +64,23 @@ return {
       },
     }
   },
-  {
-    "pwntester/octo.nvim",
-    cmd = "Octo",
-    config = {
-      file_panel = { use_icons = false },
-    },
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    keys = {
-      { "<Leader>G", ":LazyGit<CR>", mode = "n", desc = "Open Lazygit" }
-    },
-    init = function()
-      vim.g.lazygit_floating_window_scaling_factor = 1
-      vim.g.lazygit_floating_window_use_plenary = 0
-    end
-  },
+  -- {
+  --   "pwntester/octo.nvim",
+  --   cmd = "Octo",
+  --   config = {
+  --     file_panel = { use_icons = false },
+  --   },
+  -- },
+  -- {
+  --   "kdheepak/lazygit.nvim",
+  --   keys = {
+  --     { "<Leader>G", ":LazyGit<CR>", mode = "n", desc = "Open Lazygit" }
+  --   },
+  --   init = function()
+  --     vim.g.lazygit_floating_window_scaling_factor = 1
+  --     vim.g.lazygit_floating_window_use_plenary = 1
+  --   end
+  -- },
   {
     "mbbill/undotree",
     keys = {
@@ -107,8 +106,13 @@ return {
       vim.g['test#javascript#jest#file_pattern'] = "\v((test|__tests__/).*|(spec|test)?).(js|jsx|ts|tsx)$"
     end
   },
-  { 'tpope/vim-surround',   event = 'VeryLazy' },
-  { 'tpope/vim-commentary', event = 'VeryLazy' },
+  { 'tpope/vim-surround', event = 'VeryLazy' },
+  {
+    'numToStr/Comment.nvim',
+    event = 'VeryLazy',
+    branch = 'jsx',
+    config = true
+  },
   {
     'ggandor/leap.nvim',
     keys = {
@@ -126,11 +130,32 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<C-t>h", ":ToggleTerm size=15 direction=horizontal<CR>", mode = "n", desc = "Open a horizontal terminal" },
-      { "<C-t>v", ":ToggleTerm size=80 direction=vertical<CR>",   mode = "n", desc = "Open a vertical terminal" },
-      { "<C-t>f", ":ToggleTerm direction=float<CR>",              mode = "n", desc = "Open a floating terminal" },
+      { "<C-t>h",   ":ToggleTerm size=15 direction=horizontal<CR>", mode = "n", desc = "Open a horizontal terminal" },
+      { "<C-t>v",   ":ToggleTerm size=80 direction=vertical<CR>",   mode = "n", desc = "Open a vertical terminal" },
+      { "<C-t>f",   ":ToggleTerm direction=float<CR>",              mode = "n", desc = "Open a floating terminal" },
+      { "<Leader>G" }
     },
-    config = true
+    config = function()
+      require('toggleterm').setup {
+        shade_terminals = false,
+        float_opts = {
+          border = "curved",
+        }
+      }
+
+      local Terminal = require('toggleterm.terminal').Terminal
+      local lazygit  = Terminal:new({
+        hidden = true,
+        cmd = "lazygit",
+        dir = "git_dir",
+        direction = "tab",
+        display_name = "LazyGit",
+      })
+
+      vim.keymap.set('n', '<leader>G', function()
+        lazygit:toggle()
+      end)
+    end
   },
   {
     'nvim-pack/nvim-spectre',
@@ -151,5 +176,28 @@ return {
       vim.g.gitblame_date_format = '%r'
       vim.g.gitblame_message_template = '<date> • <author> • <summary>'
     end
+  },
+  {
+    'andymass/vim-matchup',
+    event = 'VeryLazy',
+    init = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      vim.g.matchup_matchparen_deferred = 1
+      vim.g.matchup_matchpref = {
+        html = { tagnameonly = 1, },
+        javascript = { tagnameonly = 1, },
+        typescript = { tagnameonly = 1, },
+        javascriptreact = { tagnameonly = 1, },
+        typescriptreact = { tagnameonly = 1, },
+      }
+    end,
+    dependencies = {
+      {
+        'nvim-treesitter/nvim-treesitter',
+        opts = {
+          matchup = { enable = true }
+        }
+      }
+    }
   }
 }
