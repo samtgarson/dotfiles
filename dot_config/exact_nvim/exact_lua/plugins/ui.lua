@@ -39,6 +39,18 @@ return {
 
           -- LSP Diagnostic
           hl.LspFloatWinNormal = { bg = prompt }
+
+          -- Notify
+          hl.NotifyERRORBody = { bg = c.bg_dark }
+          hl.NotifyWARNBody = { bg = c.bg_dark }
+          hl.NotifyINFOBody = { bg = c.bg_dark }
+          hl.NotifyDEBUGBody = { bg = c.bg_dark }
+          hl.NotifyTRACEBody = { bg = c.bg_dark }
+          hl.NotifyERRORBorder = { bg = c.bg_dark, fg = c.bg_dark }
+          hl.NotifyWARNBorder = { bg = c.bg_dark, fg = c.bg_dark }
+          hl.NotifyINFOBorder = { bg = c.bg_dark, fg = c.bg_dark }
+          hl.NotifyDEBUGBorder = { bg = c.bg_dark, fg = c.bg_dark }
+          hl.NotifyTRACEBorder = { bg = c.bg_dark, fg = c.bg_dark }
         end,
       })
       tokyonight.load()
@@ -245,10 +257,8 @@ return {
       max_width = function()
         return math.floor(vim.o.columns * 0.75)
       end,
+      render = "compact"
     },
-    config = function(opts)
-      notify = require("notify")
-    end,
     init = function()
       vim.notify = require("notify")
     end,
