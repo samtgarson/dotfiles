@@ -19,7 +19,7 @@ return {
       }
     },
     filters = {
-      custom = { '\\.git', 'node_modules', '\\.cache', 'tmp\\W', '\\.DS_Store', '\\.next' }
+      custom = { '\\.git', 'node_modules', '\\.cache', 'tmp\\W', '\\.DS_Store' }
     },
     actions = {
       open_file = {

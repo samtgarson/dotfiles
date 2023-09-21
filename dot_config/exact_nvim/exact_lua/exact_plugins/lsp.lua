@@ -182,7 +182,7 @@ return {
     opts = {
       autocmd = { enabled = true },
       sign = { enabled = false },
-      virtual_text = { enabled = true, hl_mode = "blend", text = "" },
+      virtual_text = { enabled = true, hl_mode = "blend", text = "" },
     }
   },
   {
@@ -197,6 +197,7 @@ return {
           return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
         end,
         expr = true,
+        desc = "Rename Symbol"
       }
     },
   },

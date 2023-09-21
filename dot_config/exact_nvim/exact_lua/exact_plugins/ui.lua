@@ -145,8 +145,9 @@ return {
       cmdline = {
         format = {
           cmdline = { icon = "❯" },
-          search_down = { icon = "🔍 ↓" },
-          search_up = { icon = "🔍 ↑" },
+          search_down = { icon = " " },
+          search_up = { icon = " " },
+          help = { pattern = "^:%s*he?l?p?%s+", icon = "❔" },
           IncRename = {
             pattern = "^:%s*IncRename%s+",
             icon = " ",
@@ -174,10 +175,18 @@ return {
       },
       views = {
         popup = {
+          position = {
+            row = "100%",
+          },
+          size = {
+            height = "auto",
+            width = "99%",
+          },
           border = {
-            style = "solid",
+            style = "none",
             padding = { 1, 2 },
-          }
+          },
+          filter_options = {},
         },
         cmdline_popup = {
           position = {

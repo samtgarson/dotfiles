@@ -25,7 +25,7 @@ kill-port () {
   local processes
 
   if [[ -n $1 ]]; then
-    processes=$(lsof -i $1)
+    processes=$(lsof -i :$1)
   else
     processes=$(lsof)
   fi

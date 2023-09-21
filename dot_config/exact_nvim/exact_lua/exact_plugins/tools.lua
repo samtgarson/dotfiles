@@ -64,27 +64,10 @@ return {
       },
     }
   },
-  -- {
-  --   "pwntester/octo.nvim",
-  --   cmd = "Octo",
-  --   config = {
-  --     file_panel = { use_icons = false },
-  --   },
-  -- },
-  -- {
-  --   "kdheepak/lazygit.nvim",
-  --   keys = {
-  --     { "<Leader>G", ":LazyGit<CR>", mode = "n", desc = "Open Lazygit" }
-  --   },
-  --   init = function()
-  --     vim.g.lazygit_floating_window_scaling_factor = 1
-  --     vim.g.lazygit_floating_window_use_plenary = 1
-  --   end
-  -- },
   {
     "mbbill/undotree",
     keys = {
-      { "<Leader>u", ":UndotreeToggle<cr>", mode = "n", desc = "Toggle the Undo Tree view" }
+      { "<Leader>u", ":UndotreeToggle<cr>", mode = "n", desc = "Toggle Undo Tree" }
     },
     init = function()
       vim.g.undotree_WindowLayout = 2
@@ -130,10 +113,10 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<C-t>h",   ":ToggleTerm size=15 direction=horizontal<CR>", mode = "n", desc = "Open a horizontal terminal" },
-      { "<C-t>v",   ":ToggleTerm size=80 direction=vertical<CR>",   mode = "n", desc = "Open a vertical terminal" },
-      { "<C-t>f",   ":ToggleTerm direction=float<CR>",              mode = "n", desc = "Open a floating terminal" },
-      { "<Leader>G" }
+      { "<Leader>th", ":ToggleTerm size=15 direction=horizontal<CR>", mode = "n", desc = "Open a horizontal terminal" },
+      { "<Leader>tv", ":ToggleTerm size=80 direction=vertical<CR>",   mode = "n", desc = "Open a vertical terminal" },
+      { "<Leader>tf", ":ToggleTerm direction=float<CR>",              mode = "n", desc = "Open a floating terminal" },
+      { "<Leader>G",  desc = "Open Lazygit" }
     },
     config = function()
       require('toggleterm').setup {
@@ -199,5 +182,28 @@ return {
         }
       }
     }
-  }
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      plugins = { spelling = true },
+      defaults = {
+        mode = { "n", "v" },
+        ["]"] = { name = "+next" },
+        ["["] = { name = "+prev" },
+        ["<leader>d"] = { name = "+debug" },
+        ["<leader>t"] = { name = "+terminal" },
+      },
+    },
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+      wk.register(opts.defaults)
+    end,
+  },
 }
