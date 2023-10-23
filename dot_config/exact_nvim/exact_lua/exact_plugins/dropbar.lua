@@ -1,6 +1,6 @@
 return {
-  {
-    'Bekaboo/dropbar.nvim',
-    lazy = false
-  }
+  -- {
+  --   'Bekaboo/dropbar.nvim',
+  --   lazy = false
+  -- }
 }

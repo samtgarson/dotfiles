@@ -47,9 +47,6 @@ return {
             on_click = function() git_blame.open_file_url() end
           },
         },
-        lualine_x = {
-          { require 'lsp_spinner'.status }
-        },
         lualine_y = {
           getDiagnostics('errors', colors.error),
           getDiagnostics('warnings', colors.warning),

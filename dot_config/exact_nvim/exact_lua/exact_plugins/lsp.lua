@@ -29,7 +29,6 @@ return {
     end,
     dependencies = {
       "b0o/SchemaStore.nvim",
-      "doums/lsp_spinner.nvim",
       "folke/neodev.nvim",
       "jose-elias-alvarez/null-ls.nvim",
       "neovim/nvim-lspconfig",
@@ -54,24 +53,15 @@ return {
         }
       }
 
-      local lsp_spinner = require('lsp_spinner')
-      lsp_spinner.setup {
-        spinner = { ' ⠋', ' ⠙', ' ⠹', ' ⠸', ' ⠼', ' ⠴', ' ⠦', ' ⠧', ' ⠇', ' ⠏' },
-        interval = 30,
-        redraw_rate = 100
-      }
       local capabilities = vim.tbl_deep_extend(
         "force",
         {},
         vim.lsp.protocol.make_client_capabilities(),
         require("cmp_nvim_lsp").default_capabilities()
       )
-      lsp_spinner.init_capabilities(capabilities)
 
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       local on_attach = function(client, bufnr)
-        lsp_spinner.on_attach(client, bufnr)
-
         if client.supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
@@ -91,7 +81,7 @@ return {
           null_ls.builtins.code_actions.eslint_d,
           null_ls.builtins.diagnostics.eslint_d,
           null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.formatting.prettier,
           null_ls.builtins.diagnostics.rubocop,
           null_ls.builtins.formatting.rubocop
         },

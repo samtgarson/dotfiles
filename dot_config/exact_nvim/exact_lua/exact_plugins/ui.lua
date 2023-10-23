@@ -162,7 +162,7 @@ return {
       },
       lsp = {
         progress = {
-          enabled = false
+          enabled = true
         },
         hover = {
           silent = true,
