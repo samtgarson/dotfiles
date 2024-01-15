@@ -36,13 +36,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
       return { buffer = ev.buf, desc = desc }
     end
     vim.keymap.set('n', 'gd', function()
-      require('telescope.builtin').lsp_definitions({ jump_type = "tab" })
+      require('telescope.builtin').lsp_definitions({ jump_type = "tab", reuse_win = true })
     end, opts("Go to definition"))
     vim.keymap.set('n', 'gr', function()
-      require('telescope.builtin').lsp_references({ jump_type = "tab", show_line = false })
+      require('telescope.builtin').lsp_references({ jump_type = "tab", reuse_win = true, show_line = false })
     end, opts("Go to references"))
     vim.keymap.set('n', 'gD', function()
-      require('telescope.builtin').lsp_type_definitions({ jump_type = "tab", show_line = false })
+      require('telescope.builtin').lsp_type_definitions({ jump_type = "tab", reuse_win = true, show_line = false })
     end, opts("Go to type definitions"))
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts("Show hover"))
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts("Go to implementation"))
