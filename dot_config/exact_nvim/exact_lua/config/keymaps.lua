@@ -49,7 +49,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts("Show signature help"))
     vim.keymap.set({ 'n', 'v' }, '<leader>c', vim.lsp.buf.code_action, opts("Show code actions"))
     vim.keymap.set('n', '<leader>C', function()
-      require('vtsls-commands').select_command()
+      if vim.fn.expand('%:t') == 'package.json' then
+        require('telescope').extensions.package_info.package_info()
+      else
+        require('vtsls-commands').select_command()
+      end
     end, opts("Typescript code actions"))
     vim.keymap.set('n', '<leader>F', function()
       vim.lsp.buf.format { async = true }
