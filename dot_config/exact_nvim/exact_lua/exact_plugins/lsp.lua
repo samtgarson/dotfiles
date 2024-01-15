@@ -3,6 +3,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     event = { "BufReadPre", "BufNewFile" },
     init = function()
+      vim.g.omni_sql_no_default_maps = true
       vim.diagnostic.config {
         virtual_text = {
           spacing = 4,
@@ -191,4 +192,11 @@ return {
       }
     },
   },
+  {
+    'dmmulroy/tsc.nvim',
+    ft = { 'typescript', 'typescriptreact' },
+    opts = {
+      bin_path = "/Users/samgarson/.asdf/shims/tsc"
+    }
+  }
 }

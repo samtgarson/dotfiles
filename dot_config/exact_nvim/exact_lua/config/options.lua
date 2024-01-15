@@ -74,7 +74,6 @@ function! Quickfix(...)
 endfunction
 command! -nargs=1 Qf call Quickfix(<f-args>)
 
-command! TsErrors call Quickfix('sed  -E "s|(.*)\(([0-9]+),([0-9]+)\): (.+)|\1:\2:\3: \4|" <<< $(node_modules/.bin/tsc --noEmit | grep -E "TS[0-9]+:")')
 command! EslintErrors call Quickfix('node_modules/.bin/eslint --format=unix . --ignore-path .gitignore')
 ]]
 

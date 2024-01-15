@@ -6,6 +6,7 @@ local commands = {
   add_missing_imports = "Add Missing Imports",
   fix_all = "Fix All",
   remove_unused_imports = "Remove Unused Imports",
+  project_errors = "Show Project Errors",
 }
 
 function M.select_command()
@@ -25,6 +26,11 @@ function M.select_command()
 
   vim.ui.select(options, { prompt = "Command", format_item = format }, function(command)
     if not command then return end
+
+    if command == "project_errors" then
+      require('tsc').run()
+      return
+    end
 
     require('vtsls').commands[command](bufnr)
   end)
