@@ -97,18 +97,15 @@ return {
     config = true
   },
   {
-    'ggandor/leap.nvim',
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
     keys = {
-      { "z",  "<Plug>(leap-forward-to)",   mode = "n", desc = "Leap to a character" },
-      { "Z",  "<Plug>(leap-backward-to)",  mode = "n", desc = "Leap to a character" },
-      { "gz", "<Plug>(leap-cross-window)", mode = "n", desc = "Leap to a character in another window" },
+      { "z",     mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+      { "Z",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,     desc = "Toggle Flash Search" },
     },
-    dependencies = { 'tpope/vim-repeat' },
-    config = function()
-      local leap = require('leap')
-      leap.add_default_mappings()
-      leap.opts.highlight_unlabeled_phase_one_targets = false
-    end
   },
   {
     "akinsho/toggleterm.nvim",
@@ -164,7 +161,7 @@ return {
     'andymass/vim-matchup',
     event = 'VeryLazy',
     init = function()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      -- vim.g.matchup_matchparen_offscreen = { method = "popup", syntax_hl = true, fullwidth = true }
       vim.g.matchup_matchparen_deferred = 1
       vim.g.matchup_matchpref = {
         html = { tagnameonly = 1, },
@@ -206,4 +203,13 @@ return {
       wk.register(opts.defaults)
     end,
   },
+  {
+    'akinsho/git-conflict.nvim',
+    version = "*",
+    config = true,
+    keys = {
+      { "<Leader>cl", ":GitConflictListQf<CR>", mode = "n", desc = "Open Git Conflicts" },
+    },
+  }
+
 }
