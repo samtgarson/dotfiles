@@ -4,6 +4,9 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-refactor",
   },
+  build = ":TSUpdate",
+  event = { "VeryLazy", "VeryLazy" },
+  cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
   opts = {
     ensure_installed = {
       'bash',
@@ -36,9 +39,10 @@ return {
       highlight_current_scope = { enable = true }
     }
   },
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-  end,
   { "pantharshit00/vim-prisma", ft = 'prisma' },
-  { "amadeus/vim-mjml",         event = 'VeryLazy' },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "VeryLazy",
+    opts = {},
+  }
 }

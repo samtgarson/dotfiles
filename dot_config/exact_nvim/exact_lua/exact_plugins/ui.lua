@@ -203,8 +203,9 @@ return {
           filter_options = {},
         },
         popupmenu = {
+          relative = "editor",
           position = {
-            row = -5
+            row = -1
           },
           size = {
             height = "auto",
@@ -271,6 +272,5 @@ return {
     init = function()
       vim.notify = require("notify")
     end,
-  },
-
+  }
 }

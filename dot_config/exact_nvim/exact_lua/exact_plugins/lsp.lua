@@ -83,8 +83,6 @@ return {
           null_ls.builtins.diagnostics.eslint_d,
           null_ls.builtins.formatting.eslint_d,
           null_ls.builtins.formatting.prettier,
-          null_ls.builtins.diagnostics.rubocop,
-          null_ls.builtins.formatting.rubocop
         },
         on_attach = on_attach
       })
@@ -105,12 +103,46 @@ return {
             }
           }
         end,
-        ["tsserver"] = function()
-          -- noop
-        end,
         ["vtsls"] = function()
           require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-          require("lspconfig").vtsls.setup { on_attach = on_attach, capabilities = capabilities }
+          require("lspconfig").vtsls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+              typescript = {
+                inlayHints = {
+                  parameterNames = { enabled = "literals" },
+                  parameterTypes = { enabled = true },
+                  variableTypes = { enabled = true },
+                  propertyDeclarationTypes = { enabled = true },
+                  functionLikeReturnTypes = { enabled = true },
+                  enumMemberValues = { enabled = true },
+                }
+              },
+            },
+            handlers = {
+              source_definition = function(err, result)
+                print("handler", vim.inspect(result))
+                if result == nil or vim.tbl_isempty(result) then
+                  return nil
+                end
+
+
+                if vim.tbl_islist(result) then
+                  local filtered = {}
+                  for key, value in pairs(result) do
+                    if not string.match(value.uri, "react/index.d.ts") then
+                      filtered[key] = value
+                    end
+                  end
+                  vim.lsp.util.set_qflist(util.locations_to_items(filtered))
+                else
+                  vim.lsp.util.jump_to_location(result)
+                end
+                return nil
+              end
+            }
+          }
         end,
         ["lua_ls"] = function()
           require("lspconfig").lua_ls.setup {
@@ -154,6 +186,41 @@ return {
               },
             },
           }
+        end,
+        ["sorbet"] = function()
+          require("lspconfig").sorbet.setup({
+            root_dir = require('lspconfig.util').root_pattern('sorbet')
+          })
+        end,
+        ["ruby_ls"] = function()
+          -- helpers = require('plugins.lsp.ruby')
+          require("lspconfig").ruby_ls.setup({
+            cmd = { "/Users/samgarson/.asdf/shims/ruby-lsp" },
+            capabilities = capabilities,
+            on_attach = on_attach,
+            init_options = {
+              formatter = "none",
+              enabledFeatures = {
+                'codeActions',
+                'codeLens',
+                'completion',
+                'definition',
+                'documentHighlights',
+                'documentLink',
+                'documentSymbols',
+                'foldingRanges',
+                'hover',
+                'inlayHint',
+                'onTypeFormatting',
+                'selectionRanges',
+                'signatureHelp',
+                'workspaceSymbol'
+                -- 'diagnostics',
+                -- 'formatting',
+                -- 'semanticHighlighting',
+              },
+            }
+          })
         end
       }
     end
@@ -164,6 +231,7 @@ return {
       override = function(_root_dir, library)
         library.enabled = true
         library.plugins = true
+        library.types = true
       end,
     }
   },
