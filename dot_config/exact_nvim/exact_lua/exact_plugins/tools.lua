@@ -41,6 +41,11 @@ return {
         silent = true,
         mode = "i"
       },
+      { "<Leader>cpn", ":lua require('copilot.panel').jump_next()<CR>", mode = "n", desc = "Next Copilot suggestion" },
+      { "<Leader>cpp", ":lua require('copilot.panel').jump_prev()<CR>", mode = "n", desc = "Previous Copilot suggestion" },
+      { "<Leader>cpa", ":lua require('copilot.panel').accept()<CR>",    mode = "n", desc = "Accept Copilot suggestion" },
+      { "<Leader>cpd", ":lua require('copilot.panel').decline()<CR>",   mode = "n", desc = "Decline Copilot suggestion" },
+      { "<Leader>cpo", ":lua require('copilot.panel').open()<CR>",      mode = "n", desc = "Open Copilot panel" },
     },
     config = {
       suggestion = {
@@ -62,6 +67,10 @@ return {
         cvs = false,
         ["."] = false,
       },
+      panel = {
+        enabled = true,
+        auto_refresh = true
+      }
     }
   },
   {
@@ -77,29 +86,58 @@ return {
     end
   },
   {
-    "vim-test/vim-test",
-    keys = {
-      { "t<C-n>", ":TestNearest<CR>", mode = "n", desc = "Run the nearest test to the cursor", silent = true },
-      { "t<C-f>", ":TestFile<CR>",    mode = "n", desc = "Run all the tests in this file",     silent = true },
-      { "t<C-s>", ":TestSuite<CR>",   mode = "n", desc = "Run the entire test suite",          silent = true },
-      { "t<C-l>", ":TestLast<CR>",    mode = "n", desc = "Re-run the last test that was run",  silent = true }
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "olimorris/neotest-rspec"
     },
-    init = function()
-      vim.g['test#strategy'] = 'neovim'
-      vim.g['test#javascript#jest#file_pattern'] = "\v((test|__tests__/).*|(spec|test)?).(js|jsx|ts|tsx)$"
+    keys = {
+      { "<C-t>n", function() require("neotest").run.run() end,                   mode = "n", desc = "Run the nearest test to the cursor",   silent = true },
+      { "<C-t>l", function() require("neotest").run.run_last() end,              mode = "n", desc = "Run the last run test",                silent = true },
+      { "<C-t>x", function() require("neotest").run.stop() end,                  mode = "n", desc = "Stop the nearest test to the cursor",  silent = true },
+      { "<C-t>a", function() require("neotest").run.attach() end,                mode = "n", desc = "Attach to nearest test to the cursor", silent = true },
+      { "<C-t>o", function() require("neotest").output_panel.toggle() end,       mode = "n", desc = "Attach to nearest test to the cursor", silent = true },
+      { "<C-t>f", function() require("neotest").run.run(vim.fn.expand("%")) end, mode = "n", desc = "Run all the tests in this file",       silent = true },
+      { "<C-t>s", function() require("neotest").summary.toggle() end,            mode = "n", desc = "Toggle the test summary panel",        silent = true },
+    },
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require("neotest-rspec")
+        },
+        icons = {
+          running_animated = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+        },
+        floating = {
+          border = "solid"
+        }
+      }
     end
   },
   { 'tpope/vim-surround', event = 'VeryLazy' },
   {
-    'numToStr/Comment.nvim',
-    event = 'VeryLazy',
-    branch = 'jsx',
-    config = true
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = true,
+    opts = {
+      enable_autocmd = false,
+    }
+  },
+  {
+    "echasnovski/mini.comment",
+    event = "VeryLazy",
+    opts = {
+      options = {
+        custom_commentstring = function()
+          return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
+    },
   },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
     opts = {},
     keys = {
       { "z",     mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
@@ -154,14 +192,13 @@ return {
     init = function()
       vim.g.gitblame_display_virtual_text = 0
       vim.g.gitblame_date_format = '%r'
-      vim.g.gitblame_message_template = '<date> • <author> • <summary>'
+      vim.g.gitblame_message_template = '<author> (<date>) • <summary>'
     end
   },
   {
     'andymass/vim-matchup',
     event = 'VeryLazy',
     init = function()
-      -- vim.g.matchup_matchparen_offscreen = { method = "popup", syntax_hl = true, fullwidth = true }
       vim.g.matchup_matchparen_deferred = 1
       vim.g.matchup_matchpref = {
         html = { tagnameonly = 1, },
