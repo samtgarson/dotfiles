@@ -6,7 +6,7 @@ install_apps () {
   local apps=(
     1password
     coreutils
-    cron
+    amie
     finicky
     google-chrome
     mackup
