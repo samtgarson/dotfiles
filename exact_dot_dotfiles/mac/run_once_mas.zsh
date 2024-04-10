@@ -12,9 +12,6 @@ install_apps () {
   successfully mas install 1147396723
   success Installed Whatsapp
 
-  successfully mas install 904280696
-  success Installed Things
-
   successfully mas install 1464122853
   success Installed Next DNS
 
