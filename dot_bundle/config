@@ -1,2 +1,4 @@
 ---
 BUNDLE_JOBS: "3"
+BUNDLE_BUILD__RE2: "--with-re2-dir=/opt/homebrew/opt/re2"
+BUNDLE_BUILD__SASSC: "--disable-march-tune-native"
