@@ -39,6 +39,7 @@ vim.o.listchars = 'eol:$,tab:▸ ,trail:~,space:·,nbsp:␣,extends:❯,precedes
 
 -- Enable mouse in all modes
 vim.o.mouse = 'a'
+vim.o.mousemoveevent = true
 
 -- Ensure EOL is always present when saving
 vim.o.fixendofline = true

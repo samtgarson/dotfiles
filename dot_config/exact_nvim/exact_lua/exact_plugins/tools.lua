@@ -247,6 +247,16 @@ return {
     keys = {
       { "<Leader>cl", ":GitConflictListQf<CR>", mode = "n", desc = "Open Git Conflicts" },
     },
+  },
+  {
+    "Rentib/cliff.nvim",
+    keys = {
+      { '<c-j>', mode = { 'n', 'v', 'o' }, function() require("cliff").go_down() end },
+      { '<c-k>', mode = { 'n', 'v', 'o' }, function() require("cliff").go_up() end },
+    },
+  },
+  {
+    "soulis-1256/eagle.nvim",
+    lazy = false
   }
-
 }
