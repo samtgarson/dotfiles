@@ -195,7 +195,7 @@ return {
         ["ruby_ls"] = function()
           -- helpers = require('plugins.lsp.ruby')
           require("lspconfig").ruby_ls.setup({
-            cmd = { "/Users/samgarson/.asdf/shims/ruby-lsp" },
+            cmd = { require("utils").home_dir .. "/.asdf/shims/ruby-lsp" },
             capabilities = capabilities,
             on_attach = on_attach,
             init_options = {
