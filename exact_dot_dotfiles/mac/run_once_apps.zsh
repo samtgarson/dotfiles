@@ -9,7 +9,6 @@ install_apps () {
     amie
     finicky
     google-chrome
-    mackup
     notion
     numi
     postico
@@ -22,8 +21,6 @@ install_apps () {
   for app in $apps; do
     successfully brew install $app
   done
-
-  successfully mackup restore
 }
 
 started 'Installing Mac apps'
