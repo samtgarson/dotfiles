@@ -5,6 +5,8 @@ module.exports = {
   defaultBrowser: "Safari",
   options: {
     hideIcon: true,
+    // hideIcon: false,
+    // logRequests: true
   },
   rewrite: [
     {
@@ -16,16 +18,15 @@ module.exports = {
     {
       match: [
         "meet.google.com*",
-        "cosmos.video*",
         "localhost:*"
       ],
       browser: "Google Chrome"
     },
     {
       match: [
-          "zoom.us/j/*",
-          finicky.matchDomains(/.*\zoom.us\/j/),
-          /zoom.us\/j\//,
+        "zoom.us/j/*",
+        finicky.matchDomains(/.*\zoom.us\/j/),
+        /zoom.us\/j\//,
       ],
       browser: "us.zoom.xos"
     },
@@ -34,10 +35,9 @@ module.exports = {
       browser: "Spotify"
     },
     {
-      match: [
-        finicky.matchDomains(/notion.so/),
-        "notion.so/*",
-      ],
+      match: ({ url }) => url.host.endsWith("notion.so") &&
+        !url.host.startsWith("calendar") &&
+        !url.pathname.startsWith("/initiateExternalAuthenticationFromDesktop"),
       browser: "Notion"
     },
     {
