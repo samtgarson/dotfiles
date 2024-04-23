@@ -9,18 +9,19 @@ HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-  git
-  ruby
-  rails
-  github
-  httpie
-  heroku
-  zsh-syntax-highlighting
-  npm
-  yarn
+  direnv
   docker
   docker-compose
+  git
+  github
+  heroku
+  httpie
+  npm
+  rails
+  ruby
+  yarn
   z
+  zsh-syntax-highlighting
 )
 
 if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] ; then
