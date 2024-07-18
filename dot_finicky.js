@@ -37,6 +37,7 @@ module.exports = {
     {
       match: ({ url }) => url.host.endsWith("notion.so") &&
         !url.host.startsWith("calendar") &&
+        !url.host.startsWith("file") &&
         !url.pathname.startsWith("/initiateExternalAuthenticationFromDesktop"),
       browser: "Notion"
     },
