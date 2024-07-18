@@ -30,7 +30,6 @@ return {
     end,
     dependencies = {
       "b0o/SchemaStore.nvim",
-      "folke/neodev.nvim",
       "jose-elias-alvarez/null-ls.nvim",
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
@@ -192,9 +191,9 @@ return {
             root_dir = require('lspconfig.util').root_pattern('sorbet')
           })
         end,
-        ["ruby_ls"] = function()
+        ["ruby_lsp"] = function()
           -- helpers = require('plugins.lsp.ruby')
-          require("lspconfig").ruby_ls.setup({
+          require("lspconfig").ruby_lsp.setup({
             cmd = { require("utils").home_dir .. "/.asdf/shims/ruby-lsp" },
             capabilities = capabilities,
             on_attach = on_attach,
@@ -226,16 +225,6 @@ return {
     end
   },
   {
-    "folke/neodev.nvim",
-    config = {
-      override = function(_root_dir, library)
-        library.enabled = true
-        library.plugins = true
-        library.types = true
-      end,
-    }
-  },
-  {
     'kosayoda/nvim-lightbulb',
     event = { "BufReadPre", "BufNewFile" },
     opts = {
@@ -264,7 +253,7 @@ return {
     'dmmulroy/tsc.nvim',
     ft = { 'typescript', 'typescriptreact' },
     opts = {
-      bin_path = "/Users/samgarson/.asdf/shims/tsc"
+      bin_path = require("utils").home_dir .. "/.asdf/shims/tsc"
     }
   }
 }

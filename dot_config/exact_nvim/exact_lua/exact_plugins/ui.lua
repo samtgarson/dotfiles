@@ -5,55 +5,54 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      local tokyonight = require("tokyonight")
-      tokyonight.setup({
-        style = "moon",
-        sidebars = {
-          "qf",
-          "terminal",
-          "startuptime",
-          "undotree",
-          "NvimTree",
-          "toggleterm"
-        },
-        on_highlights = function(hl, c)
-          hl.CursorLineNr = { fg = c.orange, bold = true }
+    opts = {
+      style = "moon",
+      sidebars = {
+        "qf",
+        "terminal",
+        "startuptime",
+        "undotree",
+        "NvimTree",
+        "toggleterm"
+      },
+      on_highlights = function(hl, c)
+        hl.CursorLineNr = { fg = c.orange, bold = true }
 
-          -- Telescope highlights
-          hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
-          hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
-          hl.TelescopePromptNormal = { bg = prompt }
-          hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
-          hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
-          hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
-          hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
+        -- Telescope highlights
+        hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
+        hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.TelescopePromptNormal = { bg = prompt }
+        hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
+        hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
+        hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
 
-          -- Noise highlights
-          hl.NoiceCmdlinePopup = { bg = prompt }
-          hl.NoiceCmdlineIcon = { fg = c.purple }
-          hl.NoicePopupmenu = { bg = c.bg_dark }
+        -- Noise highlights
+        hl.NoiceCmdlinePopup = { bg = prompt }
+        hl.NoiceCmdlineIcon = { fg = c.purple }
+        hl.NoicePopupmenu = { bg = c.bg_dark }
 
-          -- Code Action Lightbulb
-          hl.LightBulbVirtualText = { fg = c.fg_dark }
+        -- Code Action Lightbulb
+        hl.LightBulbVirtualText = { fg = c.fg_dark }
 
-          -- LSP Diagnostic
-          hl.LspFloatWinNormal = { bg = prompt }
+        -- LSP Diagnostic
+        hl.LspFloatWinNormal = { bg = prompt }
 
-          -- Notify
-          hl.NotifyERRORBody = { bg = c.bg_dark }
-          hl.NotifyWARNBody = { bg = c.bg_dark }
-          hl.NotifyINFOBody = { bg = c.bg_dark }
-          hl.NotifyDEBUGBody = { bg = c.bg_dark }
-          hl.NotifyTRACEBody = { bg = c.bg_dark }
-          hl.NotifyERRORBorder = { bg = c.bg_dark, fg = c.bg_dark }
-          hl.NotifyWARNBorder = { bg = c.bg_dark, fg = c.bg_dark }
-          hl.NotifyINFOBorder = { bg = c.bg_dark, fg = c.bg_dark }
-          hl.NotifyDEBUGBorder = { bg = c.bg_dark, fg = c.bg_dark }
-          hl.NotifyTRACEBorder = { bg = c.bg_dark, fg = c.bg_dark }
-        end,
-      })
-      tokyonight.load()
+        -- Notify
+        hl.NotifyERRORBody = { bg = c.bg_dark }
+        hl.NotifyWARNBody = { bg = c.bg_dark }
+        hl.NotifyINFOBody = { bg = c.bg_dark }
+        hl.NotifyDEBUGBody = { bg = c.bg_dark }
+        hl.NotifyTRACEBody = { bg = c.bg_dark }
+        hl.NotifyERRORBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.NotifyWARNBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.NotifyINFOBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.NotifyDEBUGBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.NotifyTRACEBorder = { bg = c.bg_dark, fg = c.bg_dark }
+      end
+    },
+    init = function(opts)
+      vim.cmd([[colorscheme tokyonight]])
     end,
   },
   {
@@ -78,7 +77,7 @@ return {
   }, {
   "NvChad/nvim-colorizer.lua",
   event = "BufReadPre",
-  config = {
+  opts = {
     filetypes = { "*", "!lazy" },
     buftype = { "*", "!prompt", "!nofile" },
     user_default_options = {
@@ -100,9 +99,8 @@ return {
 },
   {
     'akinsho/bufferline.nvim',
-    version = "3.*",
     event = "BufAdd",
-    config = {
+    opts = {
       options = {
         mode = "tabs",
         separator_style = "thick",

@@ -1,14 +1,8 @@
 local M = {}
 
 local whichkey = require "which-key"
--- local legendary = require "legendary"
-
--- local function keymap(lhs, rhs, desc)
---   vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
--- end
 
 function M.setup()
-  print("HERE")
   local keymap = {
     d = {
       name = "DAP",
@@ -43,7 +37,6 @@ function M.setup()
     nowait = false,
   }
   whichkey.register(keymap, opts)
-  -- legendary.bind_whichkey(keymap, opts, false)
 
   local keymap_v = {
     d = {

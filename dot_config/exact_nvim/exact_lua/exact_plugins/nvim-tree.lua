@@ -6,7 +6,7 @@ return {
     { "-",         ':NvimTreeToggle<CR>',   desc = "Toggle file browser" },
     { "<leader>n", ':NvimTreeFindFile<CR>', desc = "Find current file in file browser" },
   },
-  config = {
+  opts = {
     trash = { cmd = vim.fn.has('macunix') and 'trash' or 'gio trash' },
     update_focused_file = {
       enable = true

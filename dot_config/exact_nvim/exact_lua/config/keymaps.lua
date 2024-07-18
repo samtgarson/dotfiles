@@ -10,9 +10,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true, remap = true })
 
 vim.keymap.set("n", "<leader>l", ":set list!<CR>", { silent = true, remap = true, desc = "Toggle paragraph symbols" })
 
--- Handy find and replace shortcut
-vim.keymap.set("v", "<C-r>", '"hy:%s/<C-r>h//g<left><left>', { remap = false, desc = "Find and replace selection" })
-
 -- Quickly close all buffers
 vim.keymap.set("n", "<leader>W", ":%bd!<CR>", { silent = true, remap = true, desc = "Close all buffers" })
 

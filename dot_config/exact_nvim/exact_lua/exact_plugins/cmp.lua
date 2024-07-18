@@ -8,6 +8,7 @@ return {
     'hrsh7th/cmp-emoji',
     'hrsh7th/cmp-path',
     'saadparwaiz1/cmp_luasnip',
+    { "folke/lazydev.nvim", ft = "lua", opts = { library = { "lazy.nvim" } } },
     -- 'ray-x/cmp-treesitter',
   },
   config = function()
@@ -36,6 +37,7 @@ return {
         }),
       }),
       sources = cmp.config.sources({
+        { name = "lazydev" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },

@@ -7,7 +7,7 @@ return {
   {
     "gbprod/cutlass.nvim",
     lazy = false,
-    config = {
+    opts = {
       cut_key = "m"
     }
   },
@@ -47,7 +47,7 @@ return {
       { "<Leader>cpd", ":lua require('copilot.panel').decline()<CR>",   mode = "n", desc = "Decline Copilot suggestion" },
       { "<Leader>cpo", ":lua require('copilot.panel').open()<CR>",      mode = "n", desc = "Open Copilot panel" },
     },
-    config = {
+    opts = {
       suggestion = {
         auto_trigger = true,
         keymap = {
@@ -258,5 +258,26 @@ return {
   {
     "soulis-1256/eagle.nvim",
     lazy = false
-  }
+  },
+  {
+    "chrisgrieser/nvim-rip-substitute",
+    keys = {
+      {
+        "<C-r>",
+        function() require("rip-substitute").sub() end,
+        mode = { "n", "x", "v" },
+        desc = "Find and replace",
+      },
+    },
+    opts = {
+      popupWin = {
+        title = "Find & Replace",
+        border = "none",
+        -- hideSearchReplaceLabels = true
+      },
+      keymaps = {
+        abort = "<Esc>"
+      }
+    },
+  },
 }
