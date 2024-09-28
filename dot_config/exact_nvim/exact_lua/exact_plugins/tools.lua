@@ -89,9 +89,11 @@ return {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-neotest/nvim-nio",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "olimorris/neotest-rspec"
+      "olimorris/neotest-rspec",
+      "marilari88/neotest-vitest"
     },
     keys = {
       { "<C-t>n", function() require("neotest").run.run() end,                   mode = "n", desc = "Run the nearest test to the cursor",   silent = true },
@@ -105,7 +107,10 @@ return {
     config = function()
       require("neotest").setup {
         adapters = {
-          require("neotest-rspec")
+          require("neotest-rspec"),
+          require("neotest-vitest") {
+            vitestCommand = "npx vitest"
+          }
         },
         icons = {
           running_animated = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
@@ -265,7 +270,7 @@ return {
       {
         "<C-r>",
         function() require("rip-substitute").sub() end,
-        mode = { "n", "x", "v" },
+        mode = { "v" },
         desc = "Find and replace",
       },
     },
