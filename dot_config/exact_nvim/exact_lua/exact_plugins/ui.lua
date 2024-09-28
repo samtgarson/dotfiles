@@ -49,6 +49,16 @@ return {
         hl.NotifyINFOBorder = { bg = c.bg_dark, fg = c.bg_dark }
         hl.NotifyDEBUGBorder = { bg = c.bg_dark, fg = c.bg_dark }
         hl.NotifyTRACEBorder = { bg = c.bg_dark, fg = c.bg_dark }
+
+        -- Neotree
+        hl.NeoTreeGitModified = { fg = c.teal }
+
+        -- Window Picker
+        hl.WindowPickerStatusLine = { bg = c.bg_dark, fg = c.white }
+        hl.WindowPickerStatusLine = { bg = c.bg_dark, fg = c.white }
+      end,
+      on_colors = function(c)
+        -- c.border = c.bg_dark
       end
     },
     init = function(opts)
@@ -103,7 +113,7 @@ return {
     opts = {
       options = {
         mode = "tabs",
-        separator_style = "thick",
+        separator_style = "none",
         buffer_close_icon = "✕",
         hover = {
           enabled = true,
@@ -113,10 +123,10 @@ return {
         diagnostics = "nvim_lsp",
         offsets = {
           {
-            filetype = "NvimTree",
-            text = "File browser",
-            text_align = "left",
-            separator = true
+            filetype = "neo-tree",
+            raw = " %{%v:lua.__get_selector()%} ",
+            highlight = { sep = { link = "WinSeparator" } },
+            separator = false,
           },
           {
             filetype = "undotree",
@@ -126,7 +136,13 @@ return {
           }
         }
       }
-    }
+    },
+    init = function()
+      _G.__cached_neo_tree_selector = nil
+      _G.__get_selector = function()
+        return _G.__cached_neo_tree_selector
+      end
+    end
   },
   {
     "folke/noice.nvim",

@@ -10,8 +10,8 @@ return {
 
   },
   keys = {
-    { "<Leader>f", "<cmd>NvimTreeClose<CR><cmd>Telescope live_grep<CR>",  desc = "Open project search" },
-    { "<C-p>",     "<cmd>NvimTreeClose<CR><cmd>Telescope find_files<CR>", desc = "Open file finder" },
+    { "<Leader>f", "<cmd>Neotree close<CR><cmd>Telescope live_grep<CR>",  desc = "Open project search" },
+    { "<C-p>",     "<cmd>Neotree close<CR><cmd>Telescope find_files<CR>", desc = "Open file finder" },
   },
   event = "VeryLazy",
   config = function()
