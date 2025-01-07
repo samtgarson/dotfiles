@@ -20,7 +20,7 @@ return {
           style = "minimal",
           border = "solid",
           -- border = Util.generate_borderchars("thick", "tl-t-tr-r-bl-b-br-l"),
-          source = "always",
+          source = true,
           header = "",
           prefix = "",
           -- pad_top = 1,
@@ -30,7 +30,6 @@ return {
     end,
     dependencies = {
       "b0o/SchemaStore.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
       "yioneko/nvim-vtsls",
@@ -38,6 +37,7 @@ return {
     config = function()
       require('mason').setup()
       require('mason-lspconfig').setup {
+        automatic_installation = true,
         ensure_installed = {
           'cssmodules_ls',
           'html',
@@ -57,7 +57,8 @@ return {
         "force",
         {},
         vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities()
+        require 'lsp-file-operations'.default_capabilities()
+      -- require("cmp_nvim_lsp").default_capabilities()
       )
 
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -73,18 +74,6 @@ return {
           })
         end
       end
-
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        debounce = 150,
-        sources = {
-          null_ls.builtins.code_actions.eslint_d,
-          null_ls.builtins.diagnostics.eslint_d,
-          null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.formatting.prettier,
-        },
-        on_attach = on_attach
-      })
 
       require("mason-lspconfig").setup_handlers {
         function(server_name) -- default handler (optional)
@@ -220,6 +209,26 @@ return {
               },
             }
           })
+        end,
+        ["yamlls"] = function()
+          require("lspconfig").yamlls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+              yaml = {
+                format = {
+                  enable = true,
+                },
+                schemastore = {
+                  enable = true,
+                  url = "https://www.schemastore.org/api/json/catalog.json",
+                },
+                schemas = {
+                  ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yaml"
+                },
+              },
+            },
+          }
         end
       }
     end

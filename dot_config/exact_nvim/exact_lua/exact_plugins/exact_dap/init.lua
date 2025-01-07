@@ -29,7 +29,6 @@ return {
   "mfussenegger/nvim-dap",
 
   dependencies = {
-
     -- fancy UI for the debugger
     {
       "rcarriga/nvim-dap-ui",
@@ -83,11 +82,6 @@ return {
 
     -- Adapters
     { 'suketa/nvim-dap-ruby' },
-    { "mxsdev/nvim-dap-vscode-js" },
-    {
-      "microsoft/vscode-js-debug",
-      build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-    },
 
     {
       'LiadOz/nvim-dap-repl-highlights',
@@ -144,7 +138,7 @@ return {
     { '<Leader>dS', function() require 'dap.ui.widgets'.scopes() end, desc = "Scopes" },
     { '<Leader>di', function() require 'dap'.step_into() end,         desc = "Step Into" },
     { '<Leader>do', function() require 'dap'.step_over() end,         desc = "Step Over" },
-    { '<Leader>dp', function() require 'dap'.pause.toggle() end,      desc = "Pause" },
+    { '<Leader>dp', function() require 'dap'.pause() end,             desc = "Pause" },
     { '<Leader>dq', function() require 'dap'.close() end,             desc = "Quit" },
     { '<Leader>dr', function() require 'dap'.repl.toggle() end,       desc = "Toggle Repl" },
     { '<Leader>ds', function() require 'dap'.continue() end,          desc = "Start" },

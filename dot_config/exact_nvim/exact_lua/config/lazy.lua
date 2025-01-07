@@ -55,6 +55,3 @@ require("lazy").setup("plugins", {
   },
 })
 vim.keymap.set("n", "<leader>L", "<cmd>:Lazy<cr>")
-
--- Eagle only works when required manually
-require("eagle").setup()

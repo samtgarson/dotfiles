@@ -93,7 +93,8 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
-      "marilari88/neotest-vitest"
+      "marilari88/neotest-vitest",
+      "zidhuss/neotest-minitest"
     },
     keys = {
       { "<C-t>n", function() require("neotest").run.run() end,                   mode = "n", desc = "Run the nearest test to the cursor",   silent = true },
@@ -110,7 +111,8 @@ return {
           require("neotest-rspec"),
           require("neotest-vitest") {
             vitestCommand = "npx vitest"
-          }
+          },
+          require("neotest-minitest")
         },
         icons = {
           running_animated = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
@@ -121,24 +123,11 @@ return {
       }
     end
   },
-  { 'tpope/vim-surround', event = 'VeryLazy' },
+  { 'echasnovski/mini.surround', version = '*' },
   {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    lazy = true,
-    opts = {
-      enable_autocmd = false,
-    }
-  },
-  {
-    "echasnovski/mini.comment",
-    event = "VeryLazy",
-    opts = {
-      options = {
-        custom_commentstring = function()
-          return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-        end,
-      },
-    },
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy"
   },
   {
     "folke/flash.nvim",
@@ -151,34 +140,35 @@ return {
     },
   },
   {
-    "akinsho/toggleterm.nvim",
-    keys = {
-      { "<Leader>th", ":ToggleTerm size=15 direction=horizontal<CR>", mode = "n", desc = "Open a horizontal terminal" },
-      { "<Leader>tv", ":ToggleTerm size=80 direction=vertical<CR>",   mode = "n", desc = "Open a vertical terminal" },
-      { "<Leader>tf", ":ToggleTerm direction=float<CR>",              mode = "n", desc = "Open a floating terminal" },
-      { "<Leader>G",  desc = "Open Lazygit" }
-    },
-    config = function()
-      require('toggleterm').setup {
-        shade_terminals = false,
-        float_opts = {
-          border = "curved",
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      bigfile = { enabled = true },
+      notifier = {
+        enabled = true,
+        style = "minimal",
+      },
+      quickfile = { enabled = true },
+      statuscolumn = { enabled = true },
+      lazygit = {
+        configure = true,
+        config = {
+          gui = { nerdFontsVersion = "" }
         }
-      }
+      },
+      scroll = { enabled = true },
+    },
+    keys = {
+      { "<leader>.",  function() Snacks.scratch() end,            desc = "Toggle Scratch Buffer" },
+      { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+      { "<leader>G",  function() Snacks.lazygit() end,            desc = "Lazygit Current File History" },
+      { "<c-/>",      function() Snacks.terminal() end,           desc = "Toggle Terminal" },
+      { "<c-_>",      function() Snacks.terminal() end,           desc = "which_key_ignore" },
+      { "<leader>un", function() Snacks.notifier.hide() end,      desc = "Dismiss All Notifications" },
 
-      local Terminal = require('toggleterm.terminal').Terminal
-      local lazygit  = Terminal:new({
-        hidden = true,
-        cmd = "lazygit",
-        dir = "git_dir",
-        direction = "tab",
-        display_name = "LazyGit",
-      })
-
-      vim.keymap.set('n', '<leader>G', function()
-        lazygit:toggle()
-      end)
-    end
+    },
   },
   {
     'nvim-pack/nvim-spectre',
@@ -225,14 +215,18 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    keys = { {
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer Local Keymaps (which-key)",
+    },
+
+    },
     opts = {
-      plugins = { spelling = true },
-      defaults = {
-        mode = { "n", "v" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader>d"] = { name = "+debug" },
-        ["<leader>t"] = { name = "+terminal" },
+      icons = {
+        mappings = false
       },
     },
     init = function()
@@ -242,7 +236,9 @@ return {
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
-      wk.register(opts.defaults)
+
+      local setDefaults = require('config.keymaps')
+      setDefaults(wk)
     end,
   },
   {
@@ -251,38 +247,6 @@ return {
     config = true,
     keys = {
       { "<Leader>cl", ":GitConflictListQf<CR>", mode = "n", desc = "Open Git Conflicts" },
-    },
-  },
-  {
-    "Rentib/cliff.nvim",
-    keys = {
-      { '<c-j>', mode = { 'n', 'v', 'o' }, function() require("cliff").go_down() end },
-      { '<c-k>', mode = { 'n', 'v', 'o' }, function() require("cliff").go_up() end },
-    },
-  },
-  {
-    "soulis-1256/eagle.nvim",
-    lazy = false
-  },
-  {
-    "chrisgrieser/nvim-rip-substitute",
-    keys = {
-      {
-        "<C-r>",
-        function() require("rip-substitute").sub() end,
-        mode = { "v" },
-        desc = "Find and replace",
-      },
-    },
-    opts = {
-      popupWin = {
-        title = "Find & Replace",
-        border = "none",
-        -- hideSearchReplaceLabels = true
-      },
-      keymaps = {
-        abort = "<Esc>"
-      }
     },
   },
 }

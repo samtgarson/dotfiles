@@ -38,18 +38,6 @@ return {
         -- LSP Diagnostic
         hl.LspFloatWinNormal = { bg = prompt }
 
-        -- Notify
-        hl.NotifyERRORBody = { bg = c.bg_dark }
-        hl.NotifyWARNBody = { bg = c.bg_dark }
-        hl.NotifyINFOBody = { bg = c.bg_dark }
-        hl.NotifyDEBUGBody = { bg = c.bg_dark }
-        hl.NotifyTRACEBody = { bg = c.bg_dark }
-        hl.NotifyERRORBorder = { bg = c.bg_dark, fg = c.bg_dark }
-        hl.NotifyWARNBorder = { bg = c.bg_dark, fg = c.bg_dark }
-        hl.NotifyINFOBorder = { bg = c.bg_dark, fg = c.bg_dark }
-        hl.NotifyDEBUGBorder = { bg = c.bg_dark, fg = c.bg_dark }
-        hl.NotifyTRACEBorder = { bg = c.bg_dark, fg = c.bg_dark }
-
         -- Neotree
         hl.NeoTreeGitModified = { fg = c.teal }
 
@@ -155,6 +143,7 @@ return {
         command_palette = true,
         long_message_to_split = true,
         lsp_doc_border = false,
+        inc_rename = true,
       },
       cmdline = {
         format = {
@@ -162,10 +151,17 @@ return {
           search_down = { icon = " " },
           search_up = { icon = " " },
           help = { pattern = "^:%s*he?l?p?%s+", icon = "❔" },
+          lua = { icon = " " },
           IncRename = {
-            pattern = "^:%s*IncRename%s+",
-            icon = " ",
-            conceal = true,
+            opts = {
+              relative = "editor",
+              position = {
+                row = "100%",
+              },
+            },
+            --   pattern = "^:%s*IncRename%s+",
+            icon = " ",
+            --   conceal = true,
           },
         }
       },
@@ -237,6 +233,12 @@ return {
             padding = { 1, 2 },
           },
           position = { row = 2, col = 1 }
+          -- },
+          -- inc_rename = {
+          --   relative = "editor",
+          --   position = {
+          --     row = "100%",
+          --   }
         }
       },
       routes = {
@@ -260,31 +262,4 @@ return {
       },
     },
   },
-  {
-    "rcarriga/nvim-notify",
-    lazy = true,
-    event = "VeryLazy",
-    keys = {
-      {
-        "<leader>un",
-        function()
-          require("notify").dismiss({ silent = true, pending = true })
-        end,
-        desc = "Delete all Notifications",
-      },
-    },
-    opts = {
-      timeout = 3000,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
-      render = "compact"
-    },
-    init = function()
-      vim.notify = require("notify")
-    end,
-  }
 }

@@ -17,6 +17,9 @@
   ui = true
 	colorMoved = zebra
 
+[merge]
+  conflictstyle = zdiff3
+
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles
 	driver = npx npm-merge-driver merge %A %O %B %P
@@ -29,15 +32,16 @@
 
 
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+  diffFilter = delta --color-only --features=interactive
 
 [delta]
-    line-numbers = true
-    side-by-side = true
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-    hunk-header-decoration-style = yellow box
+  line-numbers = true
+  side-by-side = true
+  theme = tokyonight_moon
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = yellow box
 
 [credential "https://github.com"]
 	helper =
