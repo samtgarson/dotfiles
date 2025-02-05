@@ -8,7 +8,8 @@ return {
         virtual_text = {
           spacing = 4,
           source = "if_many",
-          prefix = "●",
+          prefix = " ●",
+          suffix = " "
         }, -- disable virtual text
         -- virtual_lines = false,
         update_in_insert = true,
@@ -53,13 +54,13 @@ return {
         }
       }
 
-      local capabilities = vim.tbl_deep_extend(
+      local capabilities = require('blink.cmp').get_lsp_capabilities(vim.tbl_deep_extend(
         "force",
         {},
         vim.lsp.protocol.make_client_capabilities(),
         require 'lsp-file-operations'.default_capabilities()
       -- require("cmp_nvim_lsp").default_capabilities()
-      )
+      ))
 
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       local on_attach = function(client, bufnr)
