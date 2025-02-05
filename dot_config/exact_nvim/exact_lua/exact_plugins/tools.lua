@@ -123,7 +123,23 @@ return {
       }
     end
   },
-  { 'echasnovski/mini.surround', version = '*' },
+  {
+    'echasnovski/mini.surround',
+    version = '*',
+    event = "VeryLazy",
+    keys = {
+      { 'S',  desc = "Add surrounding" },
+      { 'ds', desc = "Delete surrounding" },
+      { 'cs', desc = "Replace surrounding" },
+    },
+    opts = {
+      mappings = {
+        add = 'S',
+        delete = 'ds',
+        replace = 'cs'
+      }
+    }
+  },
   {
     "folke/ts-comments.nvim",
     opts = {},
@@ -132,7 +148,11 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      modes = {
+        search = { enabled = true },
+      }
+    },
     keys = {
       { "z",     mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
       { "Z",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
