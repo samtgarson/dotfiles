@@ -9,21 +9,21 @@ function log () {
   echo > /dev/tty
 }
 
-function pod() {
-  local po=$(kubectl get pods -o name | grep $1 | sed 's/pod\///' | head -n 1)
-  log "$fg[white]> Found $fg_bold[yellow]$po$fg_no_bold[default]"
-  echo $po
-}
-
-function pods () {
-  local po=$(kg pods | tail -n +2 | fzf -q "$1")
-
-	if [ $po ]; then
-    local found=$(echo $po | awk -F ' ' '{ print $1 }')
-    log "$fg[white]> Found $fg_bold[yellow]$found$fg_no_bold[default]"
-		echo $found
-	fi
-}
+# function pod() {
+#   local po=$(kubectl get pods -o name | grep $1 | sed 's/pod\///' | head -n 1)
+#   log "$fg[white]> Found $fg_bold[yellow]$po$fg_no_bold[default]"
+#   echo $po
+# }
+#
+# function pods () {
+#   local po=$(kg pods | tail -n +2 | fzf -q "$1")
+#
+# 	if [ $po ]; then
+#     local found=$(echo $po | awk -F ' ' '{ print $1 }')
+#     log "$fg[white]> Found $fg_bold[yellow]$found$fg_no_bold[default]"
+# 		echo $found
+# 	fi
+# }
 
 alias logs='stern -s 1m --exclude "ping|metrics|HealthCheck"'
 
