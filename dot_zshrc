@@ -9,6 +9,7 @@ HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
+  asdf
   direnv
   docker
   docker-compose

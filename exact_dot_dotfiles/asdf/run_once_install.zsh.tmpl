@@ -4,7 +4,7 @@ source ~/.local/share/chezmoi/.helpers
 
 install_asdf() {
   started 'Installing asdf'
-  successfully git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.4
+  successfully brew install asdf
   successfully source ./config.zsh
   success 'Installed asdf'
 }
@@ -43,7 +43,7 @@ install_plugins() {
   success 'Installed asdf plugins'
 }
 
-if [[ -e ~/.asdf ]]; then
+if is_brew_installed asdf; then
   echo '✅ asdf already installed'
 else
   successfully install_asdf
