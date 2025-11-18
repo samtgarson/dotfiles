@@ -265,5 +265,22 @@ return {
     opts = {
       bin_path = require("utils").home_dir .. "/.asdf/shims/tsc"
     }
+  },
+  {
+    'stevearc/overseer.nvim',
+    lazy = false,
+    opts = {
+      templates = { "npm", "eslint" },
+      dap = false
+    },
+    keys = {
+      {
+        "<leader>T",
+        function()
+          require("overseer").run_template()
+        end,
+        desc = "Run a task"
+      }
+    },
   }
 }
