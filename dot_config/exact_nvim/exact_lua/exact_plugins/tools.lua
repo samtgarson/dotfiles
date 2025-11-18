@@ -199,6 +199,14 @@ return {
         mode = "n",
         desc = "Open Spectre"
       },
+    },
+    options = {
+      replace_engine = {
+        ["sed"] = {
+          cmd = "sed",
+          args = { "-i", "", "-E" },
+        },
+      },
     }
   },
   {

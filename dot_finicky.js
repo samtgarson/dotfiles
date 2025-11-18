@@ -2,10 +2,10 @@
 // Learn more about configuration options: https://github.com/johnste/finicky/wiki/Configuration
 
 module.exports = {
-  defaultBrowser: "Safari",
+  defaultBrowser: "Google Chrome",
   options: {
-    hideIcon: true,
-    // hideIcon: false,
+    // hideIcon: true,
+    hideIcon: false,
     // logRequests: true
   },
   rewrite: [
@@ -40,10 +40,6 @@ module.exports = {
         !url.host.startsWith("file") &&
         !url.pathname.startsWith("/initiateExternalAuthenticationFromDesktop"),
       browser: "Notion"
-    },
-    {
-      match: /^https?:\/\/.*\.slack\.com\/archives\/.*$/,
-      browser: "Slack"
     }
   ]
 }

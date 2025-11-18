@@ -12,6 +12,7 @@ return {
       'css',
       'dap_repl',
       'gitignore',
+      'hcl',
       'html',
       'javascript',
       'json',
