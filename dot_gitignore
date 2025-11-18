@@ -7,3 +7,4 @@ node_modules
 yalc.lock
 .nvimsocket
 .envrc
+vendor/bundle

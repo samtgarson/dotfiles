@@ -91,6 +91,18 @@ return {
       linters = {}
     },
     config = function(_, opts)
+      require('lint').linters.rubocop.cmd = 'bundle'
+      require('lint').linters.rubocop.args = {
+        'exec',
+        'rubocop',
+        '--format',
+        'json',
+        '--force-exclusion',
+        '--server',
+        '--stdin',
+        function() return vim.api.nvim_buf_get_name(0) end,
+      }
+
       setup_lint(opts["events"], opts["linters_by_ft"], opts["linters"])
     end
   },
@@ -109,6 +121,22 @@ return {
       },
     },
     opts = {
+      formatters = {
+        rubocop = {
+          command = "bundle",
+          args = {
+            "exec",
+            "rubocop",
+            "--server",
+            "-a",
+            "-f",
+            "quiet",
+            "--stderr",
+            "--stdin",
+            "$FILENAME",
+          },
+        }
+      },
       format_on_save = {
         timeout_ms = 1000,
         lsp_format = "fallback",

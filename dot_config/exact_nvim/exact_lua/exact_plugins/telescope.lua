@@ -53,6 +53,7 @@ return {
             '--exclude', '.yalc',
             '--exclude', 'dist',
             '--exclude', 'coverage',
+            '--exclude', 'vendor/bundle',
             '-t', 'f'
           }
         }
