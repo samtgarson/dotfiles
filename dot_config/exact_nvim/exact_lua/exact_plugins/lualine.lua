@@ -10,7 +10,10 @@ return {
     local colors = require("tokyonight.colors").setup()
     local git_blame = require('gitblame')
     local theme = require 'lualine.themes._tokyonight'.get("moon")
+    local overseer = require('overseer')
+    local overseer_constants = require('overseer.constants')
 
+    local spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' }
     local mode_color = {
       n = colors.blue,
       i = colors.green,
@@ -38,6 +41,20 @@ return {
           end
         end
       }
+    end
+
+    ---@return overseer.Task | nil
+    local function getRunningTasks()
+      return overseer.list_tasks({
+        status = { overseer_constants.STATUS.PENDING, overseer_constants.STATUS.RUNNING }
+      })[1]
+    end
+
+    local function getSpinner()
+      local hrtime = (vim.uv or vim.loop).hrtime
+      -- Advance the spinner every 80ms only once, not for each client (otherwise the spinners will skip steps).
+      -- NOTE: the spinner symbols table is 1-indexed.
+      return spinner[math.floor(hrtime() / (1e6 * 80)) % #spinner + 1]
     end
 
     theme.normal.a.bg = bg
@@ -77,8 +94,16 @@ return {
         },
         lualine_c = {
           {
+            function() return getSpinner() .. ' Running: ' .. getRunningTasks().name end,
+            color = { fg = colors.comment },
+            on_click = function() overseer.toggle() end,
+          },
+          {
             function() return string.sub(git_blame.get_current_blame_text(), 1, 100) end,
-            cond = git_blame.is_blame_text_available,
+            cond = function()
+              if getRunningTasks() ~= nil then return false end
+              return git_blame.is_blame_text_available()
+            end,
             color = { fg = colors.comment },
             on_click = function() git_blame.open_commit_url() end
           },
