@@ -31,20 +31,16 @@ return function(wk)
 
   local functions = {
     typescript_code_actions = function()
-      if vim.fn.expand("%:t") == "package.json" then
-        require("telescope").extensions.package_info.package_info()
-      else
-        require("vtsls-commands").select_command()
-      end
+      require("vtsls-commands").select_command()
     end,
     go_to_definition = function()
-      require("telescope.builtin").lsp_definitions({ jump_type = "tab", reuse_win = true })
+      Snacks.picker.lsp_definitions()
     end,
     go_to_references = function()
-      require("telescope.builtin").lsp_references({ jump_type = "tab", reuse_win = true, show_line = false })
+      Snacks.picker.lsp_references()
     end,
     go_to_type_definitions = function()
-      require("telescope.builtin").lsp_type_definitions({ jump_type = "tab", reuse_win = true, show_line = false })
+      Snacks.picker.lsp_type_definitions()
     end
   }
 

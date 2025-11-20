@@ -172,6 +172,16 @@ return {
       },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
+      input = {
+        enabled = true,
+        win = {
+          backdrop = 60,
+          border = "none",
+          keys = {
+            i_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "i", expr = true },
+          },
+        }
+      },
       lazygit = {
         configure = true,
         config = {
@@ -179,6 +189,49 @@ return {
         }
       },
       scroll = { enabled = true },
+      picker = {
+        enabled = true,
+        prompt = "❯ ",
+        matcher = {
+          fuzzy = true,
+          smartcase = true,
+          ignorecase = true,
+        },
+        formatters = {
+          file = { filename_first = true }
+        },
+        title = "",
+        win = {
+          input = {
+            keys = {
+              ["<Esc>"] = { "close", mode = { "n", "i" } },
+            },
+            border = "none",
+          },
+          list = {
+            border = "none",
+          },
+          preview = {
+            border = "none",
+          },
+          prompt = {
+            border = "none",
+          },
+        },
+        icons = {
+          files = { enabled = false },
+        }
+      },
+      scratch = {
+        win = {
+          border = "none",
+        }
+      },
+      rename = {
+        win = {
+          border = "none",
+        }
+      },
     },
     keys = {
       { "<leader>.",  function() Snacks.scratch() end,            desc = "Toggle Scratch Buffer" },
@@ -187,7 +240,33 @@ return {
       { "<c-/>",      function() Snacks.terminal() end,           desc = "Toggle Terminal" },
       { "<c-_>",      function() Snacks.terminal() end,           desc = "which_key_ignore" },
       { "<leader>un", function() Snacks.notifier.hide() end,      desc = "Dismiss All Notifications" },
-
+      {
+        "<Leader>f",
+        function()
+          vim.cmd("Neotree close")
+          Snacks.picker.grep()
+        end,
+        desc = "Open project search"
+      },
+      {
+        "<C-p>",
+        function()
+          vim.cmd("Neotree close")
+          Snacks.picker.files({
+            exclude = {
+              "node_modules",
+              ".git",
+              ".next",
+              "tmp/",
+              ".yalc",
+              "dist",
+              "coverage",
+              "vendor/bundle"
+            }
+          })
+        end,
+        desc = "Open file finder"
+      },
     },
   },
   {

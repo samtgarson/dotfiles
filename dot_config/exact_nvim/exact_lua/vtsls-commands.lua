@@ -11,7 +11,7 @@ local commands = {
 
 function M.select_command()
   local bufnr = vim.api.nvim_get_current_buf()
-  local servers = vim.lsp.get_active_clients({ bufnr = bufnr, name = "vtsls" })
+  local servers = vim.lsp.get_clients({ bufnr = bufnr, name = "vtsls" })
   if #servers == 0 then return end
 
   local options = {}
@@ -24,7 +24,7 @@ function M.select_command()
     return commands[item]
   end
 
-  vim.ui.select(options, { prompt = "Command", format_item = format }, function(command)
+  vim.ui.select(options, { prompt = "", format_item = format }, function(command)
     if not command then return end
 
     if command == "project_errors" then

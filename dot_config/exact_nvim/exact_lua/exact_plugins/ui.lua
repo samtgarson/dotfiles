@@ -18,14 +18,11 @@ return {
       on_highlights = function(hl, c)
         hl.CursorLineNr = { fg = c.orange, bold = true }
 
-        -- Telescope highlights
-        hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
-        hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
-        hl.TelescopePromptNormal = { bg = prompt }
-        hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
-        hl.TelescopePromptTitle = { bg = c.fg_gutter, fg = c.orange }
-        hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
-        hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
+        -- Snacks Picker highlights
+        hl.SnacksPickerBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        hl.SnacksPickerIcon = { bg = c.orange, fg = c.orange }
+        hl.SnacksPickerPrompt = { fg = c.orange }
+        hl.SnacksPickerInputBorder = { fg = prompt, bg = c.bg_dark }
 
         -- Noise highlights
         hl.NoiceCmdlinePopup = { bg = prompt }
@@ -99,6 +96,17 @@ return {
     'akinsho/bufferline.nvim',
     event = "BufAdd",
     opts = {
+      highlights = {
+        background = {
+          bg = {
+            attribute = "bg",
+            highlight = "bg_dark"
+          }
+        },
+        tab = {
+          bg = prompt
+        }
+      },
       options = {
         mode = "tabs",
         separator_style = "none",
