@@ -1,7 +1,7 @@
 return {
   {
     'williamboman/mason-lspconfig.nvim',
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "VeryLazy" },
     init = function()
       vim.g.omni_sql_no_default_maps = true
       vim.diagnostic.config {
@@ -71,12 +71,12 @@ return {
           'cssmodules_ls',
           'html',
           'jsonls',
+          'lua_ls',
           'prismals',
           'sorbet',
-          'lua_ls',
           'tailwindcss',
-          'yamlls',
           'vtsls',
+          'yamlls',
         },
         automatic_enable = true
       }

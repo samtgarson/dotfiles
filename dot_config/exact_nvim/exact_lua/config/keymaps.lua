@@ -4,29 +4,27 @@ return function(wk)
     mode = { "n", "v" },
     remap = true,
     -- Map more convenient window keys
-    { "<C-j>",      "<C-w>j",                  desc = "Move to window below" },
-    { "<C-k>",      "<C-w>k",                  desc = "Move to window above" },
-    { "<C-h>",      "<C-w>h",                  desc = "Move to window left" },
-    { "<C-l>",      "<C-w>l",                  desc = "Move to window right" },
+    { "<C-j>",     "<C-w>j",                  desc = "Move to window below" },
+    { "<C-k>",     "<C-w>k",                  desc = "Move to window above" },
+    { "<C-h>",     "<C-w>h",                  desc = "Move to window left" },
+    { "<C-l>",     "<C-w>l",                  desc = "Move to window right" },
 
-    { "<leader>l",  ":set list!<CR>",          desc = "Toggle paragraph symbols" },
-    { "<leader>W",  ":%bd!<CR>",               desc = "Close all buffers" },
-    { "<esc>",      ":noh<CR><esc>",           remap = false },
+    { "<leader>l", ":set list!<CR>",          desc = "Toggle paragraph symbols" },
+    { "<leader>W", ":%bd!<CR>",               desc = "Close all buffers" },
+    { "<esc>",     ":noh<CR><esc>",           remap = false },
 
     -- in normal mode, tab and shift-tab will move between tabs
-    { "<Tab>",      ":tabnext<CR>",            desc = "Next tab" },
-    { "<S-Tab>",    ":tabprevious<CR>",        desc = "Previous tab" },
+    { "<Tab>",     ":tabnext<CR>",            desc = "Next tab" },
+    { "<S-Tab>",   ":tabprevious<CR>",        desc = "Previous tab" },
 
     -- LSP mapping
-    { "<leader>e",  vim.diagnostic.open_float, desc = "Show current diagnostic" },
-    { "[g",         vim.diagnostic.goto_prev,  desc = "Go to previous diagnostic" },
-    { "]g",         vim.diagnostic.goto_next,  desc = "Go to next diagnostic" },
+    { "<leader>e", vim.diagnostic.open_float, desc = "Show current diagnostic" },
 
-    { "]",          group = "+next" },
-    { "[",          group = "+prev" },
-    { "<leader>d",  group = "Debug" },
-    { "<leader>t",  group = "Terminal" },
-    { "<Leader>cp", group = "Copilot" }
+    { "]",         group = "+next" },
+    { "[",         group = "+prev" },
+    { "<leader>d", group = "Debug" },
+    { "<leader>t", group = "Terminal" },
+    { "<Leader>a", group = "Sidekick" }
   })
 
   local functions = {

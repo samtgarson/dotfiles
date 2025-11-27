@@ -22,58 +22,6 @@ return {
     end
   },
   {
-    "zbirenbaum/copilot.lua",
-    event = "VeryLazy",
-    keys = {
-      {
-        "<Tab>",
-        function()
-          local copilot = require("copilot.suggestion")
-          if copilot.is_visible() then
-            copilot.accept()
-          else
-            -- Enter a tab character like normal
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", true)
-          end
-        end,
-        desc = "Accept Copilot suggestion",
-        remap = true,
-        silent = true,
-        mode = "i"
-      },
-      { "<Leader>cpn", ":lua require('copilot.panel').jump_next()<CR>", mode = "n", desc = "Next Copilot suggestion" },
-      { "<Leader>cpp", ":lua require('copilot.panel').jump_prev()<CR>", mode = "n", desc = "Previous Copilot suggestion" },
-      { "<Leader>cpa", ":lua require('copilot.panel').accept()<CR>",    mode = "n", desc = "Accept Copilot suggestion" },
-      { "<Leader>cpd", ":lua require('copilot.panel').decline()<CR>",   mode = "n", desc = "Decline Copilot suggestion" },
-      { "<Leader>cpo", ":lua require('copilot.panel').open()<CR>",      mode = "n", desc = "Open Copilot panel" },
-    },
-    opts = {
-      suggestion = {
-        auto_trigger = true,
-        keymap = {
-          accept = false,
-          next = "<C-n>",
-          prev = "<C-p>",
-        }
-      },
-      filetypes = {
-        yaml = false,
-        markdown = false,
-        help = false,
-        gitcommit = false,
-        gitrebase = false,
-        hgcommit = false,
-        svn = false,
-        cvs = false,
-        ["."] = false,
-      },
-      panel = {
-        enabled = true,
-        auto_refresh = true
-      }
-    }
-  },
-  {
     "mbbill/undotree",
     keys = {
       { "<Leader>u", ":UndotreeToggle<cr>", mode = "n", desc = "Toggle Undo Tree" }

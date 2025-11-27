@@ -14,15 +14,11 @@ return {
   },
 
   -- use a release tag to download pre-built binaries
-  version = 'v0.*',
-  -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- On musl libc based systems you need to add this flag
-  -- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
+  version = 'v1.*',
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    signature = { enabled = true },
+    signature = { enabled = false },
     sources = {
       default = { 'lsp' },
       per_filetype = {
@@ -67,7 +63,17 @@ return {
       },
     },
     keymap = {
-      preset = "enter"
+      preset = "enter",
+      ["<Tab>"] = {
+        "snippet_forward",
+        function() -- sidekick next edit suggestion
+          return require("sidekick").nes_jump_or_apply()
+        end,
+        -- function() -- if you are using Neovim's native inline completions
+        --   return vim.lsp.inline_completion.get()
+        -- end,
+        "fallback",
+      },
     },
   },
   opts_extend = { "sources.default" }
