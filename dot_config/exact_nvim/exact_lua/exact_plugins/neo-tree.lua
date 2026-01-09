@@ -39,6 +39,7 @@ return {
       sources = {
         "filesystem",
         "document_symbols",
+        "git_status",
         "buffers"
       },
       enable_diagnostics = true,
@@ -67,6 +68,7 @@ return {
         winbar = true,
         sources = {
           { source = "filesystem",       display_name = "Files" },
+          { source = "git_status",       display_name = "Git" },
           { source = "buffers",          display_name = "Buffers" },
           { source = "document_symbols", display_name = "Symbols" },
         },
@@ -75,6 +77,7 @@ return {
       },
       default_component_configs = {
         container = {
+          enable_character_fade = true,
           right_padding = 1
         },
         indent = {
@@ -92,6 +95,14 @@ return {
         modified = {
           symbol = "●",
         },
+        -- diagnostics = {
+        --   symbols = {
+        --     hint = "",
+        --     info = "",
+        --     warning = "",
+        --     error = "",
+        --   }
+        -- },
         name = {
           trailing_slash = false,
           use_git_status_colors = true,

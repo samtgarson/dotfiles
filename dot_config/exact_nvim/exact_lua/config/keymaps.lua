@@ -23,22 +23,24 @@ return function(wk)
     { "]",         group = "+next" },
     { "[",         group = "+prev" },
     { "<leader>d", group = "Debug" },
-    { "<leader>t", group = "Terminal" },
-    { "<Leader>a", group = "Sidekick" }
+    { "<leader>t", group = "Run tests" },
+    { "<Leader>a", group = "Sidekick" },
+    { "<Leader>N", group = "Notifications" },
   })
 
+  local lsp_opts = { auto_confirm = false }
   local functions = {
     typescript_code_actions = function()
       require("vtsls-commands").select_command()
     end,
     go_to_definition = function()
-      Snacks.picker.lsp_definitions()
+      Snacks.picker.lsp_definitions(lsp_opts)
     end,
     go_to_references = function()
-      Snacks.picker.lsp_references()
+      Snacks.picker.lsp_references(lsp_opts)
     end,
     go_to_type_definitions = function()
-      Snacks.picker.lsp_type_definitions()
+      Snacks.picker.lsp_type_definitions(lsp_opts)
     end
   }
 

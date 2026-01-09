@@ -1,0 +1,60 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "ctrl-shift-d": "vim::PushDelete",
+      "ctrl-shift-x": "vim::DeleteRight",
+      "ctrl-shift-c": "vim::PushChange",
+      "ctrl-shift-cmd-c": "vim::ChangeToEndOfLine",
+      "d d": ["workspace::SendKeystrokes", "\" _ ctrl-shift-d d"],
+      "d e": ["workspace::SendKeystrokes", "\" _ ctrl-shift-d e"],
+      "d i w": ["workspace::SendKeystrokes", "\" _ ctrl-shift-d i w"],
+      "x": ["workspace::SendKeystrokes", "\" _ ctrl-shift-x"],
+      "c l": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c l"],
+      "c c": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c c"],
+      "c e": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c e"],
+      "c i w": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c i w"],
+      "C": ["workspace::SendKeystrokes", "\" _ ctrl-shift-cmd-c"],
+      "m m": ["workspace::SendKeystrokes", "\" + ctrl-shift-d d"],
+      "m e": ["workspace::SendKeystrokes", "\" + ctrl-shift-d e"],
+      "m i w": ["workspace::SendKeystrokes", "\" + ctrl-shift-d i w"],
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "ctrl-shift-d": "vim::VisualDelete",
+      "ctrl-shift-x": "vim::VisualDelete",
+      "ctrl-shift-c": "vim::Substitute",
+      "d": ["workspace::SendKeystrokes", "\" _ ctrl-shift-d"],
+      "x": ["workspace::SendKeystrokes", "\" _ ctrl-shift-x"],
+      "c": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c"],
+      "m": ["workspace::SendKeystrokes", "\" + ctrl-shift-d"],
+    },
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "g r": "editor::FindAllReferences",
+    },
+  },
+]

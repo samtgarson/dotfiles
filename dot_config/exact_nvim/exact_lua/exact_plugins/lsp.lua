@@ -5,13 +5,7 @@ return {
     init = function()
       vim.g.omni_sql_no_default_maps = true
       vim.diagnostic.config {
-        virtual_text = {
-          spacing = 4,
-          source = "if_many",
-          prefix = " ●",
-          suffix = " "
-        }, -- disable virtual text
-        -- virtual_lines = false,
+        virtual_text = false,
         update_in_insert = true,
         underline = true,
         severity_sort = true,
@@ -26,6 +20,14 @@ return {
           prefix = "",
           -- pad_top = 1,
           -- pad_bottom = 1,
+        },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '',
+            [vim.diagnostic.severity.HINT] = '󰌵',
+          }
         }
       }
     end,
@@ -111,7 +113,8 @@ return {
     'dmmulroy/tsc.nvim',
     ft = { 'typescript', 'typescriptreact' },
     opts = {
-      bin_path = require("utils").home_dir .. "/.asdf/shims/tsc"
+      bin_path = require("utils").home_dir .. "/.asdf/shims/tsc",
+      run_as_monorepo = true,
     }
   },
   {

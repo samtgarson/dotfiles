@@ -45,13 +45,13 @@ return {
       "zidhuss/neotest-minitest"
     },
     keys = {
-      { "<C-t>n", function() require("neotest").run.run() end,                   mode = "n", desc = "Run the nearest test to the cursor",   silent = true },
-      { "<C-t>l", function() require("neotest").run.run_last() end,              mode = "n", desc = "Run the last run test",                silent = true },
-      { "<C-t>x", function() require("neotest").run.stop() end,                  mode = "n", desc = "Stop the nearest test to the cursor",  silent = true },
-      { "<C-t>a", function() require("neotest").run.attach() end,                mode = "n", desc = "Attach to nearest test to the cursor", silent = true },
-      { "<C-t>o", function() require("neotest").output_panel.toggle() end,       mode = "n", desc = "Attach to nearest test to the cursor", silent = true },
-      { "<C-t>f", function() require("neotest").run.run(vim.fn.expand("%")) end, mode = "n", desc = "Run all the tests in this file",       silent = true },
-      { "<C-t>s", function() require("neotest").summary.toggle() end,            mode = "n", desc = "Toggle the test summary panel",        silent = true },
+      { "<Leader>tn", function() require("neotest").run.run() end,                   mode = "n", desc = "Run the nearest test to the cursor",   silent = true },
+      { "<Leader>tl", function() require("neotest").run.run_last() end,              mode = "n", desc = "Run the last run test",                silent = true },
+      { "<Leader>tx", function() require("neotest").run.stop() end,                  mode = "n", desc = "Stop the nearest test to the cursor",  silent = true },
+      { "<Leader>ta", function() require("neotest").run.attach() end,                mode = "n", desc = "Attach to nearest test to the cursor", silent = true },
+      { "<Leader>to", function() require("neotest").output_panel.toggle() end,       mode = "n", desc = "Attach to nearest test to the cursor", silent = true },
+      { "<Leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, mode = "n", desc = "Run all the tests in this file",       silent = true },
+      { "<Leader>ts", function() require("neotest").summary.toggle() end,            mode = "n", desc = "Toggle the test summary panel",        silent = true },
     },
     config = function()
       require("neotest").setup {
@@ -144,6 +144,7 @@ return {
           fuzzy = true,
           smartcase = true,
           ignorecase = true,
+          frecency = true,
         },
         formatters = {
           file = { filename_first = true }
@@ -182,17 +183,17 @@ return {
       },
     },
     keys = {
-      { "<leader>.",  function() Snacks.scratch() end,            desc = "Toggle Scratch Buffer" },
-      { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-      { "<leader>G",  function() Snacks.lazygit() end,            desc = "Lazygit Current File History" },
-      { "<c-/>",      function() Snacks.terminal() end,           desc = "Toggle Terminal" },
-      { "<c-_>",      function() Snacks.terminal() end,           desc = "which_key_ignore" },
-      { "<leader>un", function() Snacks.notifier.hide() end,      desc = "Dismiss All Notifications" },
+      { "<leader>.",  function() Snacks.scratch() end,               desc = "Toggle Scratch Buffer" },
+      { "<leader>cR", function() Snacks.rename.rename_file() end,    desc = "Rename File" },
+      { "<leader>G",  function() Snacks.lazygit() end,               desc = "Lazygit Current File History" },
+      { "<c-/>",      function() Snacks.terminal() end,              desc = "Toggle Terminal" },
+      { "<leader>Nn", function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
+      { "<leader>Nh", function() Snacks.notifier.show_history() end, desc = "Show notifier history" },
       {
         "<Leader>f",
         function()
           vim.cmd("Neotree close")
-          Snacks.picker.grep()
+          Snacks.picker.grep({ title = "" })
         end,
         desc = "Open project search"
       },
@@ -201,6 +202,8 @@ return {
         function()
           vim.cmd("Neotree close")
           Snacks.picker.files({
+            title = "",
+            hidden = true,
             exclude = {
               "node_modules",
               ".git",
@@ -218,23 +221,32 @@ return {
     },
   },
   {
-    'nvim-pack/nvim-spectre',
-    keys = {
-      {
-        "<Leader>S",
-        function() require("spectre").open() end,
-        mode = "n",
-        desc = "Open Spectre"
+    "MagicDuck/grug-far.nvim",
+    opts = {
+      headerMaxWidth = 80,
+      icons = { enabled = false },
+      -- showCompactInputs = true,
+      helpLine = { enabled = false },
+      resultsSeparatorLineChar = "―",
+      openTargetWindow = {
+        useScratchBuffer = false,
+      },
+      keymaps = {},
+      previewWindow = {
+        border = "none",
       },
     },
-    options = {
-      replace_engine = {
-        ["sed"] = {
-          cmd = "sed",
-          args = { "-i", "", "-E" },
-        },
-      },
-    }
+    cmd = { "GrugFar", "GrugFarWithin" },
+    keys = {
+      {
+        "<leader>S",
+        function()
+          require("grug-far").toggle_instance({ instance_name = "project" })
+        end,
+        mode = { "n", "x" },
+        desc = "Search and Replace in project",
+      }
+    },
   },
   {
     'f-person/git-blame.nvim',

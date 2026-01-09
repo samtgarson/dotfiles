@@ -143,10 +143,11 @@ return {
       },
       formatters_by_ft = {
         javascript = { "prettier" },
-        typescript = { "prettier" },
         javascriptreact = { "prettier" },
+        ruby = { "rubocop" },
+        sql = { "sql_formatter" },
+        typescript = { "prettier" },
         typescriptreact = { "prettier" },
-        ruby = { "rubocop" }
       },
     },
   }
