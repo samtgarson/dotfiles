@@ -7,42 +7,103 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "vim": {
+    "toggle_relative_line_numbers": true,
+  },
+  "edit_predictions": {
+    "copilot": {
+      "enable_next_edit_suggestions": false,
+    },
+  },
+  "features": {
+    "edit_prediction_provider": "copilot",
+  },
+  "agent": {
+    "button": false,
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "notification_panel": {
+    "button": false,
+  },
+  "outline_panel": {
+    "button": false,
+  },
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.9,
+  },
+  "debugger": {
+    "button": false,
+  },
+  "title_bar": {
+    "show_user_menu": true,
+    "show_branch_name": true,
+    "show_sign_in": true,
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
+  },
   "autosave": "on_focus_change",
   "relative_line_numbers": "enabled",
   "tab_size": 2,
   "use_system_window_tabs": false,
   "tab_bar": {
-    "show_tab_bar_buttons": true,
-    "show_nav_history_buttons": false
+    "show": true,
+    "show_tab_bar_buttons": false,
+    "show_nav_history_buttons": false,
   },
   "tabs": {
     "show_diagnostics": "off",
     "file_icons": false,
-    "git_status": false
+    "git_status": false,
   },
   "agent_ui_font_size": 15.0,
-  "buffer_line_height": "comfortable",
+  "buffer_line_height": {
+    "custom": 1.818000078201294
+  },
   "ui_font_family": ".ZedSans",
   "buffer_font_family": "DankMono Nerd Font Plus Font Awesome Plus Material Design Icons",
   "diagnostics": {
-    "button": true
+    "button": true,
   },
   "terminal": {
-    "button": true
+    "dock": "right",
+    "button": false,
   },
   "status_bar": {
     "cursor_position_button": true,
-    "active_language_button": true
+    "active_language_button": true,
   },
   "project_panel": {
-    "button": true
+    "hide_root": true,
+    "folder_icons": false,
+    "git_status": false,
+    "file_icons": false,
+    "button": false,
   },
   "search": {
-    "button": true
+    "button": true,
   },
   "vim_mode": true,
   "icon_theme": "Zed (Default)",
   "ui_font_size": 15.0,
   "buffer_font_size": 14.0,
-  "theme": "Tokyo Night Moon"
+  "theme": "Tokyo Night Moon",
 }

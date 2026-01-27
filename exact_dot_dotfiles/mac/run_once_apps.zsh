@@ -5,17 +5,19 @@ source ~/.local/share/chezmoi/.helpers
 install_apps () {
   local apps=(
     1password
+    claude-code
     coreutils
-    amie
     finicky
+    fzf
     google-chrome
+    mackup
     notion
-    numi
     postico
     raycast
     slack
     spotify
     trash
+    zed
   )
 
   for app in $apps; do

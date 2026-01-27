@@ -1,45 +1,54 @@
 // Use https://finicky-kickstart.now.sh to generate basic configuration
-// Learn more about configuration options: https://github.com/johnste/finicky/wiki/Configuration
+// Learn more about configuration options: https://github.com/johnste/finicky/wiki/Configuration-(v4)
 
-module.exports = {
+export default {
   defaultBrowser: "Google Chrome",
   options: {
-    // hideIcon: true,
-    hideIcon: false,
+    hideIcon: true,
+    // hideIcon: false,
     // logRequests: true
   },
   rewrite: [
     {
       match: ({ url }) => url.protocol === "http" && url.host !== "localhost",
-      url: { protocol: "https" }
-    }
+      url: (url) => {
+        url.protocol = "https";
+        return url;
+      },
+    },
   ],
   handlers: [
     {
-      match: [
-        "meet.google.com*",
-        "localhost:*"
-      ],
-      browser: "Google Chrome"
+      match: ["meet.google.com*", "localhost:*"],
+      browser: "Google Chrome",
     },
     {
       match: [
         "zoom.us/j/*",
-        finicky.matchDomains(/.*\zoom.us\/j/),
+        finicky.matchHostnames(/.*\.zoom.us/),
         /zoom.us\/j\//,
       ],
-      browser: "us.zoom.xos"
+      browser: "us.zoom.xos",
     },
     {
       match: "open.spotify.com/*",
-      browser: "Spotify"
+      browser: "Spotify",
     },
     {
-      match: ({ url }) => url.host.endsWith("notion.so") &&
+      match: ({ url }) =>
+        url.host.endsWith("notion.so") &&
         !url.host.startsWith("calendar") &&
         !url.host.startsWith("file") &&
         !url.pathname.startsWith("/initiateExternalAuthenticationFromDesktop"),
-      browser: "Notion"
-    }
-  ]
-}
+      browser: "Notion",
+    },
+    {
+      match: "linear.app/*",
+      browser: "Linear",
+    },
+    {
+      match: "figma.com/*",
+      browser: "Figma",
+    },
+  ],
+};

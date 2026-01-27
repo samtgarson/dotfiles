@@ -10,7 +10,7 @@ install_asdf() {
 }
 
 install_plugin() {
-  [[ $(asdf plugin-list) =~ $1 ]] || asdf plugin-add $@
+  [[ $(asdf plugin list) =~ $1 ]] || asdf plugin add $@
 }
 
 install_plugins() {

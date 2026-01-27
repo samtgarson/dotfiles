@@ -9,18 +9,18 @@ source ~/.local/share/chezmoi/.helpers
 started "Setting macOS defaults"
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+# osascript -e 'tell application "System Preferences" to quit'
 
 check_sudo
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # General UI/UX
 # #############
 
 # Only show scrollbars when scrolling
-defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+# defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
 # Disable the over-the-top focus ring animation
 defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
@@ -164,20 +164,20 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # Kill affected applications
 # ##########################
 
-for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Photos" \
-	"Safari" \
-	"SystemUIServer" \
-	"Terminal"; do
-	killall "${app}" &> /dev/null
-done
+# for app in "Activity Monitor" \
+# 	"Address Book" \
+# 	"Calendar" \
+# 	"cfprefsd" \
+# 	"Contacts" \
+# 	"Dock" \
+# 	"Finder" \
+# 	"Google Chrome" \
+# 	"Mail" \
+# 	"Messages" \
+# 	"Photos" \
+# 	"Safari" \
+# 	"SystemUIServer" \
+# 	"Terminal"; do
+# 	killall "${app}" &> /dev/null
+# done
 success "Successfully set macOS defaults. Note that some of these changes require a logout/restart to take effect."

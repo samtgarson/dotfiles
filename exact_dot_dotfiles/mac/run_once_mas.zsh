@@ -9,7 +9,7 @@ install_apps () {
   successfully mas install 1176895641
   success Installed Spark
 
-  successfully mas install 1147396723
+  successfully mas install 310633997
   success Installed Whatsapp
 
   successfully mas install 1464122853
@@ -39,4 +39,3 @@ fi
 started Installing Mac Apps
 install_apps
 success Installed Mac Apps
-

@@ -75,7 +75,9 @@ return {
           'jsonls',
           'lua_ls',
           'prismals',
+          {{- if .lang.ruby }}
           'sorbet',
+          {{- end }}
           'tailwindcss',
           'vtsls',
           'yamlls',
