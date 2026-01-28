@@ -52,9 +52,16 @@
     // "tags": []
   },
   {
-    "label": "start lazygit",
+    "label": "LazyGit",
     "command": "lazygit",
-    "use_new_terminal": true,
+    "shell": {
+      "program": "sh",
+    },
+    "hide": "on_success",
     "reveal_target": "center",
+    "show_summary": false,
+    "show_command": false,
+    "allow_concurrent_runs": false,
+    "use_new_terminal": true,
   },
 ]

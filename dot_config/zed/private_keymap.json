@@ -8,9 +8,7 @@
 [
   {
     "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-    },
+    "bindings": {},
   },
   {
     "context": "Editor && vim_mode == insert",
@@ -55,7 +53,17 @@
   {
     "context": "(Editor && vim_mode != insert) || (!Terminal && !Editor)",
     "bindings": {
-      "space G": "git_panel::ToggleFocus",
+      // "space G": "git_panel::ToggleFocus",
+      "space G": ["task::Spawn", { "task_name": "LazyGit" }],
+      "space O": "project_symbols::Toggle",
+      "space W": "pane::CloseAllItems",
+      "space F": "pane::DeploySearch",
+    },
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "space c": "editor::ToggleCodeActions",
     },
   },
 ]

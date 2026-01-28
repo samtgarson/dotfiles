@@ -7,6 +7,22 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "git_panel": {
+    "button": false
+  },
+  "toolbar": {
+    "code_actions": false,
+    "agent_review": false,
+    "quick_actions": false
+  },
+  "agent_servers": {
+    "claude": {
+      "default_mode": "acceptEdits",
+      "favorite_models": [],
+      "default_config_options": {},
+      "favorite_config_option_values": {}
+    }
+  },
   "vim": {
     "toggle_relative_line_numbers": true,
   },
@@ -89,7 +105,7 @@
   },
   "status_bar": {
     "cursor_position_button": true,
-    "active_language_button": true,
+    "active_language_button": false,
   },
   "project_panel": {
     "hide_root": true,
@@ -99,7 +115,7 @@
     "button": false,
   },
   "search": {
-    "button": true,
+    "button": false,
   },
   "vim_mode": true,
   "icon_theme": "Zed (Default)",
