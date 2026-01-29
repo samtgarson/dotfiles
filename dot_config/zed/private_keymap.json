@@ -8,7 +8,9 @@
 [
   {
     "context": "Workspace",
-    "bindings": {},
+    "bindings": {
+      "ctrl-p": "file_finder::Toggle",
+    },
   },
   {
     "context": "Editor && vim_mode == insert",
@@ -64,6 +66,17 @@
     "context": "(VimControl && !menu)",
     "bindings": {
       "space c": "editor::ToggleCodeActions",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-p": null,
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-p": null,
     },
   },
 ]
