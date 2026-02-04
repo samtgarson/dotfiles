@@ -1,3 +1,7 @@
+{{- if eq .chezmoi.os "darwin" }}
+Include ~/.colima/ssh_config
+{{- end }}
+
 Host *
   {{- if eq .chezmoi.os "darwin" }}
   AddKeysToAgent yes
@@ -14,4 +18,3 @@ Host pi
 Host code
   HostName code.samgarson.com
   User sam
-

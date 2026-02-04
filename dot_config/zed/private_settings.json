@@ -7,21 +7,28 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "font_style": "italic",
+      },
+    },
+  },
   "git_panel": {
-    "button": false
+    "button": false,
   },
   "toolbar": {
     "code_actions": false,
     "agent_review": false,
-    "quick_actions": false
+    "quick_actions": false,
   },
   "agent_servers": {
     "claude": {
       "default_mode": "acceptEdits",
       "favorite_models": [],
       "default_config_options": {},
-      "favorite_config_option_values": {}
-    }
+      "favorite_config_option_values": {},
+    },
   },
   "vim": {
     "toggle_relative_line_numbers": true,
@@ -92,7 +99,7 @@
   },
   "agent_ui_font_size": 15.0,
   "buffer_line_height": {
-    "custom": 1.818000078201294
+    "custom": 1.818000078201294,
   },
   "ui_font_family": ".ZedSans",
   "buffer_font_family": "DankMono Nerd Font Plus Font Awesome Plus Material Design Icons",

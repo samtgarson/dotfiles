@@ -5,7 +5,7 @@
 [core]
   excludesfile = ~/.gitignore
   pager = delta
-  editor = nvim
+  # editor = nvim
 
 [pull]
 	rebase = true

@@ -72,6 +72,6 @@ fi
 
 source ~/.dotfiles/completions.zsh
 
-export PATH="./bin:$PATH"
+export PATH="./bin:$HOME/.local/bin:$PATH"
 
 eval "$(starship init zsh)"
