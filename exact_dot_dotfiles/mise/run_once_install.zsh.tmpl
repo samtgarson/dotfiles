@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+
+install_mise() {
+  started 'Installing mise'
+  successfully brew install mise
+  success 'Installed mise'
+}
+
+install_tools() {
+  started 'Installing mise tools'
+  successfully mise install
+  success 'Installed mise tools'
+}
+
+if is_brew_installed mise; then
+  echo '✅ mise already installed'
+else
+  successfully install_mise
+fi
+
+install_tools

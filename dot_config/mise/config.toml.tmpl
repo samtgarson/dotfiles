@@ -1,0 +1,43 @@
+[tools]
+node = "22.16.0"
+dust = "0.8.5"
+{{- if .lang.ruby }}
+ruby = "3.2.2"
+{{- end }}
+{{- if .lang.golang }}
+go = "1.16.5"
+{{- end }}
+{{- if .lang.rust }}
+rust = "1.42.0"
+{{- end }}
+{{- if .lang.swift }}
+swift = "5.2"
+{{- end }}
+{{- if .lang.java }}
+java = "zulu-17.32.13"
+{{- end }}
+{{- if .lang.dotnet }}
+dotnet = "3.1.404"
+{{- end }}
+{{- if .lang.python }}
+python = "3.10.13"
+{{- end }}
+
+[settings]
+env_file = '.env' # load env vars from a dotenv file, see `MISE_ENV_FILE`
+
+# Replaces legacy_version_file=yes from .asdfrc
+# Enable reading .node-version, .ruby-version, .python-version, etc.
+idiomatic_version_file_enable_tools = [
+  "node",
+  "python",
+{{- if .lang.ruby }}
+  "ruby",
+{{- end }}
+{{- if .lang.golang }}
+  "go",
+{{- end }}
+{{- if .lang.rust }}
+  "rust",
+{{- end }}
+]

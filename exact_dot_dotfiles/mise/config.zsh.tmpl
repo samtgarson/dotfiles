@@ -1,7 +1,7 @@
 source ~/.local/share/chezmoi/.helpers
 
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
+# mise initialization
+eval "$(mise activate zsh)"
 
 # doctl config
 # ============
@@ -11,9 +11,8 @@ fi
 
 # java config
 # ===========
-
 {{- if .lang.java }}
-. ~/.asdf/plugins/java/set-java-home.zsh
+export JAVA_HOME="$(mise where java 2>/dev/null || true)"
 {{- end }}
 
 # npm config
@@ -39,8 +38,8 @@ alias be='bundle exec'
 # dotnet config
 # =============
 {{- if .lang.dotnet }}
-  . ~/.asdf/plugins/dotnet-core/set-dotnet-home.zsh
-  export PATH="~/.dotnet/tools:$PATH"
+export DOTNET_ROOT="$(mise where dotnet 2>/dev/null || true)"
+export PATH="~/.dotnet/tools:$PATH"
 {{- end }}
 
 # 1password config
@@ -78,4 +77,3 @@ alias be='bundle exec'
 1p_get () {
   op list items | jq -r '.[].overview.title' | fzf
 }
-

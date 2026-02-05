@@ -7,7 +7,9 @@
       "WebFetch(domain:api.github.com)",
       "mcp__acp__Write",
       "mcp__acp__Edit",
-      "mcp__acp__Bash"
+      "mcp__acp__Bash",
+      "WebFetch(domain:mise.jdx.dev)",
+      "WebFetch(domain:starship.rs)"
     ],
     "deny": [],
     "ask": []

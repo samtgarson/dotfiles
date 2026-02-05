@@ -6,6 +6,7 @@ format = """\
   $git_commit\
   $git_state\
   $git_status\
+  $mise\
   $golang\
   $nodejs\
   $python\
@@ -64,3 +65,9 @@ symbol = " "
 
 [nodejs]
 symbol = "⬢ "
+
+[mise]
+disabled = false
+symbol = ""
+format = '[$symbol$health]($style) '
+style = "purple"

@@ -1,5 +1,5 @@
 return {
-  cmd = { require("utils").home_dir .. "/.asdf/shims/ruby-lsp" },
+  cmd = { "ruby-lsp" },
   init_options = {
     formatter = "none",
     enabledFeatures = {

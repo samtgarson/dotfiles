@@ -53,13 +53,14 @@
     },
   },
   {
-    "context": "(Editor && vim_mode != insert) || (!Terminal && !Editor)",
+    "context": "(Editor && mode == full && vim_mode != insert) || (!Terminal && !Editor)",
     "bindings": {
       // "space G": "git_panel::ToggleFocus",
       "space G": ["task::Spawn", { "task_name": "LazyGit" }],
+      "space g": "git_panel::ToggleFocus",
       "space O": "project_symbols::Toggle",
       "space W": "pane::CloseAllItems",
-      "space F": "pane::DeploySearch",
+      "space f": "pane::DeploySearch",
     },
   },
   {
