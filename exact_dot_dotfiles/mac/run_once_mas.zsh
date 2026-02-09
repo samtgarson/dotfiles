@@ -26,6 +26,9 @@ install_apps () {
 
   successfully mas install 1569813296
   success Installed 1Password for Safari
+
+  successfully mas install 904280696
+  success Installed Things
 }
 
 if is_installed mas; then
