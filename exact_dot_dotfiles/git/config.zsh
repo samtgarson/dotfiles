@@ -91,3 +91,46 @@ jirabr () {
     git checkout -b $branch
   fi
 }
+
+# setup a new worktree with env files, mise, and dependencies
+setup_new_worktree() {
+  # ensure we're in a git worktree (not the main working tree)
+  if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "Not inside a git repository" >&2
+    return 1
+  fi
+
+  local git_common_dir="$(git rev-parse --git-common-dir 2>/dev/null)"
+  local git_dir="$(git rev-parse --git-dir 2>/dev/null)"
+  if [[ "$(realpath "$git_common_dir")" == "$(realpath "$git_dir")" ]]; then
+    echo "Not a worktree (this is the main working tree)" >&2
+    return 1
+  fi
+
+  local source_dir="$(dirname "$git_common_dir")"
+
+  # copy .env and mise.local.toml if they exist in source
+  for f in .env mise.local.toml; do
+    if [[ -f "$source_dir/$f" && ! -f "$f" ]]; then
+      cp "$source_dir/$f" "$f"
+      echo "Copied $f"
+    fi
+  done
+
+  # run mise trust and install
+  if [[ -f .mise.toml || -f mise.toml || -f mise.local.toml ]]; then
+    mise trust
+    mise install
+  fi
+
+  # install dependencies
+  if [[ -f pnpm-lock.yaml ]]; then
+    pnpm install
+  elif [[ -f package-lock.json ]]; then
+    npm install
+  elif [[ -f yarn.lock ]]; then
+    yarn install
+  elif [[ -f bun.lockb || -f bun.lock ]]; then
+    bun install
+  fi
+}

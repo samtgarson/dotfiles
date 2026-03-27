@@ -6,5 +6,7 @@ export ANDROID_HOME="$ANDROID_SDK"
 export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 
 export EDITOR=zed
+export GIT_EDITOR=nvim
+export VISUAL=zed
 
 export NODEJS_CHECK_SIGNATURES=no

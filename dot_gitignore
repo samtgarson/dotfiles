@@ -8,3 +8,4 @@ yalc.lock
 .nvimsocket
 .envrc
 vendor/bundle
+mise.local.toml
