@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
   defaults = { lazy = true },
   checker = { enabled = false },
-  install = { colorscheme = { "tokyonight" } },
+  install = { colorscheme = { require("config.theme").colorscheme } },
   diff = {
     cmd = "terminal_git",
   },

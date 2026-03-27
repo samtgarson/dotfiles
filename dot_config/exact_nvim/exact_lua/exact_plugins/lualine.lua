@@ -3,13 +3,21 @@ return {
   event = "VeryLazy",
   dependencies = {
     "folke/tokyonight.nvim",
+    "rebelot/kanagawa.nvim",
     "nvim-lua/lsp-status.nvim"
   },
   config = function()
     local diagnostics = require 'lsp-status.diagnostics'
-    local colors = require("tokyonight.colors").setup()
+    local is_conductor = require("config.theme").is_conductor
+    local colors, theme
+    if is_conductor then
+      colors = require("kanagawa.colors").setup({ theme = "dragon" }).palette
+      theme = require("lualine.themes.kanagawa")
+    else
+      colors = require("tokyonight.colors").setup()
+      theme = require 'lualine.themes._tokyonight'.get("moon")
+    end
     local git_blame = require('gitblame')
-    local theme = require 'lualine.themes._tokyonight'.get("moon")
     local overseer = require('overseer')
     local overseer_constants = require('overseer.constants')
 

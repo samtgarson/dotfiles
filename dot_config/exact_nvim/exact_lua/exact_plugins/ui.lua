@@ -47,7 +47,9 @@ return {
       end
     },
     init = function(opts)
-      vim.cmd([[colorscheme tokyonight]])
+      if not require("config.theme").is_conductor then
+        vim.cmd([[colorscheme tokyonight]])
+      end
     end,
   },
   {
@@ -55,7 +57,12 @@ return {
     event = "BufReadPost",
     config = function()
       local scrollbar = require("scrollbar")
-      local colors = require("tokyonight.colors").setup()
+      local colors
+      if require("config.theme").is_conductor then
+        colors = require("kanagawa.colors").setup({ theme = "dragon" }).palette
+      else
+        colors = require("tokyonight.colors").setup()
+      end
       scrollbar.setup({
         handle = { color = colors.bg_highlight },
         excluded_filetypes = { "prompt", "TelescopePrompt", "notify", "NvimTree" },
@@ -285,7 +292,108 @@ return {
     config = function(_, opts)
       require("tiny-inline-diagnostic").setup({ options = opts })
     end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      colors = {
+        theme = {
+          dragon = {
+            ui = {
+              bg = "#151110",
+              bg_dim = "#151110",
+            },
+          },
+        },
+      },
+    },
+    init = function()
+      if require("config.theme").is_conductor then
+        vim.cmd([[colorscheme kanagawa-dragon]])
+      end
+    end,
+  },
+  {
+    "tiagovla/tokyodark.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      color_overrides = {
+        mocha = {
+          base = "#151110",
+          mantle = "#151110",
+        },
+      },
+    },
   }
+  -- {
+  --   "zaldih/themery.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("themery").setup({
+  --       themes = {
+  --         {
+  --           name = "Tokyo Night Moon",
+  --           colorscheme = "tokyonight-moon",
+  --         },
+  --         {
+  --           name = "Tokyo Night Storm",
+  --           colorscheme = "tokyonight-storm",
+  --         },
+  --         {
+  --           name = "Tokyo Night Night",
+  --           colorscheme = "tokyonight-night",
+  --         },
+  --         {
+  --           name = "Tokyo Night Day",
+  --           colorscheme = "tokyonight-day",
+  --         },
+  --         {
+  --           name = "Kanagawa Wave",
+  --           colorscheme = "kanagawa-wave",
+  --         },
+  --         {
+  --           name = "Kanagawa Dragon",
+  --           colorscheme = "kanagawa-dragon",
+  --         },
+  --         {
+  --           name = "Kanagawa Lotus",
+  --           colorscheme = "kanagawa-lotus",
+  --         },
+  --         {
+  --           name = "Tokyo Dark",
+  --           colorscheme = "tokyodark",
+  --         },
+  --         {
+  --           name = "Catppuccin Latte",
+  --           colorscheme = "catppuccin-latte",
+  --         },
+  --         {
+  --           name = "Catppuccin Frappe",
+  --           colorscheme = "catppuccin-frappe",
+  --         },
+  --         {
+  --           name = "Catppuccin Macchiato",
+  --           colorscheme = "catppuccin-macchiato",
+  --         },
+  --         {
+  --           name = "Catppuccin Mocha",
+  --           colorscheme = "catppuccin-mocha",
+  --         },
+  --       },
+  --       livePreview = true,
+  --     })
+  --   end,
+  -- },
   -- {
   --   "sphamba/smear-cursor.nvim",
   --   event = "VeryLazy",
