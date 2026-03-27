@@ -13,9 +13,22 @@
     },
   },
   {
-    "context": "Editor && vim_mode == insert",
+    "context": "EmptyPane",
     "bindings": {
-      // "j k": "vim::NormalBefore"
+      "-": "pane::RevealInProjectPanel",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space n": "pane::RevealInProjectPanel",
+      "-": "pane::RevealInProjectPanel",
+    },
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "-": "workspace::ToggleLeftDock",
     },
   },
   {
@@ -29,15 +42,18 @@
       "d d": ["workspace::SendKeystrokes", "\" _ ctrl-shift-d d"],
       "d e": ["workspace::SendKeystrokes", "\" _ ctrl-shift-d e"],
       "d i": ["workspace::SendKeystrokes", "\" _ ctrl-shift-d i"],
+      "d f": ["workspace::SendKeystrokes", "\" _ ctrl-shift-d f"],
       "x": ["workspace::SendKeystrokes", "\" _ ctrl-shift-x"],
       "c l": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c l"],
       "c c": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c c"],
       "c e": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c e"],
       "c i": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c i"],
+      "c f": ["workspace::SendKeystrokes", "\" _ ctrl-shift-c f"],
       "C": ["workspace::SendKeystrokes", "\" _ ctrl-shift-cmd-c"],
       "m m": ["workspace::SendKeystrokes", "\" + ctrl-shift-d d"],
       "m e": ["workspace::SendKeystrokes", "\" + ctrl-shift-d e"],
       "m i": ["workspace::SendKeystrokes", "\" + ctrl-shift-d i"],
+      "m f": ["workspace::SendKeystrokes", "\" + ctrl-shift-d f"],
     },
   },
   {

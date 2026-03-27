@@ -7,6 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "jsx_tag_auto_close": {
+    "enabled": false
+  },
+  "show_edit_predictions": true,
   "experimental.theme_overrides": {
     "syntax": {
       "comment": {
@@ -23,25 +30,39 @@
     "quick_actions": false,
   },
   "agent_servers": {
-    "claude": {
-      "default_mode": "acceptEdits",
-      "favorite_models": [],
-      "default_config_options": {},
-      "favorite_config_option_values": {},
-    },
+    "claude-acp": {
+      "type": "registry",
+      "default_mode": "acceptEdits"
+    }
   },
   "vim": {
     "toggle_relative_line_numbers": true,
   },
   "edit_predictions": {
+    "provider": "copilot",
     "copilot": {
       "enable_next_edit_suggestions": false,
     },
   },
-  "features": {
-    "edit_prediction_provider": "copilot",
-  },
   "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^git\\b"
+            },
+            {
+              "pattern": "^grep\\b"
+            }
+          ]
+        }
+      }
+    },
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-opus-4.6"
+    },
     "button": false,
     "favorite_models": [],
     "model_parameters": [],
@@ -107,6 +128,8 @@
     "button": true,
   },
   "terminal": {
+    "max_scroll_history_lines": 10000,
+    "copy_on_select": true,
     "dock": "right",
     "button": false,
   },
