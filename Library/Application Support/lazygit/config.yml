@@ -7,3 +7,6 @@ gui:
     selectedRangeBgColor:
       - reverse
 quitOnTopLevelReturn: true
+os:
+  edit: "sh -c 'if [ \"$TERM_PROGRAM\" = zed ]; then zed --wait {{filename}}; else nvim {{filename}}; fi'"
+  editAtLine: "sh -c 'if [ \"$TERM_PROGRAM\" = zed ]; then zed --wait {{filename}}:{{line}}; else nvim +{{line}} {{filename}}; fi'"
