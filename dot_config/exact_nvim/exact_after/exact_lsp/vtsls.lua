@@ -1,8 +1,5 @@
 local util = require('vim.lsp.util')
 
--- Register vtsls config before returning
-require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-
 return {
   settings = {
     typescript = {

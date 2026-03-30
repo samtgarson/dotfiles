@@ -64,9 +64,6 @@ vim.api.nvim_create_autocmd("BufRead", {
   end
 })
 
--- Handle true color correctly
-vim.o.termguicolors = true
-
 -- Shortcut for piping commands into quickfix window
 -- (doesn't seem like this is possible in lua yet)
 vim.cmd [[

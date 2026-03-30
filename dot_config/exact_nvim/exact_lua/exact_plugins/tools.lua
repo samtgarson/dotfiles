@@ -1,9 +1,6 @@
 return {
-  "nvim-lua/plenary.nvim",
-  { "neoclide/jsonc.vim",       ft = "json" },
   { "tpope/vim-eunuch",         cmd = { 'Move', 'Rename', 'Delete', 'Remove', 'Duplicate' } },
   { "tpope/vim-rails",          ft = "ruby",                                                cmd = "Rails" },
-  { "luukvbaal/stabilize.nvim", lazy = false },
   {
     "gbprod/cutlass.nvim",
     lazy = false,
@@ -38,7 +35,6 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-neotest/nvim-nio",
-      "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
       "marilari88/neotest-vitest",
@@ -87,11 +83,6 @@ return {
         replace = 'cs'
       }
     }
-  },
-  {
-    "folke/ts-comments.nvim",
-    opts = {},
-    event = "VeryLazy"
   },
   {
     "folke/flash.nvim",

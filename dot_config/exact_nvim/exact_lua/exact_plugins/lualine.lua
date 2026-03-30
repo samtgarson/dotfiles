@@ -4,10 +4,8 @@ return {
   dependencies = {
     "folke/tokyonight.nvim",
     "rebelot/kanagawa.nvim",
-    "nvim-lua/lsp-status.nvim"
   },
   config = function()
-    local diagnostics = require 'lsp-status.diagnostics'
     local is_conductor = require("config.theme").is_conductor
     local colors, theme
     if is_conductor then
@@ -33,9 +31,16 @@ return {
     local fg = colors.fg_dark
     local bg = colors.bg
 
+    local severity_map = {
+      errors = vim.diagnostic.severity.ERROR,
+      warnings = vim.diagnostic.severity.WARN,
+      info = vim.diagnostic.severity.INFO,
+      hints = vim.diagnostic.severity.HINT,
+    }
+
     local function getCount(severity)
-      local bufh = vim.api.nvim_get_current_buf()
-      return diagnostics(bufh)[severity]
+      local counts = vim.diagnostic.count(0)
+      return counts[severity_map[severity]] or 0
     end
 
     local function getDiagnostics(severity, color)
@@ -59,9 +64,7 @@ return {
     end
 
     local function getSpinner()
-      local hrtime = (vim.uv or vim.loop).hrtime
-      -- Advance the spinner every 80ms only once, not for each client (otherwise the spinners will skip steps).
-      -- NOTE: the spinner symbols table is 1-indexed.
+      local hrtime = vim.uv.hrtime
       return spinner[math.floor(hrtime() / (1e6 * 80)) % #spinner + 1]
     end
 
@@ -97,7 +100,7 @@ return {
           'branch',
           color = { fg = fg, bg = bg },
           icons_enabled = true,
-          icon = ''
+          icon = ''
         }
         },
         lualine_c = {

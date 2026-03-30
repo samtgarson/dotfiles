@@ -2,7 +2,6 @@ return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "nvim-treesitter/nvim-treesitter-refactor",
   },
   build = ":TSUpdate",
   event = { "VeryLazy" },
@@ -10,7 +9,6 @@ return {
     ensure_installed = {
       'bash',
       'css',
-      'dap_repl',
       'gitignore',
       'hcl',
       'html',
@@ -35,10 +33,6 @@ return {
     indent = {
       enable = true
     },
-    refactor = {
-      highlight_definitions = { enable = true },
-      highlight_current_scope = { enable = true }
-    }
   },
   { "pantharshit00/vim-prisma", ft = 'prisma' },
   {

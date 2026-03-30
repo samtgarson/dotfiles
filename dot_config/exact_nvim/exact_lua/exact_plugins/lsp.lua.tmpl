@@ -1,6 +1,6 @@
 return {
   {
-    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
     event = { "VeryLazy" },
     init = function()
       vim.g.omni_sql_no_default_maps = true
@@ -14,18 +14,15 @@ return {
           focusable = false,
           style = "minimal",
           border = "solid",
-          -- border = Util.generate_borderchars("thick", "tl-t-tr-r-bl-b-br-l"),
           source = true,
           header = "",
           prefix = "",
-          -- pad_top = 1,
-          -- pad_bottom = 1,
         },
         signs = {
           text = {
-            [vim.diagnostic.severity.ERROR] = '',
-            [vim.diagnostic.severity.WARN] = '',
-            [vim.diagnostic.severity.INFO] = '',
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '',
             [vim.diagnostic.severity.HINT] = '󰌵',
           }
         }
@@ -33,13 +30,9 @@ return {
     end,
     dependencies = {
       "b0o/SchemaStore.nvim",
-      "neovim/nvim-lspconfig",
-      "williamboman/mason.nvim",
       "yioneko/nvim-vtsls",
     },
     config = function()
-      require('mason').setup()
-
       local capabilities = require('blink.cmp').get_lsp_capabilities(vim.tbl_deep_extend(
         "force",
         {},
@@ -47,43 +40,28 @@ return {
         require 'lsp-file-operations'.default_capabilities()
       ))
 
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-      local on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-          })
-        end
-      end
-
       -- Configure all LSP servers with shared settings
       vim.lsp.config("*", {
-        on_attach = on_attach,
         capabilities = capabilities
       })
 
+      -- Register vtsls config with lspconfig
+      require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+
       -- Server-specific configs are in after/lsp/<server_name>.lua
-      require("mason-lspconfig").setup {
-        ensure_installed = {
-          'cssmodules_ls',
-          'html',
-          'jsonls',
-          'lua_ls',
-          'prismals',
-          {{- if .lang.ruby }}
-          'sorbet',
-          {{- end }}
-          'tailwindcss',
-          'vtsls',
-          'yamlls',
-        },
-        automatic_enable = true
-      }
+      vim.lsp.enable({
+        'cssmodules_ls',
+        'html',
+        'jsonls',
+        'lua_ls',
+        'prismals',
+        {{- if .lang.ruby }}
+        'sorbet',
+        {{- end }}
+        'tailwindcss',
+        'vtsls',
+        'yamlls',
+      })
     end
   },
   {
@@ -92,7 +70,7 @@ return {
     opts = {
       autocmd = { enabled = true },
       sign = { enabled = false },
-      virtual_text = { enabled = true, hl_mode = "blend", text = "" },
+      virtual_text = { enabled = true, hl_mode = "blend", text = "" },
     }
   },
   {
