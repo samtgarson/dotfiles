@@ -54,14 +54,14 @@ vim.o.splitright = true
 -- Automatically clear trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", { pattern = "*", command = "%s/\\s\\+$//e" })
 
--- Set filetype correctly with .tmpl files
-vim.api.nvim_create_autocmd("BufRead", {
-  pattern = "*.*.tmpl",
-  callback = function(ctx)
-    local i, j = string.find(ctx.file, "%.+[^%.]+")
-    local file = string.sub(ctx.file, i + 1, j)
-    vim.cmd("set filetype=" .. file)
-  end
+-- Strip .tmpl extension for chezmoi filetype detection (covers buffers and picker previews)
+vim.filetype.add({
+  pattern = {
+    [".*%.tmpl"] = function(path)
+      local name = path:gsub("%.tmpl$", "")
+      return vim.filetype.match({ filename = name })
+    end,
+  },
 })
 
 -- Shortcut for piping commands into quickfix window
