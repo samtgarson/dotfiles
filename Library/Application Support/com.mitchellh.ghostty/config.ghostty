@@ -1,0 +1,11 @@
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+theme = TokyoNight Moon
+adjust-cell-height = 40%
+font-family = OperatorMonoLig Nerd Font
+fullscreen = true
+window-padding-x = 15
+window-padding-y = 15
+window-padding-color = extend
+macos-titlebar-style = tabs

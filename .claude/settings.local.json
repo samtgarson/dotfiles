@@ -9,7 +9,14 @@
       "mcp__acp__Edit",
       "mcp__acp__Bash",
       "WebFetch(domain:mise.jdx.dev)",
-      "WebFetch(domain:starship.rs)"
+      "WebFetch(domain:starship.rs)",
+      "Bash(git add:*)",
+      "Bash(find:*)",
+      "Bash(do echo:*)",
+      "Read(//Users/samgarson/.local/share/chezmoi/**)",
+      "Bash(while IFS= read -r line)",
+      "Bash(done)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

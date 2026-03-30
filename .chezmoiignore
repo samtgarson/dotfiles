@@ -1,7 +1,6 @@
 README.md
 
 {{- if not .installdesktopapps }}
-.dotfiles/iterm/*
 .dotfiles/mac/*
 .finicky.js
 .mackup.cfg

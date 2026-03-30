@@ -9,6 +9,7 @@ install_apps () {
     coreutils
     finicky
     fzf
+    ghostty
     google-chrome
     mackup
     notion
