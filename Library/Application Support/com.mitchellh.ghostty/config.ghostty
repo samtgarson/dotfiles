@@ -9,3 +9,4 @@ window-padding-x = 15
 window-padding-y = 15
 window-padding-color = extend
 macos-titlebar-style = tabs
+copy-on-select = true

@@ -19,6 +19,30 @@ return function(wk)
 
     -- LSP mapping
     { "<leader>e", vim.diagnostic.open_float, desc = "Show current diagnostic" },
+    {
+      "<C-g>",
+      function()
+        local rel = vim.fn.expand("%:.")
+        local abs = vim.fn.expand("%:p")
+        local items = { "Copy relative path", "Copy absolute path" }
+        local paths = { [items[1]] = rel, [items[2]] = abs }
+        Snacks.picker.select(items, {
+          prompt = rel,
+          snacks = {
+            focus = "list",
+            layout = {
+              preset = "select",
+              hidden = { "preview", "input" },
+            },
+          },
+        }, function(choice)
+          if not choice then return end
+          vim.fn.setreg("+", paths[choice])
+          vim.notify("Copied: " .. paths[choice])
+        end)
+      end,
+      desc = "Copy file path"
+    },
 
     { "]",         group = "+next" },
     { "[",         group = "+prev" },

@@ -37,7 +37,7 @@ return {
   { "pantharshit00/vim-prisma", ft = 'prisma' },
   {
     "windwp/nvim-ts-autotag",
-    event = "VeryLazy",
+    ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "xml" },
     opts = {},
   }
 }
