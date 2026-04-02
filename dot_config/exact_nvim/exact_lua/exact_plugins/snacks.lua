@@ -89,6 +89,8 @@ return {
         end,
         desc = "Open project search"
       },
+      { "<leader>o",  function() Snacks.picker.lsp_symbols({ title = "" }) end,           desc = "Document Symbols" },
+      { "<leader>O",  function() Snacks.picker.lsp_workspace_symbols({ title = "" }) end, desc = "Workspace Symbols" },
       {
         "<C-p>",
         function()

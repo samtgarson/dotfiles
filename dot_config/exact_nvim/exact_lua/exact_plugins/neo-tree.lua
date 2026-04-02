@@ -38,7 +38,6 @@ return {
     opts = {
       sources = {
         "filesystem",
-        "document_symbols",
         "git_status",
         "buffers"
       },
@@ -70,7 +69,6 @@ return {
           { source = "filesystem",       display_name = "Files" },
           { source = "git_status",       display_name = "Git" },
           { source = "buffers",          display_name = "Buffers" },
-          { source = "document_symbols", display_name = "Symbols" },
         },
         separator = '',
         content_layout = "center"
