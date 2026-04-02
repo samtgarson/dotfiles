@@ -1,0 +1,23 @@
+dot_config/exact_nvim/exact_lua/exact_plugins/snacks.lua
+  a9dab276e2b21d85 92-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.3",
+  "base_commit_sha": "85101c2da5d83ae1f483ddd89aa55e44429bca3a",
+  "prompts": {
+    "a9dab276e2b21d85": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1eed5f15-c782-4ece-8d06-dd2a96ed1826",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Sam Garson",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
