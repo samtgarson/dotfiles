@@ -1,0 +1,23 @@
+exact_dot_dotfiles/git/worktrees/config.zsh
+  c44a83f076de1565 1-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "5d3c70dcada5363eb1e49f6994bf359d5c72e649",
+  "prompts": {
+    "c44a83f076de1565": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "315d53c6-2e24-45cf-ba4f-64d074dc8ccd",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Sam Garson",
+      "messages": [],
+      "total_additions": 135,
+      "total_deletions": 96,
+      "accepted_lines": 81,
+      "overriden_lines": 0
+    }
+  }
+}
