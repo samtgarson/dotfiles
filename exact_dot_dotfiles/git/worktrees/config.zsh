@@ -17,16 +17,21 @@ _worktree_source_dir() {
 
 # copy all branch changes (committed + uncommitted) from current worktree to the main working tree
 copy_changes_to_source() {
+  local force=0
+  if [[ "$1" == "-f" ]]; then force=1; shift; fi
+
   local source_dir="$(_worktree_source_dir)" || return 1
   local worktree_dir="$(pwd)"
   local main_branch=$(git -C "$worktree_dir" symbolic-ref refs/remotes/origin/HEAD | splt 4 '/')
   local merge_base=$(git -C "$worktree_dir" merge-base "origin/$main_branch" HEAD)
 
   # check for uncommitted changes in source
-  if ! git -C "$source_dir" diff --quiet HEAD 2>/dev/null || [[ -n "$(git -C "$source_dir" ls-files --others --exclude-standard)" ]]; then
-    echo "Source directory has uncommitted changes: $source_dir"
-    read -q "confirm?Reset and overwrite? [y/N] " || { echo; return 1; }
-    echo
+  if [[ $force -eq 0 ]]; then
+    if ! git -C "$source_dir" diff --quiet HEAD 2>/dev/null || [[ -n "$(git -C "$source_dir" ls-files --others --exclude-standard)" ]]; then
+      echo "Source directory has uncommitted changes: $source_dir"
+      read -q "confirm?Reset and overwrite? [y/N] " || { echo; return 1; }
+      echo
+    fi
   fi
 
   # capture all changes since divergence from main (committed + uncommitted)
