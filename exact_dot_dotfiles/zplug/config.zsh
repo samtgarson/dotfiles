@@ -3,6 +3,7 @@
 source ~/.zplug/init.zsh
 
 zplug "lukechilds/zsh-better-npm-completion", defer:2
+zplug "ntnyq/omz-plugin-pnpm"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

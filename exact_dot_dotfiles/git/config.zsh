@@ -15,6 +15,7 @@ function gprune() {
 
 }
 alias gwip='gaa && gc -m "wip" -n'
+alias gnuke='gaa && grhh'
 alias gdc='gd --cached'
 alias gai='git add -i'
 alias lg='lazygit'
