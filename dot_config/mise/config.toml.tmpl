@@ -1,13 +1,7 @@
 [tools]
+
+# Languages
 node = "22.16.0"
-dust = "0.8.5"
-"npm:@vtsls/language-server" = "latest"
-"npm:@tailwindcss/language-server" = "latest"
-"npm:cssmodules-language-server" = "latest"
-"npm:vscode-langservers-extracted" = "latest"
-"npm:yaml-language-server" = "latest"
-"npm:@prisma/language-server" = "latest"
-lua-language-server = "latest"
 {{- if .lang.ruby }}
 ruby = "3.2.2"
 {{- end }}
@@ -29,6 +23,29 @@ dotnet = "3.1.404"
 {{- if .lang.python }}
 python = "3.10.13"
 {{- end }}
+
+# Utilities
+bat = "latest"
+delta = "latest"
+dust = "0.8.5"
+fd = "latest"
+fzf = "latest"
+gh = "latest"
+jq = "latest"
+lazygit = "latest"
+neovim = "latest"
+ripgrep = "latest"
+starship = "latest"
+xh = "latest"
+
+# Language servers
+lua-language-server = "latest"
+"npm:@vtsls/language-server" = "latest"
+"npm:@tailwindcss/language-server" = "latest"
+"npm:cssmodules-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:yaml-language-server" = "latest"
+"npm:@prisma/language-server" = "latest"
 
 [settings]
 env_file = '.env' # load env vars from a dotenv file, see `MISE_ENV_FILE`

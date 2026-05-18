@@ -4,11 +4,11 @@ README.md
 .dotfiles/mac/*
 .finicky.js
 .mackup.cfg
+Library/Application Support/com.mitchellh.ghostty/*
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
 .dotfiles/keychain/*
-.dotfiles/_bootstrap/config.zsh
 {{- end }}
 
 {{- if .lang.ruby }}

@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
+{{- if eq .chezmoi.os "darwin" }}
 export PATH="$PATH:/opt/homebrew/bin"
+{{- end }}
 
 . ~/.dotfiles/environment.zsh
 
@@ -15,7 +17,6 @@ plugins=(
   git
   github
   heroku
-  httpie
   npm
   rails
   ruby
@@ -28,7 +29,9 @@ if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] ; then
   plugins+=( zsh-autosuggestions )
 fi
 
+{{- if eq .chezmoi.os "darwin" }}
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+{{- end }}
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,10 +64,6 @@ done
 
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
-fi
-
-if [ -f ~/.fzf.zsh ]; then
-  source ~/.fzf.zsh
 fi
 
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

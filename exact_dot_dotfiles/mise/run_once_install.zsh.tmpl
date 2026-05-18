@@ -4,7 +4,12 @@ source ~/.local/share/chezmoi/.helpers
 
 install_mise() {
   started 'Installing mise'
+  {{- if eq .chezmoi.os "darwin" }}
   successfully brew install mise
+  {{- else }}
+  successfully curl -fsSL https://mise.run | sh
+  export PATH="$HOME/.local/bin:$PATH"
+  {{- end }}
   success 'Installed mise'
 }
 
@@ -14,7 +19,7 @@ install_tools() {
   success 'Installed mise tools'
 }
 
-if is_brew_installed mise; then
+if is_installed mise; then
   echo '✅ mise already installed'
 else
   successfully install_mise

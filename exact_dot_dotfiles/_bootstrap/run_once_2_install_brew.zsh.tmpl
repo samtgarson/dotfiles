@@ -4,14 +4,13 @@ set -ef -o pipefail
 
 source ~/.local/share/chezmoi/.helpers
 
+{{- if ne .chezmoi.os "darwin" }}
+exit 0
+{{- end }}
+
 install_brew() {
   started 'Installing brew'
-
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-  {{- if eq .chezmoi.os "linux" }}
-  source ~/.dotfiles/_bootstrap/config.zsh
-  {{- end }}
   success 'Installed brew'
 }
 

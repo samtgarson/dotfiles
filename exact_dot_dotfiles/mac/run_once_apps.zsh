@@ -8,17 +8,16 @@ install_apps () {
     claude-code
     coreutils
     finicky
-    fzf
     ghostty
     google-chrome
     mackup
     notion
+    pixelsnap
     postico
     raycast
     slack
     spotify
     trash
-    zed
   )
 
   for app in $apps; do
