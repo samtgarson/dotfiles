@@ -1,24 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:neovim.io)",
-      "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:api.github.com)",
-      "mcp__acp__Write",
-      "mcp__acp__Edit",
-      "mcp__acp__Bash",
-      "WebFetch(domain:mise.jdx.dev)",
-      "WebFetch(domain:starship.rs)",
-      "Bash(git add:*)",
-      "Bash(find:*)",
-      "Bash(do echo:*)",
-      "Read(//Users/samgarson/.local/share/chezmoi/**)",
-      "Bash(while IFS= read -r line)",
-      "Bash(done)",
-      "Bash(git commit:*)"
-    ],
-    "deny": [],
-    "ask": []
+      "Bash(git *)"
+    ]
   }
 }
