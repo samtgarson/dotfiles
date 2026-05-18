@@ -6,6 +6,13 @@ export PATH="$PATH:/opt/homebrew/bin"
 
 . ~/.dotfiles/environment.zsh
 
+# Expose zsh completions bundled with mise-installed tools before
+# oh-my-zsh runs compinit — otherwise compinit's cache wins and the
+# new fpath entries get ignored on subsequent compinit calls.
+for d in ~/.local/share/mise/installs/*/*/*/autocomplete(N) ~/.local/share/mise/installs/*/*/*/completions(N); do
+  fpath=($d $fpath)
+done
+
 # oh-my-zsh options
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
