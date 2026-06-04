@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git *)"
+      "Bash(git *)",
+      "Read(//Users/samgarson/.config/mise/**)",
+      "Bash(mise ls *)",
+      "Bash(chezmoi diff *)"
     ]
   }
 }
