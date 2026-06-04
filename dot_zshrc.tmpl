@@ -79,4 +79,9 @@ source ~/.dotfiles/completions.zsh
 
 export PATH="./bin:$HOME/.local/bin:$PATH"
 
+# Activate mise last so its shims win over any earlier PATH prepends.
+if command -v mise >/dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
 eval "$(starship init zsh)"
