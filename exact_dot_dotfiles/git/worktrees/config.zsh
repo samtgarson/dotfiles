@@ -62,7 +62,7 @@ setup_new_worktree() {
   # copy .env and mise.local.toml if they exist in source
   for f in .env mise.local.toml; do
     if [[ -f "$source_dir/$f" && ! -f "$f" ]]; then
-      cp "$source_dir/$f" "$f"
+      ln -s "$source_dir/$f" "$f"
       echo "Copied $f"
     fi
   done
