@@ -10,7 +10,7 @@ export default {
   },
   rewrite: [
     {
-      match: ({ url }) => url.protocol === "http" && url.host !== "localhost",
+      match: (url) => url.protocol === "http:" && url.hostname !== "localhost",
       url: (url) => {
         url.protocol = "https";
         return url;
@@ -20,6 +20,10 @@ export default {
   handlers: [
     {
       match: ["meet.google.com*", "localhost:*"],
+      browser: "Google Chrome",
+    },
+    {
+      match: "google.zoom.us*",
       browser: "Google Chrome",
     },
     {
@@ -35,10 +39,10 @@ export default {
       browser: "Spotify",
     },
     {
-      match: ({ url }) =>
-        url.host.endsWith("notion.so") &&
-        !url.host.startsWith("calendar") &&
-        !url.host.startsWith("file") &&
+      match: (url) =>
+        url.hostname.endsWith("notion.so") &&
+        !url.hostname.startsWith("calendar") &&
+        !url.hostname.startsWith("file") &&
         !url.pathname.startsWith("/initiateExternalAuthenticationFromDesktop"),
       browser: "Notion",
     },
