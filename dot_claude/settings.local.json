@@ -20,5 +20,11 @@
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "model": "claude-opus-4-8[1m]",
+  "effortLevel": "high",
+  "fastMode": true,
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "includeCoAuthoredBy": false
 }

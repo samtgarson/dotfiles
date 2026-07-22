@@ -9,3 +9,5 @@ yalc.lock
 .envrc
 vendor/bundle
 mise.local.toml
+
+**/.claude/settings.local.json
