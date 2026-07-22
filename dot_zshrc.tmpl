@@ -56,6 +56,10 @@ if which code >/dev/null; then
   export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
 
+if [ -f "$HOME/.railway" ]; then
+  source "$HOME/.railway/env"
+fi
+
 #-tns-completion-
 if [ -f ~/.tnsrc ]; then
   source ~/.tnsrc
