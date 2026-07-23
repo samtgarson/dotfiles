@@ -1,0 +1,14 @@
+"$schema" = "https://conductor.build/schemas/settings.schema.json"
+
+[git]
+archive_on_merge = false
+branch_prefix_type = "github_username"
+delete_branch_on_archive = true
+
+[models]
+default = "claude:opus-4-8-1m"
+review = "fable-5"
+
+[models.codex]
+default_thinking_level = "high"
+review_thinking_level = "high"
