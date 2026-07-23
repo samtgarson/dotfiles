@@ -9,6 +9,7 @@ install_apps () {
     mackup
     pixelsnap
     raycast
+    conductor
     {{- if not .minimalinstall }}
     1password
     coreutils
@@ -23,7 +24,7 @@ install_apps () {
   )
 
   for app in $apps; do
-    successfully brew install $app
+    successfully brew install $app -y
   done
 }
 
