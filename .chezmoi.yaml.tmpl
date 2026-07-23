@@ -1,6 +1,6 @@
 {{- $minimalinstall := promptBool "Minimal install" -}}
 {{- $installdesktopapps := false }}
-{{- if and (not $minimalinstall) (eq .chezmoi.os "darwin") }}
+{{- if eq .chezmoi.os "darwin" }}
 {{- $installdesktopapps = promptBool "Install desktop apps" -}}
 {{- end }}
 

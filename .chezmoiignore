@@ -5,6 +5,8 @@ README.md
 .finicky.js
 .mackup.cfg
 Library/Application Support/com.mitchellh.ghostty/*
+{{- else if .minimalinstall }}
+.finicky.js
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}

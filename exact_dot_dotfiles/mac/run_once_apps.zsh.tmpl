@@ -4,20 +4,22 @@ source ~/.local/share/chezmoi/.helpers
 
 install_apps () {
   local apps=(
-    1password
     claude-code
+    ghostty
+    mackup
+    pixelsnap
+    raycast
+    {{- if not .minimalinstall }}
+    1password
     coreutils
     finicky
-    ghostty
     google-chrome
-    mackup
     notion
-    pixelsnap
     postico
-    raycast
     slack
     spotify
     trash
+    {{- end }}
   )
 
   for app in $apps; do
