@@ -69,6 +69,14 @@ if [ -d ~/.fastlane/bin ] ; then
   export PATH="~/.fastlane/bin:$PATH"
 fi
 
+if [ -d ~/Library/pnpm ] ; then
+  export PNPM_HOME="/Users/samgarson/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME/bin:"*) ;;
+    *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+  esac
+fi
+
 for f in ~/.dotfiles/**/config.zsh; do
   source $f
 done
@@ -76,8 +84,6 @@ done
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
-
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 source ~/.dotfiles/completions.zsh
 
