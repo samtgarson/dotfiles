@@ -6,7 +6,7 @@ branch_prefix_type = "github_username"
 delete_branch_on_archive = true
 
 [models]
-default = "claude:opus-4-8-1m"
+default = "claude:opus-5-1m"
 review = "fable-5"
 
 [models.codex]
