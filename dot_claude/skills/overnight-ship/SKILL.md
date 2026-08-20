@@ -132,14 +132,14 @@ See `references/pr-review-commands.md` for the `gh` incantations — resolving t
 
 First, work the teardown list: clean up the test data you created in the dev database and in third-party orgs. Do this even if the run went badly — an aborted run still leaves records behind. Verify each deletion rather than assuming it took, and if anything survives, name it precisely in the report (org, object, ID) so the user can finish the job in one pass.
 
-Then update the PR description with the smoke test results:
+Then update the PR description with the smoke test results, including emoji:
 
 | # | Scenario | Result | Notes |
 |---|----------|--------|-------|
-| 1 | Rep connects SF account, first time | Pass | Token stored, refresh verified |
-| 2 | Token expired mid-sync | Pass | Refreshed, retried once |
-| 3 | Rep lacks API Enabled perm | **Fail** | 403 surfaces as generic error — needs decision on messaging |
-| 4 | 5k-record backfill | Blocked | Sandbox row limit; untested |
+| 1 | Rep connects SF account, first time | ✅ Pass | Token stored, refresh verified |
+| 2 | Token expired mid-sync | ✅ Pass | Refreshed, retried once |
+| 3 | Rep lacks API Enabled perm | ❌ **Fail** | 403 surfaces as generic error — needs decision on messaging |
+| 4 | 5k-record backfill | ❓ Blocked | Sandbox row limit; untested |
 
 Be honest in this table. Reviewers will read "Pass" as verified. Anything you didn't actually execute is Blocked or Untested.
 
