@@ -163,6 +163,9 @@ return {
       cmdline = {
         format = {
           cmdline = { icon = "❯" },
+          -- render prompts (hit-enter, input()) inline in the cmdline bar
+          -- instead of the bordered `cmdline_input` popup
+          input = { view = "cmdline_popup" },
           search_down = { icon = " " },
           search_up = { icon = " " },
           help = { pattern = "^:%s*he?l?p?%s+", icon = "❔" },
