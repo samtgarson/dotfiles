@@ -37,6 +37,30 @@
           }
         ]
       }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.dotfiles/git/worktrees/claude-worktree-setup.zsh",
+            "timeout": 600,
+            "statusMessage": "Setting up worktree"
+          }
+        ]
+      }
+    ],
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.dotfiles/git/worktrees/claude-worktree-setup.zsh",
+            "timeout": 600,
+            "statusMessage": "Setting up worktree"
+          }
+        ]
+      }
     ]
   }
 }
