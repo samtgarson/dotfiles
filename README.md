@@ -30,9 +30,12 @@ Setup includes:
 - **Minimal install** — for ephemeral or short-lived machines where I just need to code comfortably for a while. Skips kubernetes and AWS tooling, Mac App Store apps, and everything non-essential.
 - **Install desktop apps** (macOS only) — for machines with a GUI, as opposed to command line boxes and Raspberry Pis. Adds GUI apps, terminal config and macOS system settings.
 - **Remote server** (Linux only) — installs the mosh server.
+- **Install tmux** — installs tmux and its plugin manager. Required for Overmind. Defaults to disabled in existing configurations until selected with `chezmoi init`.
 - **Languages** — pick which language toolchains mise should install.
 
 The two can combine: a minimal desktop install gets a working GUI machine without the full app list.
+
+On Linux, setup installs `wl-clipboard` and `xclip`. `pbcopy` and `pbpaste` use the Wayland or X11 clipboard without tmux. They require a graphical session; an SSH session without a display has no clipboard for these commands. On macOS, the native commands remain unchanged.
 
 ### Contribute
 

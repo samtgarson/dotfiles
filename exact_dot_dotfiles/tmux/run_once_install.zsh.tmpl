@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+{{- if not (get . "installtmux") }}
+exit 0
+{{- end }}
+
 source ~/.local/share/chezmoi/.helpers
 
 install_tpm() {

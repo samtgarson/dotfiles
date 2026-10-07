@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+{{- if eq .chezmoi.os "linux" }}
+source ~/.local/share/chezmoi/.helpers
+
+if ! is_installed wl-copy || ! is_installed wl-paste; then
+  started 'Installing wl-clipboard'
+  successfully sudo apt install wl-clipboard
+  success 'Installed wl-clipboard'
+fi
+
+if ! is_installed xclip; then
+  started 'Installing xclip'
+  successfully sudo apt install xclip
+  success 'Installed xclip'
+fi
+{{- end }}
