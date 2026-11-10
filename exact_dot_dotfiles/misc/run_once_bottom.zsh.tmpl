@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+source ~/.local/share/chezmoi/.helpers
+
+if is_installed btm; then
+  success 'bottom is already installed'
+else
+  started 'Installing bottom'
+  {{- if eq .chezmoi.os "darwin" }}
+  successfully brew install bottom
+  {{- else if eq .chezmoi.os "linux" }}
+  version="0.14.9"
+  arch="$(dpkg --print-architecture)" || exit 1
+  case "$arch" in
+    amd64|arm64|armhf) ;;
+    *) warn "Unsupported bottom architecture: $arch"; exit 1 ;;
+  esac
+  package="$(mktemp --suffix=.deb)" || exit 1
+  trap 'rm -f "$package"' EXIT
+  successfully curl -fL "https://github.com/ClementTsang/bottom/releases/download/$version/bottom_$version-1_$arch.deb" -o "$package"
+  successfully sudo dpkg -i "$package"
+  {{- end }}
+  success 'Installed bottom'
+fi
