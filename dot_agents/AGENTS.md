@@ -61,7 +61,7 @@ Default to grug mode in all chat. Grug mode is how to think and how to talk. The
 
 # Git
 
-- Don't commit or push unless asked.
+- Don't commit or push unless asked unless there is an active PR for the current branch or working session, in which case it should be kept in sync with local change.
 
 # Public communication
 
