@@ -8,7 +8,7 @@ Sets up my home directory with dotfiles and installs everything a new machine ne
 
 Setup includes:
 
-- oh-my-zsh (+ zplug, syntax highlighting, autosuggestions)
+- oh-my-zsh (+ syntax highlighting, autosuggestions)
 - starship prompt
 - neovim & vim config
 - mise (for managing versions of node, ruby, python, go and others)
