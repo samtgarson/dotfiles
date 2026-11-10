@@ -57,6 +57,7 @@ copy_changes_to_source() {
 
 # setup a new worktree with env files, mise, and dependencies
 setup_new_worktree() {
+  local -x PATH="$HOME/.local/share/mise/shims:$HOME/.local/bin:/opt/homebrew/bin:$PATH"
   local source_dir="$(_worktree_source_dir)" || return 1
 
   # copy .env and mise.local.toml if they exist in source
@@ -69,12 +70,16 @@ setup_new_worktree() {
 
   # run mise trust and install
   if [[ -f .mise.toml || -f mise.toml || -f mise.local.toml ]]; then
-    mise trust
-    mise install
+    mise trust || return
+    mise install || return
   fi
 
   # install dependencies
   if [[ -f pnpm-lock.yaml ]]; then
+    # Codex can retain PNPM_HOME from an older shell environment.
+    if [[ "$PNPM_HOME" == '~/'* ]]; then
+      export PNPM_HOME="$HOME/${PNPM_HOME#\~/}"
+    fi
     pnpm install
   elif [[ -f package-lock.json ]]; then
     npm install

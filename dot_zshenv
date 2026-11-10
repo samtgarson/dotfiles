@@ -1,0 +1,9 @@
+# Environment variables that need to be available to all shells (including non-interactive)
+# This file is sourced before .zshrc for ALL zsh invocations
+
+# Make asdf respect .nvmrc files with partial version numbers (e.g., "22" -> "22.22.0")
+export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
+
+if [[ -r "$HOME/.dotfiles/git/worktrees/config.zsh" ]]; then
+  source "$HOME/.dotfiles/git/worktrees/config.zsh"
+fi

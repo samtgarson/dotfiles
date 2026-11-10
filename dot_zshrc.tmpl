@@ -18,7 +18,6 @@ HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-  mise
   docker
   docker-compose
   git
@@ -70,7 +69,7 @@ if [ -d ~/.fastlane/bin ] ; then
 fi
 
 if [ -d ~/Library/pnpm ] ; then
-  export PNPM_HOME="~/Library/pnpm"
+  export PNPM_HOME="$HOME/Library/pnpm"
   case ":$PATH:" in
     *":$PNPM_HOME/bin:"*) ;;
     *) export PATH="$PNPM_HOME/bin:$PATH" ;;
@@ -89,9 +88,9 @@ source ~/.dotfiles/completions.zsh
 
 export PATH="./bin:$HOME/.local/bin:$PATH"
 
-# Activate mise last so its shims win over any earlier PATH prepends.
+# Activate mise after earlier PATH changes.
 if command -v mise >/dev/null; then
-  eval "$(mise activate zsh)"
+  source "$ZSH/plugins/mise/mise.plugin.zsh"
 fi
 
 eval "$(starship init zsh)"
