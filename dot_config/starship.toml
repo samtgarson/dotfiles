@@ -6,7 +6,6 @@ format = """\
   $git_commit\
   $git_state\
   $git_status\
-  $mise\
   $golang\
   $nodejs\
   $python\
@@ -37,6 +36,7 @@ style = "bright-cyan"
 style = "blue"
 
 [git_status]
+use_git_executable = true
 style = "bright-yellow"
 # disabled = true
 format = '([$all_status$ahead_behind]($style) )'
@@ -65,9 +65,3 @@ symbol = " "
 
 [nodejs]
 symbol = "⬢ "
-
-[mise]
-disabled = false
-symbol = ""
-format = '[$symbol$health]($style) '
-style = "purple"
