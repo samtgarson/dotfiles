@@ -28,12 +28,14 @@ Setup includes:
 `chezmoi init` asks a few questions which decide how much gets installed:
 
 - **Minimal install** — for ephemeral or short-lived machines where I just need to code comfortably for a while. Skips kubernetes and AWS tooling, Mac App Store apps, and everything non-essential.
-- **Install desktop apps** (macOS only) — for machines with a GUI, as opposed to command line boxes and Raspberry Pis. Adds GUI apps, terminal config and macOS system settings.
+- **Install desktop apps** (macOS only) — for machines with a GUI, as opposed to command line boxes and Raspberry Pis. Adds GUI apps and their supporting tools.
 - **Install tmux** — installs tmux and TPM (the tmux plugin manager), plus tmux configuration and clipboard aliases. Independent of the minimal and desktop app options. Existing configurations without `installtmux` skip these files and downloads; run `chezmoi init` to choose.
 - **Remote server** (Linux only) — installs the mosh server.
 - **Languages** — pick which language toolchains mise should install.
 
 The two can combine: a minimal desktop install gets a working GUI machine without the full app list.
+
+On macOS, system settings (including keyboard repeat speed) always apply. Rex and its settings install when **Minimal install** is off, regardless of the desktop apps option.
 
 ### Contribute
 

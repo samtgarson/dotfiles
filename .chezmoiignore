@@ -5,13 +5,24 @@ README.md
 .dotfiles/tmux/
 {{- end }}
 
-{{- if not .installdesktopapps }}
-.dotfiles/mac/*
+{{- if ne .chezmoi.os "darwin" }}
+.dotfiles/mac/
 .finicky.js
 .mackup.cfg
-.config/rex/
+{{- else if not .installdesktopapps }}
+.dotfiles/mac/apps.zsh
+.dotfiles/mac/mas.zsh
+.dotfiles/mac/config.zsh
+.finicky.js
+.mackup.cfg
 {{- else if .minimalinstall }}
 .finicky.js
+{{- end }}
+
+{{- if or (ne .chezmoi.os "darwin") .minimalinstall }}
+.dotfiles/mac/rex.zsh
+.dotfiles/mac/rex_settings.zsh
+.config/rex/
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
