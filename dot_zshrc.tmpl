@@ -76,6 +76,11 @@ if [ -d ~/Library/pnpm ] ; then
   esac
 fi
 
+# rex
+if [ -n "$REX_BIN_DIR" ]; then
+    export PATH="$REX_BIN_DIR:$PATH"
+fi
+
 for f in ~/.dotfiles/**/config.zsh; do
   source $f
 done

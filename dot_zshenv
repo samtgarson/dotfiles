@@ -7,3 +7,8 @@ export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
 if [[ -r "$HOME/.dotfiles/git/worktrees/config.zsh" ]]; then
   source "$HOME/.dotfiles/git/worktrees/config.zsh"
 fi
+
+local rex_location="$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS"
+if [[ -n $rex_location ]]; then
+    export PATH="$rex_location:$PATH"
+fi
