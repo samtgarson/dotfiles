@@ -1,5 +1,10 @@
 README.md
 
+{{- if not (index . "installtmux") }}
+.tmux.conf
+.dotfiles/tmux/
+{{- end }}
+
 {{- if not .installdesktopapps }}
 .dotfiles/mac/*
 .finicky.js

@@ -29,6 +29,7 @@ Setup includes:
 
 - **Minimal install** — for ephemeral or short-lived machines where I just need to code comfortably for a while. Skips kubernetes and AWS tooling, Mac App Store apps, and everything non-essential.
 - **Install desktop apps** (macOS only) — for machines with a GUI, as opposed to command line boxes and Raspberry Pis. Adds GUI apps, terminal config and macOS system settings.
+- **Install tmux** — installs tmux and TPM (the tmux plugin manager), plus tmux configuration and clipboard aliases. Independent of the minimal and desktop app options. Existing configurations without `installtmux` skip these files and downloads; run `chezmoi init` to choose.
 - **Remote server** (Linux only) — installs the mosh server.
 - **Languages** — pick which language toolchains mise should install.
 

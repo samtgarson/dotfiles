@@ -7,6 +7,7 @@
 data:
   minimalinstall: {{ $minimalinstall }}
   installdesktopapps: {{ $installdesktopapps }}
+  installtmux: {{ promptBool "Install tmux" }}
   remoteserver: {{ and (eq .chezmoi.os "linux") (promptBool "Remote server") }}
   lang:
     ruby: {{ promptBool "Install ruby" }}
