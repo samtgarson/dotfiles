@@ -11,7 +11,9 @@ README.md
 .mackup.cfg
 {{- else if not .installdesktopapps }}
 .dotfiles/mac/apps.zsh
+{{- if not .minimalInstall }}
 .dotfiles/mac/mas.zsh
+{{- end }}
 .dotfiles/mac/config.zsh
 .finicky.js
 .mackup.cfg
